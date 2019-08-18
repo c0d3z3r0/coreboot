@@ -1,0 +1,5616 @@
+Known systems:
+linux: Linux with /dev/cpu/*/msr
+darwin: Mac OS X with DirectHW
+freebsd: FreeBSD with /dev/cpuctl*
+
+Known targets:
+geodegx2: AMD Geode(tm) GX2
+# geodegx2 MSRs:
+# GLIU0_P2D_BM0
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x10000020
+
+# GLIU0_P2D_BM1
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x10000021
+
+# GLIU0_P2D_BM2
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x10000022
+
+# GLIU0_P2D_BM3
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x10000023
+
+# GLIU0_P2D_BM4
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x10000024
+
+# GLIU0_P2D_BM5
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x10000025
+
+# GLIU0_P2D_BMO0
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 59:40 POFFSET Physical Memory Address 2s Comp Offset
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x10000026
+
+# GLIU0_P2D_BMO1
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 59:40 POFFSET Physical Memory Address 2s Comp Offset
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x10000027
+
+# GLIU0_P2D_R0
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PMAX Physical Memory Address Max.
+#  19:0 PMIN Physical Memory Address Min.
+0x10000028
+
+# GLIU0_P2D_RO0
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 59:40 POFFSET Physical Memory Address 2s Comp Offset
+# 39:20 PMAX Physical Memory Address Max.
+#  19:0 PMIN Physical Memory Address Min.
+0x10000029
+
+# GLIU0_P2D_RO1
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 59:40 POFFSET Physical Memory Address 2s Comp Offset
+# 39:20 PMAX Physical Memory Address Max.
+#  19:0 PMIN Physical Memory Address Min.
+0x1000002a
+
+# GLIU0_P2D_RO2
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 59:40 POFFSET Physical Memory Address 2s Comp Offset
+# 39:20 PMAX Physical Memory Address Max.
+#  19:0 PMIN Physical Memory Address Min.
+0x1000002b
+
+# GLIU0_P2D_SC0
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 47:32 WEN Enable hits to the base for the ith 16K page for writes
+# 31:16 REN Enable hits to the base for the ith 16K page for 
+#  13:0 PSCBASE Physical Memory Address Base for hit
+0x1000002c
+
+# GLIU0_IOD_BM0
+# 63:61 IDID IO Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 IBASE Physical IO Address Base
+#  19:0 IMASK Physical IO Address Mask
+0x100000e0
+
+# GLIU0_IOD_BM1
+# 63:61 IDID IO Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 IBASE Physical IO Address Base
+#  19:0 IMASK Physical IO Address Mask
+0x100000e1
+
+# GLIU0_IOD_BM2
+# 63:61 IDID IO Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 IBASE Physical IO Address Base
+#  19:0 IMASK Physical IO Address Mask
+0x100000e2
+
+# GLIU0_IOD_SC0
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x100000e3
+
+# GLIU0_IOD_SC1
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x100000e4
+
+# GLIU0_IOD_SC2
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x100000e5
+
+# GLIU0_IOD_SC3
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x100000e6
+
+# GLIU0_IOD_SC4
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x100000e7
+
+# GLIU0_IOD_SC5
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x100000e8
+
+# MC_CF07_DATA
+# 63:60 D1_SZ DIMM1 Size
+#    56 D1_MB DIMM1 Module Banks
+#    52 D1_CB DIMM1 Component Banks
+# 50:48 D1_PSZ DIMM1 Page Size
+# 47:44 D0_SZ DIMM0 Size
+#    40 D0_MB DIMM0 Module Banks
+#    36 D0_CB DIMM0 Component Banks
+# 34:32 D0_PSZ DIMM0 Page Size
+# 29:28 EMR_BA Mode Register Set Bank Address
+#    26 EMR_QFC Extended Mode Register FET Control
+#    25 EMR_DRV Extended Mode Register Drive Strength Control
+#    24 EMR_DLL Extended Mode Register DLL
+#  23:8 REF_INT Refresh Interval
+#   7:6 REF_STAG Refresh Staggering
+#     3 REF_TST Test Refresh
+#     1 SOFT_RST Software Reset
+#     0 PROG_DRAM Program Mode Register in SDRAM
+0x20000018
+
+# MC_CF8F_DATA
+# 63:56 STALE_REQ GLIU Max Stale Request Count
+# 52:51 XOR_BIT_SEL XOR Bit Select
+#    50 XOR_MB0 XOR MB0 Enable
+#    49 XOR_BA1 XOR BA1 Enable
+#    48 XOR_BA0 XOR BA0 Enable
+#    39 AP_B2B Autoprecharge Back-to-Back Command
+#    38 AP_EN Autoprecharge
+#    33 HOI_LOI High / Low Order Interleave Select
+#    31 THZ_DLY tHZ Delay
+# 30:28 CAS_LAT Read CAS Latency
+# 27:24 REF2ACT ACT to ACT/REF Period. tRC
+# 23:20 ACT2PRE ACT to PRE Period. tRAS
+# 18:16 PRE2ACT PRE to ACT Period. tRP
+# 14:12 ACT2CMD Delay Time from ACT to Read/Write. tRCD
+#  11:8 ACT2ACT ACT(0) to ACT(1) Period. tRRD
+#   7:6 DPLWR Data-in to PRE Period. tDPLW
+#   5:4 DPLRD Data-in to PRE Period. tDPLR
+#   2:0 DAL Data-in to ACT (REF) Period. tDAL
+0x20000019
+
+# MC_CF1017_DATA
+#     8 PM1_UP_DLY PMode1 Up Delay
+#   2:0 WR2DAT Write Command to Data Latency
+0x2000001a
+
+# MC_CFPERF_CNT1
+# 63:32 CNT0 Counter 0
+#  31:0 CNT1 Counter 1
+0x2000001b
+
+# MC_PERFCNT2
+#    35 STOP_CNT1 Stop Counter 1
+#    34 RST_CNT1 Reset Counter 1
+#    33 STOP_CNT0 Stop Counter 0
+#    32 RST_CNT0 Reset Counter 0
+# 31:24 CNT1_MASK Counter 1 Mask
+# 23:16 CNT1_DATA Counter 1 Data
+#  15:8 CNT0_MASK Counter 0 Mask
+#   7:0 CNT0_DATA Counter 0 Data
+0x2000001c
+
+# MC_CFCLK_DBUG
+#    34 B2B_EN Back-to-Back Command Enable
+#    32 MTEST_EN MTEST Enable
+#     9 MASK_CKE[1:0] CKE Mask
+#     8 MASK_CKE0 CKE0 Mask
+#     7 CNTL_MSK1 Control Mask 1
+#     6 CNTL_MSK0 Control Mask 0
+#     5 ADRS_MSK Address Mask
+0x2000001d
+
+# GLIU1_P2D_BM0
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000020
+
+# GLIU1_P2D_BM1
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000021
+
+# GLIU1_P2D_BM2
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000022
+
+# GLIU1_P2D_BM3
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000023
+
+# GLIU1_P2D_BM4
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000024
+
+# GLIU1_P2D_BM5
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000025
+
+# GLIU1_P2D_BM6
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000026
+
+# GLIU1_P2D_BM7
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000027
+
+# GLIU1_P2D_BM8
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PBASE Physical Memory Address Base
+#  19:0 PMASK Physical Memory Address Mask
+0x40000028
+
+# GLIU1_P2D_R0
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PMAX Physical Memory Address Max.
+#  19:0 PMIN Physical Memory Address Min.
+0x40000029
+
+# GLIU1_P2D_R1
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PMAX Physical Memory Address Max.
+#  19:0 PMIN Physical Memory Address Min.
+0x4000002a
+
+# GLIU0_P2D_R2
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PMAX Physical Memory Address Max.
+#  19:0 PMIN Physical Memory Address Min.
+0x4000002b
+
+# GLIU0_P2D_R3
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 PMAX Physical Memory Address Max.
+#  19:0 PMIN Physical Memory Address Min.
+0x4000002c
+
+# GLIU1_P2D_SC0
+# 63:61 PDID1 Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 47:32 WEN Enable hits to the base for the ith 16K page for writes
+# 31:16 REN Enable hits to the base for the ith 16K page for 
+#  13:0 PSCBASE Physical Memory Address Base for hit
+0x4000002d
+
+# GLIU1_IOD_BM0
+# 63:61 IDID IO Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 IBASE Physical IO Address Base
+#  19:0 IMASK Physical IO Address Mask
+0x400000e0
+
+# GLIU1_IOD_BM1
+# 63:61 IDID IO Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 IBASE Physical IO Address Base
+#  19:0 IMASK Physical IO Address Mask
+0x400000e1
+
+# GLIU1_IOD_BM2
+# 63:61 IDID IO Descriptor Destination ID
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 39:20 IBASE Physical IO Address Base
+#  19:0 IMASK Physical IO Address Mask
+0x400000e2
+
+# GLIU1_IOD_SC0
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x400000e3
+
+# GLIU1_IOD_SC1
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x400000e4
+
+# GLIU1_IOD_SC2
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x400000e5
+
+# GLIU1_IOD_SC3
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x400000e6
+
+# GLIU1_IOD_SC4
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x400000e7
+
+# GLIU1_IOD_SC5
+# 63:61 IDID1 Descriptor Destination ID 1
+#    36 PCMP_BIZ Compare Bizarro Flag
+# 31:24 EN Enable for hits to IDID1 or else SUBP
+#    21 WEN Descriptor hits  IDID1 on write request Types else SUBP
+#    20 WEN Descriptor hit  IDID1 on write request Types else SUBP
+#  19:3 IBASE IO Memory Base
+0x400000e8
+
+# GLCP_DELAY_CONTROLS
+#    63 EN Delay Settings Enable
+# 60:56 GIO Delay Geode Companion Device
+# 55:51 PCI_IN Delay PCI Inputs
+# 50:46 PCI_OUT Delay PCI Outputs
+# 40:36 DOTCLK Delay Dot Clock
+# 35:31 DRGB Delay Digital RGBs
+# 30:26 SDCLK_IN Delay SDRAM Clock Input
+# 25:21 SDCLK_OUT Delay SDRAM Clock Output
+# 20:16 MEM_CTL Delay Memory Controls
+#     6 MEM_ODDOUT Delay Odd Memory Data Output Bits
+#   3:2 DQS_CLK_IN Delay DQS Before Clocking Input
+#   1:0 DQS_CLK_OUT Delay DQS Before Clocking Output
+0x4c00000f
+
+# GLCP_SYS_RSTPLL
+# 44:41 MDIV GLIU1 Divisor
+# 40:38 VDIV CPU Core Divisor
+# 37:32 FBDIV Feedback Devisor
+# 31:26 SWFLAGS Software Flags
+#    25 LOCK PLL Lock
+#    24 LOCKWAIT Lock Wait
+# 23:16 HOLD_COUNT Hold Count, divided by 16
+#    15 BYPASS PLL Bypass
+#    14 PD Power Down
+#    13 RESETPLL PLL Reset
+#    10 DDRMODE DDR Mode
+#     9 VA_SEMI_SYNC_MODE Synchronous CPU Core and GLIU1
+#     8 PCI_SEMI_SYNC_MODE Synchronous CPU Core and GLIU1
+#     7 DSTALL Debug Stall
+#   6:4 BOOTSTRAP_STAT Bootstrap Status
+#     3 DOTPOSTDIV3 DOTPLL Post-Divide by 3
+#     2 DOTPREMULT2 DOTPLL Pre-Multiply by 2
+#     1 DOTPREDIV2 DOTPLL Pre-Divide by 2
+#     0 CHIP_RESET Chip Reset
+0x4c000014
+
+geodelx: AMD Geode(tm) LX
+# geodelx MSRs:
+# MC_CF07_DATA
+# 63:60 D1_SZ DIMM1 Size
+#    56 D1_MB DIMM1 Module Banks
+#    52 D1_CB DIMM1 Component Banks
+# 50:48 D1_PSZ DIMM1 Page Size
+# 47:44 D0_SZ DIMM0 Size
+#    40 D0_MB DIMM0 Module Banks
+#    36 D0_CB DIMM0 Component Banks
+# 34:32 D0_PSZ DIMM0 Page Size
+# 29:28 MSR_BA Mode Register Set Bank Address
+#    27 RST_DLL Mode Register Reset DLL
+#    26 EMR_QFC Extended Mode Register FET Control
+#    25 EMR_DRV Extended Mode Register Drive Strength Control
+#    24 EMR_DLL Extended Mode Register DLL
+#  23:8 REF_INT Refresh Interval
+#   7:4 REF_STAG Refresh Staggering
+#     3 REF_TST Test Refresh
+#     1 SOFT_RST Software Reset
+#     0 PROG_DRAM Program Mode Register in SDRAM
+0x20000018
+
+# MC_CF8F_DATA
+# 63:56 STALE_REQ GLIU Max Stale Request Count
+# 52:51 XOR_BIT_SEL XOR Bit Select
+#    50 XOR_MB0 XOR MB0 Enable
+#    49 XOR_BA1 XOR BA1 Enable
+#    48 XOR_BA0 XOR BA0 Enable
+#    41 TRUNC_DIS Burst Truncate Disable
+#    40 REORDER_DIS Reorder Disable
+#    33 HOI_LOI High / Low Order Interleave Select
+#    31 THZ_DLY tHZ Delay
+# 30:28 CAS_LAT Read CAS Latency
+# 27:24 ACT2ACTREF ACT to ACT/REF Period. tRC
+# 23:20 ACT2PRE ACT to PRE Period. tRAS
+# 18:16 PRE2ACT PRE to ACT Period. tRP
+# 14:12 ACT2CMD Delay Time from ACT to Read/Write. tRCD
+#  11:8 ACT2ACT ACT(0) to ACT(1) Period. tRRD
+#   7:6 DPLWR Data-in to PRE Period. tDPLW
+#   5:4 DPLRD Data-in to PRE Period. tDPLR
+0x20000019
+
+# MC_CF1017_DATA
+# 29:28 WR_TO_RD Write to Read Delay. tWTR
+# 26:24 RD_TMG_CTL Read Timing Control
+# 20:16 REF2ACT Refresh to Activate Delay. tRFC
+#  15:8 PM1_UP_DLY PMode1 Up Delay
+#   2:0 WR2DAT Write Command to Data Latency
+0x2000001a
+
+# MC_CFPERF_CNT1
+# 63:32 CNT0 Counter 0
+#  31:0 CNT1 Counter 1
+0x2000001b
+
+# MC_PERFCNT2
+#    35 STOP_CNT1 Stop Counter 1
+#    34 RST_CNT1 Reset Counter 1
+#    33 STOP_CNT0 Stop Counter 0
+#    32 RST_CNT0 Reset Counter 0
+0x2000001c
+
+# MC_CFCLK_DBUG
+#    34 B2B_DIS Back-to-Back Command Disable
+#    33 MTEST_RBEX_EN MTEST RBEX Enable
+#    32 MTEST_EN MTEST Enable
+#    16 FORCE_PRE Force Precharge-all
+#    12 TRISTATE_DIS TRI-STATE Disable
+#     9 MASK_CKE1 CKE1 Mask
+#     8 MASK_CKE0 CKE0 Mask
+#     7 CNTL_MSK1 Control Mask 1
+#     6 CNTL_MSK0 Control Mask 0
+#     5 ADRS_MSK Address Mask
+0x2000001d
+
+# GLCP_DELAY_CONTROLS
+#    63 EN Enable
+#    62 B_DQ Buffer Control for DQ DQS DQM TLA drive
+#    61 B_CMD Buffer Control for RAS CAS CKE CS WE drive
+#    60 B_MA Buffer Control for MA BA drive
+#    59 SDCLK_SET SDCLK Setup
+# 58:56 DDR_RLE DDR read latch enable position
+#    55 SDCLK_DIS SDCLK disable [1,3,5]
+# 54:52 TLA1_OA TLA hint pin output adjust
+# 51:50 D_TLA1 Output delay for TLA1
+# 49:48 D_TLA0 Output delay for TLA0
+# 47:46 D_DQ_E Output delay for DQ DQM - even byte lanes
+# 45:44 D_DQ_O Output delay for DQ DQM - odd byte lanes
+# 41:40 D_SDCLK Output delay for SDCLK
+# 39:38 D_CMD_O Output delay for CKE CS RAS CAS WE - odd bits
+# 37:36 D_CMD_E Output delay for CKE CS RAS CAS WE - even bits
+# 35:34 D_MA_O Output delay for BA MA - odd bits
+# 33:32 D_MA_E Output delay for BA MA - even bits
+# 31:30 D_PCI_O Output delay for pci_ad IRQ13 SUSPA# INTA# - odd bits
+# 29:28 D_PCI_E Output delay for pci_ad IRQ13 SUSPA# INTA# - even bits
+# 27:26 D_DOTCLK Output delay for DOTCLK
+# 25:24 D_DRGB_O Output delay for DRGB[31:0] - odd bits
+# 23:22 D_DRGB_E Output delay for DRGB[31:0] HSYNC VSYNC DISPEN VDDEN LDE_MOD - even bits
+# 21:20 D_PCI_IN Input delay for pci_ad CBE# PAR STOP# FRAME# IRDY# TRDY# DEVSEL# REQ# GNT# CIS
+# 19:18 D_TDBGI Input delay for TDBGI
+# 17:16 D_VIP Input delay for VID[15:0] VIP_HSYNC VIP_VSYNC
+# 15:14 D_VIPCLK Input delay for VIPCLK
+#    13 H_SDCLK Half SDCLK hold select (for cmd addr)
+# 12:11 PLL_FD_DEL PLL Feedback Delay
+#     5 DLL_OV DLL Override (to DLL)
+#   4:0 DLL_OVS/RSDA DLL Override Setting or Read Strobe Delay Adjust
+0x4c00000f
+
+# GLCP_SYS_RSTPLL
+# 43:39 GLIUMULT GLIU Multiplier
+#    38 GLIUDIV GLIU Divide
+# 37:33 COREMULT CPU Core Multiplier
+#    32 COREDIV CPU Core Divide
+# 31:26 SWFLAGS Flags
+#    25 GLIULOCK GLIU PLL Lock
+#    24 CORELOCK CPU Core PLL Lock
+# 23:16 HOLD_COUNT Hold Count, divided by 16
+#    14 GLIUPD GLIU PLL Power Down mode
+#    13 COREPD CPU Core PLL Power Down mode
+#    12 GLIUBYPASS GLIU PLL Bypass
+#    11 COREBYPASS CPU Core PLL Bypass
+#    10 LPFEN Loop Filter
+#     9 VA_SEMI_SYNC_MODE CPU-GLIU Sync Mode
+#     8 PCI_SEMI_SYNC_MODE PCI-GLIU Sync Mode
+#     7 BOOTSTRAP_PW1 PW1 bootstrap
+#     6 BOOTSTRAP_IRQ13 IRQ13 bootstrap
+#   5:1 BOOTSTRAPS CPU/GLIU frequency select
+#     0 CHIP_RESET Chip Reset
+0x4c000014
+
+cs5536: AMD Geode(tm) CS5536
+# cs5536 MSRs:
+# DIVIL_LBAR_IRQ
+# 47:44 IO_MASK I/O Address Mask Value
+#    32 LBAR_EN LBAR Enable
+#  15:5 BASE_ADDR Base Address in I/O Space
+0x51400008
+
+# DIVIL_LBAR_KEL
+# 63:44 MEM_MASK Memory Address Mask Value
+#    32 LBAR_EN LBAR Enable
+# 31:12 BASE_ADDR Base Address in Memory Space
+0x51400009
+
+# DIVIL_LBAR_SMB
+# 47:44 IO_MASK I/O Address Mask Value
+#    32 LBAR_EN LBAR Enable
+#  15:8 BASE_ADDR Base Address in I/O Space
+0x5140000b
+
+# DIVIL_LBAR_GPIO
+# 47:44 IO_MASK I/O Address Mask Value
+#    32 LBAR_EN LBAR Enable
+#  15:8 BASE_ADDR Base Address in I/O Space
+0x5140000c
+
+# DIVIL_LBAR_MFGPT
+# 47:44 IO_MASK I/O Address Mask Value
+#    32 LBAR_EN LBAR Enable
+#  15:8 BASE_ADDR Base Address in I/O Space
+0x5140000d
+
+# DIVIL_LBAR_ACPI
+# 47:44 IO_MASK I/O Address Mask Value
+#    32 LBAR_EN LBAR Enable
+#  15:8 BASE_ADDR Base Address in I/O Space
+0x5140000e
+
+# DIVIL_LBAR_PMS
+# 47:44 IO_MASK I/O Address Mask Value
+#    32 LBAR_EN LBAR Enable
+#  15:7 BASE_ADDR Base Address in I/O Space
+0x5140000f
+
+# DIVIL_BALL_OPTS
+# 11:10 SEC_BOOT_LOC Secondary Boot Location
+#   9:8 BOOT_OP_LATCHED Latched Value of Boot Option
+#     6 PIN_OPT_LALL All LPC Pin Option Selection
+#     5 PIN_OPT_LIRQ LPC_SERIRQ or GPIO21 Pin Option Selection
+#     4 PIN_OPT_LDRQ LPC_DRQ# or GPIO20 Pin Option Selection
+#   3:2 PRI_BOOT_LOC Primary Boot Location
+#     0 PIN_OPT_IDE IDE or Flash Controller Pin Function Selection
+0x51400015
+
+# PIC_YSEL_LOW
+# 31:28 MAP_Y7 Map Unrestricted Y Input 7
+# 27:24 MAP_Y6 Map Unrestricted Y Input 6
+# 23:20 MAP_Y5 Map Unrestricted Y Input 5
+# 19:16 MAP_Y4 Map Unrestricted Y Input 4
+# 15:12 MAP_Y3 Map Unrestricted Y Input 3
+#  11:8 MAP_Y2 Map Unrestricted Y Input 2
+#   7:4 MAP_Y1 Map Unrestricted Y Input 1
+#   3:0 MAP_Y0 Map Unrestricted Y Input 0
+0x51400020
+
+# PIC_YSEL_HIGH
+# 31:28 MAP_Y15 Map Unrestricted Y Input 15
+# 27:24 MAP_Y14 Map Unrestricted Y Input 14
+# 23:20 MAP_Y13 Map Unrestricted Y Input 13
+# 19:16 MAP_Y12 Map Unrestricted Y Input 12
+# 15:12 MAP_Y11 Map Unrestricted Y Input 11
+#  11:8 MAP_Y10 Map Unrestricted Y Input 10
+#   7:4 MAP_Y9 Map Unrestricted Y Input 9
+#   3:0 MAP_Y8 Map Unrestricted Y Input 8
+0x51400021
+
+# PIC_ZSEL_LOW
+# 31:28 MAP_Z7 Map Unrestricted Z Input 7
+# 27:24 MAP_Z6 Map Unrestricted Z Input 6
+# 23:20 MAP_Z5 Map Unrestricted Z Input 5
+# 19:16 MAP_Z4 Map Unrestricted Z Input 4
+# 15:12 MAP_Z3 Map Unrestricted Z Input 3
+#  11:8 MAP_Z2 Map Unrestricted Z Input 2
+#   7:4 MAP_Z1 Map Unrestricted Z Input 1
+#   3:0 MAP_Z0 Map Unrestricted Z Input 0
+0x51400022
+
+# PIC_ZSEL_HIGH
+# 31:28 MAP_Z15 Map Unrestricted Z Input 15
+# 27:24 MAP_Z14 Map Unrestricted Z Input 14
+# 23:20 MAP_Z13 Map Unrestricted Z Input 13
+# 19:16 MAP_Z12 Map Unrestricted Z Input 12
+# 15:12 MAP_Z11 Map Unrestricted Z Input 11
+#  11:8 MAP_Z10 Map Unrestricted Z Input 10
+#   7:4 MAP_Z9 Map Unrestricted Z Input 9
+#   3:0 MAP_Z8 Map Unrestricted Z Input 8
+0x51400023
+
+# PIC_IRQM_PRIM
+#    15 PRIM15_MSK Primary Input 15 Mask
+#    14 PRIM14_MSK Primary Input 14 Mask
+#    13 PRIM13_MSK Primary Input 13 Mask
+#    12 PRIM12_MSK Primary Input 12 Mask
+#    11 PRIM11_MSK Primary Input 11 Mask
+#    10 PRIM10_MSK Primary Input 10 Mask
+#     9 PRIM9_MSK Primary Input 9 Mask
+#     8 PRIM8_MSK Primary Input 8 Mask
+#     7 PRIM7_MSK Primary Input 7 Mask
+#     6 PRIM6_MSK Primary Input 6 Mask
+#     5 PRIM5_MSK Primary Input 5 Mask
+#     4 PRIM4_MSK Primary Input 4 Mask
+#     3 PRIM3_MSK Primary Input 3 Mask
+#     1 PRIM1_MSK Primary Input 1 Mask
+#     0 PRIM0_MSK Primary Input 0 Mask
+0x51400024
+
+# PIC_IRQM_LPC
+#    15 LPC15_EN LPC Input 15 Enable
+#    14 LPC14_EN LPC Input 14 Enable
+#    13 LPC13_EN LPC Input 13 Enable
+#    12 LPC12_EN LPC Input 12 Enable
+#    11 LPC11_EN LPC Input 11 Enable
+#    10 LPC10_EN LPC Input 10 Enable
+#     9 LPC9_EN LPC Input 9 Enable
+#     8 LPC8_EN LPC Input 8 Enable
+#     7 LPC7_EN LPC Input 7 Enable
+#     6 LPC6_EN LPC Input 6 Enable
+#     5 LPC5_EN LPC Input 5 Enable
+#     4 LPC4_EN LPC Input 4 Enable
+#     3 LPC3_EN LPC Input 3 Enable
+#     1 LPC1_EN LPC Input 1 Enable
+#     0 LPC0_EN LPC Input 0 Enable
+0x51400025
+
+# PIC_XIRR_STS_LOW
+#    31 IG7_STS_Z Unrestricted Source Z Input 7
+#    30 IG7_STS_Y Unrestricted Source Y Input 7
+#    29 IG7_STS_LPC LPC Input 7
+#    28 IG7_STS_PRIM Primary Input 7
+#    27 IG6_STS_Z Unrestricted Source Z Input 6
+#    26 IG6_STS_Y Unrestricted Source Y Input 6
+#    25 IG6_STS_LPC LPC Input 6
+#    24 IG6_STS_PRIM Primary Input 6
+#    23 IG5_STS_Z Unrestricted Source Z Input 5
+#    22 IG5_STS_Y Unrestricted Source Y Input 5
+#    21 IG5_STS_LPC LPC Input 5
+#    20 IG5_STS_PRIM Primary Input 5
+#    19 IG4_STS_Z Unrestricted Source Z Input 4
+#    18 IG4_STS_Y Unrestricted Source Y Input 4
+#    17 IG4_STS_LPC LPC Input 4
+#    16 IG4_STS_PRIM Primary Input 4
+#    15 IG3_STS_Z Unrestricted Source Z Input 3
+#    14 IG3_STS_Y Unrestricted Source Y Input 3
+#    13 IG3_STS_LPC LPC Input 3
+#    12 IG3_STS_PRIM Primary Input 3
+#    11 IG2_STS_Z Unrestricted Source Z Input 2
+#    10 IG2_STS_Y Unrestricted Source Y Input 2
+#     7 IG1_STS_Z Unrestricted Source Z Input 1
+#     6 IG1_STS_Y Unrestricted Source Y Input 1
+#     5 IG1_STS_LPC LPC Input 1
+#     4 IG1_STS_PRIM Primary Input 1
+#     1 IG0_STS_LPC LPC Input 0
+#     0 IG0_STS_PRIM Primary Input 0
+0x51400026
+
+# PIC_XIRR_STS_HIGH
+#    31 IG15_STS_Z Unrestricted Source Z Input 15
+#    30 IG15_STS_Y Unrestricted Source Y Input 15
+#    29 IG15_STS_LPC LPC Input 15
+#    28 IG15_STS_PRIM Primary Input 15
+#    27 IG14_STS_Z Unrestricted Source Z Input 14
+#    26 IG14_STS_Y Unrestricted Source Y Input 14
+#    25 IG14_STS_LPC LPC Input 14
+#    24 IG14_STS_PRIM Primary Input 14
+#    23 IG13_STS_Z Unrestricted Source Z Input 13
+#    22 IG13_STS_Y Unrestricted Source Y Input 13
+#    21 IG13_STS_LPC LPC Input 13
+#    20 IG13_STS_PRIM Primary Input 13
+#    19 IG12_STS_Z Unrestricted Source Z Input 12
+#    18 IG12_STS_Y Unrestricted Source Y Input 12
+#    17 IG12_STS_LPC LPC Input 12
+#    16 IG12_STS_PRIM Primary Input 12
+#    15 IG11_STS_Z Unrestricted Source Z Input 11
+#    14 IG11_STS_Y Unrestricted Source Y Input 11
+#    13 IG11_STS_LPC LPC Input 11
+#    12 IG11_STS_PRIM Primary Input 11
+#    11 IG10_STS_Z Unrestricted Source Z Input 10
+#    10 IG10_STS_Y Unrestricted Source Y Input 10
+#     9 IG10_STS_LPC LPC Input 10
+#     8 IG10_STS_PRIM Primary Input 10
+#     7 IG9_STS_Z Unrestricted Source Z Input 9
+#     6 IG9_STS_Y Unrestricted Source Y Input 9
+#     5 IG9_STS_LPC LPC Input 9
+#     4 IG9_STS_PRIM Primary Input 9
+#     3 IG8_STS_Z Unrestricted Source Z Input 8
+#     2 IG8_STS_Y Unrestricted Source Y Input 8
+#     1 IG8_STS_LPC LPC Input 8
+#     0 IG8_STS_PRIM Primary Input 8
+0x51400027
+
+# LPC_SERIRQ
+# 31:16 INVERT IRQ[x] input is active low
+#     7 SIRQ_EN Serial IRQ Enable
+#     6 SIRQ_MODE Serial IRQ Interface Mode
+#   5:2 IRQ_FRAME IRQ Data Frames
+#   1:0 START_FPW Start Frame Pulse Width
+0x5140004e
+
+K8: AMD K8 Family
+# K8 MSRs:
+# EFER Register
+#    14 FFXSR: Fast FXSAVE/FRSTOR Enable
+#    13 LMSLE: Long Mode Segment Limit Enable
+#    12 SVME: SVM Enable
+#    11 NXE: No-Execute Page Enable
+#    10 LMA: Long Mode Active
+#     8 LME: Long Mode Enable
+#     0 SYSCALL: System Call Extension Enable
+0xc0000080
+
+# SYSCFG Register
+#    22 Tom2ForceMemTypeWB: Top of Memory 2 Memory Type Write Back
+#    21 MtrrTom2En: Top of Memory Address Register 2 Enable
+#    20 MtrrVarDramEn: Top of Memory Address Register and I/O Range Register Enable
+#    19 MtrrFixDramModEn: RdDram and WrDram Bits Modification Enable
+#    18 MtrrFixDramEn: Fixed RdDram and WrDram Attributes Enable
+#    17 SysUcLockEn: System Interface Lock Command Enable
+#    16 ChxToDirtyDis: Change to Dirty Command Disable
+#    10 SetDirtyEnO: SharedToDirty Command for O->M State Transition Enable
+#     9 SetDirtyEnS: SharedToDirty Command for S->M State Transition Enable
+#     8 SetDirtyEnE: CleanToDirty Command for E->M State Transition Enable
+#   7:5 SysVicLimit: Outstanding Victim Bus Command Limit
+#   4:0 SysAckLimit: Outstanding Bus Command Limit
+0xc0010010
+
+# HWCR Register
+# 29:24 START_FID: Status of the startup FID
+#    18 MCi_STATUS_WREN: MCi Status Write Enable
+#    17 WRAP32DIS: 32-bit Address Wrap Disable
+#    15 SSEDIS: SSE Instructions Disable
+#    14 RSMSPCYCDIS: Special Bus Cycle On RSM Disable
+#    13 SMISPCYCDIS: Special Bus Cycle On SMI Disable
+#    12 HLTXSPCYCEN: Enable Special Bus Cycle On Exit From HLT
+#     8 IGNNE_EM: IGNNE Port Emulation Enable
+#     7 DISLOCK: Disable x86 LOCK prefix functionality
+#     6 FFDIS: TLB Flush Filter Disable
+#     4 INVD_WBINVD: INVD to WBINVD Conversion
+#     3 TLBCACHEDIS: TLB Cacheable Memory Disable
+#     1 SLOWFENCE: Slow SFENCE Enable
+#     0 SMMLOCK: SMM Configuration Lock
+0xc0010015
+
+# NB_CFG Register
+#    54 InitApicIdCpuIdLo: CpuId and NodeId[2:0] bit field positions are swapped in the APICID
+#    45 DisUsSysMgtRqToNLdt: Disable Upstream System Management Rebroadcast
+#    43 DisThmlPfMonSmiInt: Disable Performance Monitor SMI
+#    36 DisDatMsk: Disables DRAM data masking function
+#    31 DisCohLdtCfg: Disable Coherent HyperTransport Configuration Accesses
+#     9 DisRefUseFreeBuf: Disable Display Refresh from Using Free List Buffers
+0xc001001f
+
+# TOP_MEM Register
+# 39:32 TOM 39-32 
+# 31:23 TOM 31-23 
+0xc001001a
+
+# TOP_MEM2 Register
+# 39:32 TOM2 39-32 
+# 31:23 TOM2 31-23 
+0xc001001d
+
+# IORRBase0
+# 39:32 BASE 27-20 
+# 31:12 BASE 20-0 
+#     5 RdDram: Read from DRAM
+#     4 WrDram: Write to DRAM
+0xc0010016
+
+# IORRMask0
+# 39:32 MASK 27-20 
+# 31:12 MASK 20-0 
+#    11 V: Enables variable I/O range registers
+0xc0010017
+
+# IORRBase1
+# 39:32 BASE 27-20 
+# 31:12 BASE 20-0 
+#     5 RdDram: Read from DRAM
+#     4 WrDram: Write to DRAM
+0xc0010018
+
+# IORRMask1
+# 39:32 MASK 27-20 
+# 31:12 MASK 20-0 
+#    11 V: Enables variable I/O range registers
+0xc0010019
+
+via_c7: VIA Esther processor, C7
+# via_c7 MSRs:
+# IA32_TIME_STAMP_COUNTER
+0x00000010
+
+# EBL_CR_POWERON
+0x0000002a
+
+# PERFCTR0
+0x000000c1
+
+# PERFCTR1
+0x000000c2
+
+# BBL_CR_CTL3
+0x0000011e
+
+# IA32_PERFEVTSEL0
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000186
+
+# IA32_PERFEVTSEL1
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000187
+
+# IA32_PERF_STATUS
+# 63:56 Lowest Supported Clock Ratio R/O
+# 55:48 Lowest Supported Voltage R/O
+# 47:40 Highest Supported Clock Ratio R/O
+# 39:32 Highest Supported Voltage R/O
+# 31:24 Lowest Clock Ratio R/O
+# 21:20 Performance Control MSR Transition R/O
+#    19 Thermal Monitor 2 transition R/O
+#    18 Thermal Monitor 2 transition R/O
+#    17 Voltage Transition in progress R/O
+#    16 Clock Ratio Transition in progress R/O
+#  15:8 Current Clock Ratio R/W
+#   7:0 16*x + 700 = Current voltage in mV R/W
+0x00000198
+
+# IA32_PERF_CTL
+#  15:8 Desired Clock Ratio R/W
+#   7:0 16*x + 700 = Desired voltage in mV R/W
+0x00000199
+
+# IA32_CLOCK_MODULATION
+#  15:8 allows selection of the on-demand clock modulation duty cycle R/W
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+#     1 Enables APIC LVT interrupt on a low-to-high temp transition R/W
+#     0 Enables APIC LVT interrupt on a high-to-low temp transition R/W
+0x0000019b
+
+# IA32_THERM_STATUS
+#     1 TCC assert detect R/O
+#     0 TCC trigger detect (Sticky bit, only cleared upon reset) R/O
+0x0000019c
+
+# MSR_THERM2_CTL
+#    16 Thermal Monitor enable R/W
+#  15:8 Thermal Monitor 2 performance state clock ratio R/W
+#   7:0 Thermal Monitor 2 performance state volatege R/W
+0x0000019d
+
+# IA32_MISC_ENABLES
+#    20 PowerSaver lock R/W
+#    16 Enhanced PowerSaver enable R/W
+#    10 PBE enable R/W
+#     3 Thermal Monitor 2 enable R/W
+0x000001a0
+
+# IA32_MTRR_PHYSBASE0
+0x00000200
+
+# IA32_MTRR_PHYSMASK0
+0x00000201
+
+# IA32_MTRR_PHYSBASE1
+0x00000202
+
+# IA32_MTRR_PHYSMASK1
+0x00000203
+
+# IA32_MTRR_PHYSBASE2
+0x00000204
+
+# IA32_MTRR_PHYSMASK2
+0x00000205
+
+# IA32_MTRR_PHYSBASE3
+0x00000206
+
+# IA32_MTRR_PHYSMASK3
+0x00000207
+
+# IA32_MTRR_PHYSBASE4
+0x00000208
+
+# IA32_MTRR_PHYSMASK4
+0x00000209
+
+# IA32_MTRR_PHYSBASE5
+0x0000020a
+
+# IA32_MTRR_PHYSMASK5
+0x0000020b
+
+# IA32_MTRR_PHYSBASE6
+0x0000020c
+
+# IA32_MTRR_PHYSMASK6
+0x0000020d
+
+# IA32_MTRR_PHYSBASE7
+0x0000020e
+
+# IA32_MTRR_PHYSMASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_MTRR_DEF_TYPE
+0x000002ff
+
+# FCR
+#     8 Disables L2 Cache R/W
+#     1 Enables CPUID reporting CMPXCHG8B R/W
+0x00001107
+
+# FCR2
+# 63:32 Last 4 characters of Alternate Vendor ID string R/W
+#    14 Use the Alternate Vendor ID string R/W
+#  11:8 Family ID R/W
+#   7:4 Model ID R/W
+0x00001108
+
+# FCR3
+# 63:32 First 4 characters of Alternate Vendor ID string W/O
+#  31:0 Middle 4 characters of Alternate Vendor ID string W/O
+0x00001109
+
+# FUSES
+0x00001152
+
+# BRAND
+# 21:20 BRAND_1 R/O
+# 19:18 BRAND_2 R/O
+0x00001153
+
+# UNK0
+0x00001160
+
+# UNK1
+0x00001161
+
+# THERM_THRESH_LOW
+0x00001164
+
+# THERM_THRESH_HI
+0x00001165
+
+# THERM_THRESH_OVERSTRESS
+0x00001166
+
+# THERM_THRESH_USER_TRIP
+0x00001167
+
+# UNK2
+0x00001168
+
+# UNK3
+0x0000116a
+
+# UNK4
+0x0000116b
+
+intel_pentium3_early: Intel Pentium III family
+# intel_pentium3_early MSRs:
+# IA32_P5_MC_ADDR
+0x00000000
+
+# IA32_P5_MC_TYPE
+0x00000001
+
+# IA32_TIME_STAMP_COUNTER
+0x00000010
+
+# IA32_PLATFORM_ID
+0x00000017
+
+# IA32_APIC_BASE
+0x0000001b
+
+# EBL_CR_POWERON
+0x0000002a
+
+# TEST_CTL
+0x00000033
+
+# BBL_CR_D0
+0x00000088
+
+# BBL_CR_D1
+0x00000089
+
+# BBL_CR_D2
+0x0000008a
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# PERFCTR0
+0x000000c1
+
+# PERFCTR1
+0x000000c2
+
+# IA32_MTRRCAP
+0x000000fe
+
+# BBL_CR_ADDR
+0x00000116
+
+# BBL_CR_DECC
+0x00000118
+
+# BBL_CR_CTL
+0x00000119
+
+# BBL_CR_BUSY
+0x0000011b
+
+# BBL_CR_CTL3
+0x0000011e
+
+# IA32_SYSENTER_CS
+0x00000174
+
+# IA32_SYSENTER_ESP
+0x00000175
+
+# IA32_SYSENTER_EIP
+0x00000176
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+0x0000017a
+
+# IA32_MCG_CTL
+0x0000017b
+
+# IA32_PERF_EVNTSEL0
+0x00000186
+
+# IA32_PERF_EVNTSEL1
+0x00000187
+
+# IA32_DEBUGCTL
+0x000001d9
+
+# MSR_LASTBRANCHFROMIP
+0x000001db
+
+# MSR_LASTBRANCHTOIP
+0x000001dc
+
+# MSR_LASTINTFROMIP
+0x000001dd
+
+# MSR_LASTINTTOIP
+0x000001de
+
+# MSR_ROB_CR_BKUPTMPDR6
+0x000001e0
+
+# IA32_MTRR_PHYSBASE0
+0x00000200
+
+# IA32_MTRR_PHYSMASK0
+0x00000201
+
+# IA32_MTRR_PHYSBASE1
+0x00000202
+
+# IA32_MTRR_PHYSMASK1
+0x00000203
+
+# IA32_MTRR_PHYSBASE2
+0x00000204
+
+# IA32_MTRR_PHYSMASK2
+0x00000205
+
+# IA32_MTRR_PHYSBASE3
+0x00000206
+
+# IA32_MTRR_PHYSMASK3
+0x00000207
+
+# IA32_MTRR_PHYSBASE4
+0x00000208
+
+# IA32_MTRR_PHYSMASK4
+0x00000209
+
+# IA32_MTRR_PHYSBASE5
+0x0000020a
+
+# IA32_MTRR_PHYSMASK5
+0x0000020b
+
+# IA32_MTRR_PHYSBASE6
+0x0000020c
+
+# IA32_MTRR_PHYSMASK6
+0x0000020d
+
+# IA32_MTRR_PHYSBASE7
+0x0000020e
+
+# IA32_MTRR_PHYSMASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_MTRR_DEF_TYPE
+0x000002ff
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC1_CTL
+0x00000404
+
+# IA32_MC1_STATUS
+0x00000405
+
+# IA32_MC1_ADDR
+0x00000406
+
+# IA32_MC2_CTL
+0x00000408
+
+# IA32_MC2_STATUS
+0x00000409
+
+# IA32_MC2_ADDR
+0x0000040a
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_MC4_CTL
+0x00000410
+
+# IA32_MC4_STATUS
+0x00000411
+
+# IA32_MC4_ADDR
+0x00000412
+
+intel_pentium3: Intel Pentium III Xeon Processor, Intel Pentium III Processor
+# intel_pentium3 MSRs:
+# IA32_TIME_STAMP_COUNTER
+0x00000010
+
+# IA32_PLATFORM_ID
+0x00000017
+
+# IA32_APIC_BASE
+0x0000001b
+
+# EBL_CR_POWERON
+0x0000002a
+
+# TEST_CTL
+0x00000033
+
+# THERM_DIODE_OFFSET
+0x0000003f
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# PERFCTR0
+0x000000c1
+
+# PERFCTR1
+0x000000c2
+
+# BBL_CR_CTL3
+0x0000011e
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+0x0000017a
+
+# IA32_PERF_STATUS
+0x00000198
+
+# IA32_PERF_CONTROL
+0x00000199
+
+# IA32_CLOCK_MODULATION
+0x0000019a
+
+# IA32_MISC_ENABLES
+0x000001a0
+
+# IA32_DEBUGCTL
+0x000001d9
+
+# IA32_MTRR_PHYSBASE0
+0x00000200
+
+# IA32_MTRR_PHYSMASK0
+0x00000201
+
+# IA32_MTRR_PHYSBASE1
+0x00000202
+
+# IA32_MTRR_PHYSMASK1
+0x00000203
+
+# IA32_MTRR_PHYSBASE2
+0x00000204
+
+# IA32_MTRR_PHYSMASK2
+0x00000205
+
+# IA32_MTRR_PHYSBASE3
+0x00000206
+
+# IA32_MTRR_PHYSMASK3
+0x00000207
+
+# IA32_MTRR_PHYSBASE4
+0x00000208
+
+# IA32_MTRR_PHYSMASK4
+0x00000209
+
+# IA32_MTRR_PHYSBASE5
+0x0000020a
+
+# IA32_MTRR_PHYSMASK5
+0x0000020b
+
+# IA32_MTRR_PHYSBASE6
+0x0000020c
+
+# IA32_MTRR_PHYSMASK6
+0x0000020d
+
+# IA32_MTRR_PHYSBASE7
+0x0000020e
+
+# IA32_MTRR_PHYSMASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_MTRR_DEF_TYPE
+0x000002ff
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+intel_core1: Intel Core Duo, Intel Core Solo processors
+# intel_core1 MSRs:
+# IA32_PLATFORM_ID
+0x00000017
+
+# EBL_CR_POWERON
+0x0000002a
+
+# FSB_CLOCK_STS
+0x000000cd
+
+# FSB_CLOCK_VCC
+0x000000ce
+
+# CLOCK_CST_CONFIG_CONTROL
+0x000000e2
+
+# PMG_IO_BASE_ADDR
+0x000000e3
+
+# PMG_IO_CAPTURE_ADDR
+0x000000e4
+
+# EXT_CONFIG
+0x000000ee
+
+# BBL_CR_CTL3
+0x0000011e
+
+# CLOCK_FLEX_MAX
+0x00000194
+
+# IA32_PERF_STATUS
+0x00000198
+
+# IA32_MISC_ENABLES
+0x000001a0
+
+# PIC_SENS_CFG
+0x000001aa
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_TIME_STAMP_COUNTER
+0x00000010
+
+# IA32_APIC_BASE
+0x0000001b
+
+# IA32_FEATURE_CONTROL
+0x0000003a
+
+# IA32_TEMPERATURE_OFFSET
+0x0000003f
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# IA32_MPERF
+0x000000e7
+
+# IA32_APERF
+0x000000e8
+
+# IA32_MTRRCAP
+0x000000fe
+
+# DTS_CAL_CTRL
+0x0000015f
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+0x0000017a
+
+# IA32_PERF_CONTROL
+0x00000199
+
+# IA32_CLOCK_MODULATION
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+0x0000019b
+
+# IA32_THERM_STATUS
+0x0000019c
+
+# GV_THERM
+0x0000019d
+
+# IA32_DEBUGCTL
+0x000001d9
+
+# IA32_MTRR_PHYSBASE0
+0x00000200
+
+# IA32_MTRR_PHYSMASK0
+0x00000201
+
+# IA32_MTRR_PHYSBASE1
+0x00000202
+
+# IA32_MTRR_PHYSMASK1
+0x00000203
+
+# IA32_MTRR_PHYSBASE2
+0x00000204
+
+# IA32_MTRR_PHYSMASK2
+0x00000205
+
+# IA32_MTRR_PHYSBASE3
+0x00000206
+
+# IA32_MTRR_PHYSMASK3
+0x00000207
+
+# IA32_MTRR_PHYSBASE4
+0x00000208
+
+# IA32_MTRR_PHYSMASK4
+0x00000209
+
+# IA32_MTRR_PHYSBASE5
+0x0000020a
+
+# IA32_MTRR_PHYSMASK5
+0x0000020b
+
+# IA32_MTRR_PHYSBASE6
+0x0000020c
+
+# IA32_MTRR_PHYSMASK6
+0x0000020d
+
+# IA32_MTRR_PHYSBASE7
+0x0000020e
+
+# IA32_MTRR_PHYSMASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_MTRR_DEF_TYPE
+0x000002ff
+
+intel_core2_early: Intel Xeon Processor 3000, 3200, 5100, 5300, 7300 series, Intel Core 2 Quad processor 6000 series, Intel Core 2 Extreme 6000	series, Intel Core 2 Duo 4000, 5000, 6000, 7000 series processors, Intel Pentium dual-core processors
+# intel_core2_early MSRs:
+# IA32_PLATFORM_ID
+0x00000017
+
+# EBL_CR_POWERON
+0x0000002a
+
+# IA32_TEMPERATURE_OFFSET
+0x0000003f
+
+# EMTTM_CR_TABLE0
+0x000000a8
+
+# EMTTM_CR_TABLE1
+0x000000a9
+
+# EMTTM_CR_TABLE2
+0x000000aa
+
+# EMTTM_CR_TABLE3
+0x000000ab
+
+# EMTTM_CR_TABLE4
+0x000000ac
+
+# EMTTM_CR_TABLE5
+0x000000ad
+
+# FSB_CLOCK_STS
+0x000000cd
+
+# PMG_CST_CONFIG_CONTROL
+0x000000e2
+
+# PMG_IO_BASE_ADDR
+0x000000e3
+
+# PMG_IO_CAPTURE_ADDR
+0x000000e4
+
+# EXT_CONFIG
+0x000000ee
+
+# BBL_CR_CTL3
+0x0000011e
+
+# CLOCK_FLEX_MAX
+0x00000194
+
+# IA32_PERF_STATUS
+0x00000198
+
+# IA32_MISC_ENABLES
+0x000001a0
+
+# PIC_SENS_CFG
+0x000001aa
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_TIME_STAMP_COUNTER
+0x00000010
+
+# IA32_APIC_BASE
+0x0000001b
+
+# IA32_FEATURE_CONTROL
+0x0000003a
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# SMM_CST_MISC_INFO
+0x000000e1
+
+# IA32_MPERF
+0x000000e7
+
+# IA32_APERF
+0x000000e8
+
+# IA32_MTRRCAP
+0x000000fe
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+0x0000017a
+
+# IA32_PERF_CONTROL
+0x00000199
+
+# IA32_THERM_CTL
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+0x0000019b
+
+# IA32_THERM_STATUS
+0x0000019c
+
+# MSR_THERM2_CTL
+0x0000019d
+
+# IA32_DEBUGCTL
+0x000001d9
+
+# IA32_MTRR_PHYSBASE0
+0x00000200
+
+# IA32_MTRR_PHYSMASK0
+0x00000201
+
+# IA32_MTRR_PHYSBASE1
+0x00000202
+
+# IA32_MTRR_PHYSMASK1
+0x00000203
+
+# IA32_MTRR_PHYSBASE2
+0x00000204
+
+# IA32_MTRR_PHYSMASK2
+0x00000205
+
+# IA32_MTRR_PHYSBASE3
+0x00000206
+
+# IA32_MTRR_PHYSMASK3
+0x00000207
+
+# IA32_MTRR_PHYSBASE4
+0x00000208
+
+# IA32_MTRR_PHYSMASK4
+0x00000209
+
+# IA32_MTRR_PHYSBASE5
+0x0000020a
+
+# IA32_MTRR_PHYSMASK5
+0x0000020b
+
+# IA32_MTRR_PHYSBASE6
+0x0000020c
+
+# IA32_MTRR_PHYSMASK6
+0x0000020d
+
+# IA32_MTRR_PHYSBASE7
+0x0000020e
+
+# IA32_MTRR_PHYSMASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_MTRR_DEF_TYPE
+0x000002ff
+
+intel_core2_later: Intel Xeon Processor 5200, 5400 series, Intel Core 2 Quad	processors 8000, 9000 series
+# intel_core2_later MSRs:
+# IA32_PLATFORM_ID Register
+# 52:50 Platform ID R/O
+#  12:8 Maximum Qualified Ratio: The maximum allowed bus ratio
+0x00000017
+
+# MSR_EBL_CR_POWERON Register
+# 26:22 Integer Bus Frequency Ratio: R/O
+# 21:20 Symmetric Arbitration ID: R/O
+#    18 N/2: Non-integer bus ratio
+# 17:16 APIC Cluster ID: R/O
+#    14 1 Mbyte Power on Reset Vector R/O
+#    12 BINIT# Observation R/O
+#    11 TXT Intel TXT Capable Chipset
+#    10 MCERR# Observation: R/O
+#     9 Execute BIST R/O
+#     8 Output Tri-state R/O
+#     7 BINIT# Driver Enable R/W
+#     4 Address parity enable R/W
+#     3 MCERR# Driver Enable R/W
+#     2 Response error checking enable R/W
+#     1 Data error checking enable R/W
+0x0000002a
+
+# MSR_FSB_FREQ
+#   2:0 Speed R/O
+0x000000cd
+
+# MSR_BBL_CR_CTL3
+#    23 L2 Present R/O
+#     8 L2 Enabled R/W
+#     0 L2 Hardware Enabled R/O
+0x0000011e
+
+# IA32_PERF_STATUS
+0x00000198
+
+# IA32_P5_MC_ADDR
+0x00000000
+
+# IA32_P5_MC_TYPE
+0x00000001
+
+# IA32_MONITOR_FILTER_SIZE
+0x00000006
+
+# IA32_TIME_STEP_COUNTER
+0x00000010
+
+# IA32_APIC_BASE
+#    11 APIC Global Enable R/W
+#     8 BSP Flag R/W
+0x0000001b
+
+# IA32_FEATURE_CONTROL
+#    15 SENTER Global Enable R/WL
+#  14:8 SENTER Local Function Enables R/WL
+#     3 SMRR Enable R/WL
+#     2 VMX outside of SMX operation R/WL
+#     1 VMX inside of SMX operation R/WL
+#     0 Lock bit R/WO
+0x0000003a
+
+# MSR_LASTBRANCH_0_FROM_IP
+0x00000040
+
+# MSR_LASTBRANCH_1_FROM_IP
+0x00000041
+
+# MSR_LASTBRANCH_2_FROM_IP
+0x00000042
+
+# MSR_LASTBRANCH_3_FROM_IP
+0x00000043
+
+# MSR_LASTBRANCH_0_TO_LIP
+0x00000060
+
+# MSR_LASTBRANCH_1_TO_LIP
+0x00000061
+
+# MSR_LASTBRANCH_2_TO_LIP
+0x00000062
+
+# MSR_LASTBRANCH_3_TO_LIP
+0x00000063
+
+# IA32_BIOS_UPDT_TRIG
+0x00000079
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# MSR_SMRR_PHYS_BASE
+0x000000a0
+
+# MSR_SMRR_PHYS_MASK
+0x000000a1
+
+# IA32_PMC0
+0x000000c1
+
+# IA32_PMC1
+0x000000c2
+
+# IA32_MPERF
+0x000000e7
+
+# IA32_APERF
+0x000000e8
+
+# IA32_MTRRCAP
+#    11 SMRR Capability Using MSR 0xa0 and 0xa1 R/O
+0x000000fe
+
+# IA32_SYSENTER_CS
+0x00000174
+
+# IA32_SYSENTER_ESP
+0x00000175
+
+# IA32_SYSENTER_EIP
+0x00000176
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+#     2 MCIP R/W
+#     1 EPIV R/W
+#     0 RIPV R/W
+0x0000017a
+
+# IA32_PERFEVTSEL0
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000186
+
+# IA32_PERFEVTSEL1
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000187
+
+# IA32_PERF_STATUS
+0x00000198
+
+# IA32_PERF_CTL
+0x00000199
+
+# IA32_CLOCK_MODULATION
+#     4 On demand Clock Modulation R/W
+#   3:1 On demand Clock Modulation Duty Cycle R/W
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+0x0000019b
+
+# IA32_THERM_STATUS
+0x0000019c
+
+# MSR_THERM2_CTL
+0x0000019d
+
+# IA32_MISC_ENABLE
+#    39 IP Prefetcher Disable R/W
+#    38 IDA Disable R/W
+#    37 DCU Prefetcher Disable R/W
+#    34 XD Bit Disable R/W
+#    23 xTPR Message Disable R/W
+#    22 Limit CPUID Maxval R/W
+#    20 Enhanced Intel SpeedStep Select Lock R/W
+#    19 Adjacent Cache Line Prefetch Disable R/W
+#    18 Enable Monitor FSM R/W
+#    17 UNDOCUMENTED R/W
+#    16 Enhanced Intel SpeedStep Technology Enable R/W
+#    13 TM2 Enable R/W
+#    12 Precise Event Based Sampling Unavailable R/O
+#    11 Branch Trace Storage Unavailable R/O
+#    10 FERR# Multiplexing Enable R/W
+#     9 Hardware Prefetcher Disable R/W
+#     7 Performance Monitoring Available R
+#     3 Automatic Thermal Control Circuit Enable R/W
+#     0 Fast-Strings Enable R/W
+0x000001a0
+
+# MSR_LASTBRANCH_TOS
+0x000001c9
+
+# IA32_DEBUGCTL
+0x000001d9
+
+# MSR_LER_FROM_LIP
+0x000001dd
+
+# MSR_LER_TO_LIP
+0x000001de
+
+# IA32_MTRR_PHYS_BASE0
+0x00000200
+
+# IA32_MTRR_PHYS_MASK0
+0x00000201
+
+# IA32_MTRR_PHYS_BASE1
+0x00000202
+
+# IA32_MTRR_PHYS_MASK1
+0x00000203
+
+# IA32_MTRR_PHYS_BASE2
+0x00000204
+
+# IA32_MTRR_PHYS_MASK2
+0x00000205
+
+# IA32_MTRR_PHYS_BASE3
+0x00000206
+
+# IA32_MTRR_PHYS_MASK3
+0x00000207
+
+# IA32_MTRR_PHYS_BASE4
+0x00000208
+
+# IA32_MTRR_PHYS_MASK4
+0x00000209
+
+# IA32_MTRR_PHYS_BASE5
+0x0000020a
+
+# IA32_MTRR_PHYS_MASK5
+0x0000020b
+
+# IA32_MTRR_PHYS_BASE6
+0x0000020c
+
+# IA32_MTRR_PHYS_MASK6
+0x0000020d
+
+# IA32_MTRR_PHYS_BASE7
+0x0000020e
+
+# IA32_MTRR_PHYS_MASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_PAT
+# 58:56 PA7 R/W
+# 40:38 PA6 R/W
+# 42:40 PA5 R/W
+# 34:32 PA4 R/W
+# 26:24 PA3 R/W
+# 18:16 PA2 R/W
+#  10:8 PA1 R/W
+#   2:0 PA0 R/W
+0x00000277
+
+# IA32_MTRR_DEF_TYPE
+#    11 MTRR Enable R/W
+#    10 Fixed Range MTRR Enable R/W
+#   2:0 Default Memory Type R/W
+0x000002ff
+
+# IA32_FIXED_CTR0
+0x00000309
+
+# IA32_FIXED_CTR1
+0x0000030a
+
+# IA32_FIXED_CTR2
+0x0000030b
+
+# IA32_PERF_CAPABILITIES
+#     7 PEBSSaveArchRegs R/O
+#     6 PEBS Record Format R/O
+#   5:0 LBR Format R/O
+0x00000345
+
+# IA32_FIXED_CTR_CTRL
+#    11 EN2_PMI R/W
+#    10 AnyThread 2 R/W
+#     9 EN2_Usr R/W
+#     8 EN2_OS R/W
+#     7 EN1_PMI R/W
+#     6 AnyThread 1 R/W
+#     5 EN1_Usr R/W
+#     4 EN1_OS R/W
+#     3 EN0_PMI R/W
+#     2 AnyThread 0 R/W
+#     1 EN0_Usr R/W
+#     0 EN0_OS R/W
+0x0000038d
+
+# IA32_PERF_GLOBAL_STATUS
+#    63 CondChg: Status bits of this register has changed R/O
+#    62 OvfBuf: DS SAVE area Buffer overflow status R/O
+#    61 Ovf_Uncore: Uncore counter overflow status R/O
+#    34 Ovf_FixedCtr2: Overflow status of IA32_FIXED_CTR2 R/O
+#    33 Ovf_FixedCtr1: Overflow status of IA32_FIXED_CTR1 R/O
+#    32 Ovf_FixedCtr0: Overflow status of IA32_FIXED_CTR0 R/O
+#     3 Ovf_PMC3: Overflow status of IA32_PMC3 R/O
+#     2 Ovf_PMC2: Overflow status of IA32_PMC2 R/O
+#     1 Ovf_PMC1: Overflow status of IA32_PMC1 R/O
+#     0 Ovf_PMC0: Overflow status of IA32_PMC0 R/O
+0x0000038e
+
+# IA32_PERF_GLOBAL_CTL
+#    34 EN_FIXED_CTR2 R/W
+#    33 EN_FIXED_CTR1 R/W
+#    32 EN_FIXED_CTR0 R/W
+#     1 EN_PMC1 R/W
+#     0 EN_PMC0 R/W
+0x0000038f
+
+# IA32_PERF_GLOBAL_OVF_CTL
+#    63 Clear CondChg bit R/W
+#    62 Clear OvfBuf bit R/W
+#    61 Clear Ovf_Uncore bit R/W
+#    34 Clear Ovf_FIXED_CTR2 bit R/W
+#    33 Clear Ovf_FIXED_CTR1 bit R/W
+#    32 Clear Ovf_FIXED_CTR0 bit R/W
+#     1 Clear Ovf_PMC1 bit R/W
+#     0 Clear Ovf_PMC0 bit R/W
+0x00000390
+
+# IA32_PEBS_ENABLE
+#    35 Load Latency on IA32_PMC3 R/W
+#    34 Load Latency on IA32_PMC2 R/W
+#    33 Load Latency on IA32_PMC1 R/W
+#    32 Load Latency on IA32_PMC0 R/W
+#     3 PEBS on IA32_PMC3 R/W
+#     2 PEBS on IA32_PMC2 R/W
+#     1 PEBS on IA32_PMC1 R/W
+#     0 PEBS on IA32_PMC0 R/W
+0x000003f1
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC0_MISC
+0x00000403
+
+# IA32_MC1_CTL
+0x00000404
+
+# IA32_MC1_STATUS
+0x00000405
+
+# IA32_MC1_ADDR
+0x00000406
+
+# IA32_MC1_MISC
+0x00000407
+
+# IA32_MC2_CTL
+0x00000408
+
+# IA32_MC2_STATUS
+0x00000409
+
+# IA32_MC2_ADDR
+0x0000040a
+
+# IA32_MC2_MISC
+0x0000040b
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_MC3_MISC
+0x0000040f
+
+# IA32_MC4_CTL
+0x00000410
+
+# IA32_MC4_STATUS
+0x00000411
+
+# IA32_MC4_ADDR
+0x00000412
+
+# IA32_MC4_MISC
+0x00000413
+
+# IA32_MC5_CTL
+0x00000414
+
+# IA32_MC5_STATUS
+0x00000415
+
+# IA32_MC5_ADDR
+0x00000416
+
+# IA32_MC5_MISC
+0x00000417
+
+# IA32_MC6_CTL
+0x00000418
+
+# IA32_MC6_STATUS
+0x00000419
+
+# IA32_VMX_BASIC
+# 53:50 Memory type for VMREAD and VMWRITE R/O
+#    49 Support of dual-treatment of system-management functions R/O
+#    48 Enable full linear address access R/O
+# 44:32 VMXON region allocation size R/O
+#  31:0 VMCS Revision Identifier R/O
+0x00000480
+
+# IA32_PINBASED_CTLS
+0x00000481
+
+# IA32_PROCBASED_CTLS
+0x00000482
+
+# IA32_VMX_EXIT_CTLS
+0x00000483
+
+# IA32_VMX_ENTRY_CTLS
+0x00000484
+
+# IA32_VMX_MISC
+0x00000485
+
+# IA32_VMX_CR0_FIXED0
+0x00000486
+
+# IA32_VMX_CR0_FIXED1
+0x00000487
+
+# IA32_VMX_CR4_FIXED0
+0x00000488
+
+# IA32_VMX_CR4_FIXED1
+0x00000489
+
+# IA32_VMX_VMCS_ENUM
+0x0000048a
+
+# IA32_VMX_PROCBASED_CTLS2
+0x0000048b
+
+# IA32_DS_AREA
+#  31:0 Linear address of DS buffer management area R/W
+0x00000600
+
+# MSR_EMON_L3_CTR_CTL0
+0x000107cc
+
+# MSR_EMON_L3_CTR_CTL1
+0x000107cd
+
+# MSR_EMON_L3_CTR_CTL2
+0x000107ce
+
+# MSR_EMON_L3_CTR_CTL3
+0x000107cf
+
+# MSR_EMON_L3_CTR_CTL4
+0x000107d0
+
+# MSR_EMON_L3_CTR_CTL5
+0x000107d1
+
+# MSR_EMON_L3_CTR_CTL6
+0x000107d2
+
+# MSR_EMON_L3_CTR_CTL7
+0x000107d3
+
+# MSR_EMON_L3_GL_CTL
+0x000107d8
+
+# IA32_EFER
+0xc0000080
+
+# IA32_STAR
+0xc0000081
+
+# IA32_LSTAR
+0xc0000082
+
+# IA32_FMASK
+0xc0000084
+
+# IA32_FS_BASE
+0xc0000100
+
+# IA32_GS_BASE
+0xc0000101
+
+# IA32_KERNEL_GS_BASE
+0xc0000102
+
+intel_pentium4_early: Intel Xeon Processor, Intel Xeon Processor MP, Intel Pentium 4 processors
+# intel_pentium4_early MSRs:
+# IA32_P5_MC_ADDR
+0x00000000
+
+# IA32_P5_MC_TYPE
+0x00000001
+
+# IA32_PLATFORM_ID
+0x00000017
+
+# MSR_EBC_HARD_POWERON
+0x0000002a
+
+# MSR_EBC_SOFT_POWRON
+0x0000002b
+
+# IA32_THERM_STATUS
+0x0000019c
+
+# IA32_MISC_ENABLE
+0x000001a0
+
+# IA32_MTRR_PHYSBASE0
+0x00000200
+
+# IA32_MTRR_PHYSMASK0
+0x00000201
+
+# IA32_MTRR_PHYSBASE1
+0x00000202
+
+# IA32_MTRR_PHYSMASK1
+0x00000203
+
+# IA32_MTRR_PHYSBASE2
+0x00000204
+
+# IA32_MTRR_PHYSMASK2
+0x00000205
+
+# IA32_MTRR_PHYSBASE3
+0x00000206
+
+# IA32_MTRR_PHYSMASK3
+0x00000207
+
+# IA32_MTRR_PHYSBASE4
+0x00000208
+
+# IA32_MTRR_PHYSMASK4
+0x00000209
+
+# IA32_MTRR_PHYSBASE5
+0x0000020a
+
+# IA32_MTRR_PHYSMASK5
+0x0000020b
+
+# IA32_MTRR_PHYSBASE6
+0x0000020c
+
+# IA32_MTRR_PHYSMASK6
+0x0000020d
+
+# IA32_MTRR_PHYSBASE7
+0x0000020e
+
+# IA32_MTRR_PHYSMASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_MTRR_DEF_TYPE
+0x000002ff
+
+# MSR_BPU_COUNTER0
+0x00000300
+
+# MSR_BPU_COUNTER1
+0x00000301
+
+# MSR_BPU_COUNTER2
+0x00000302
+
+# MSR_BPU_COUNTER3
+0x00000303
+
+# MSR_MS_COUNTER0
+0x00000304
+
+# MSR_MS_COUNTER1
+0x00000305
+
+# MSR_MS_COUNTER2
+0x00000306
+
+# MSR_MS_COUNTER3
+0x00000307
+
+# MSR_FLAME_COUNTER0
+0x00000308
+
+# MSR_FLAME_COUNTER1
+0x00000309
+
+# MSR_FLAME_COUNTER2
+0x0000030a
+
+# MSR_FLAME_COUNTER3
+0x0000030b
+
+# MSR_IQ_COUNTER0
+0x0000030c
+
+# MSR_IQ_COUNTER1
+0x0000030d
+
+# MSR_IQ_COUNTER2
+0x0000030e
+
+# MSR_IQ_COUNTER3
+0x0000030f
+
+# MSR_IQ_COUNTER4
+0x00000310
+
+# MSR_IQ_COUNTER5
+0x00000311
+
+# MSR_BPU_CCCR0
+0x00000360
+
+# MSR_BPU_CCCR1
+0x00000361
+
+# MSR_BPU_CCCR2
+0x00000362
+
+# MSR_BPU_CCCR3
+0x00000363
+
+# MSR_MS_CCCR0
+0x00000364
+
+# MSR_MS_CCCR1
+0x00000365
+
+# MSR_MS_CCCR2
+0x00000366
+
+# MSR_MS_CCCR3
+0x00000367
+
+# MSR_FLAME_CCCR0
+0x00000368
+
+# MSR_FLAME_CCCR1
+0x00000369
+
+# MSR_FLAME_CCCR2
+0x0000036a
+
+# MSR_FLAME_CCCR3
+0x0000036b
+
+# MSR_IQ_CCCR0
+0x0000036c
+
+# MSR_IQ_CCCR1
+0x0000036d
+
+# MSR_IQ_CCCR2
+0x0000036e
+
+# MSR_IQ_CCCR3
+0x0000036f
+
+# MSR_IQ_CCCR4
+0x00000370
+
+# MSR_IQ_CCCR5
+0x00000371
+
+# MSR_BSU_ESCR0
+0x000003a0
+
+# MSR_BSU_ESCR1
+0x000003a1
+
+# MSR_FSB_ESCR0
+0x000003a2
+
+# MSR_FSB_ESCR1
+0x000003a3
+
+# MSR_FIRM_ESCR0
+0x000003a4
+
+# MSR_FIRM_ESCR1
+0x000003a5
+
+# MSR_FLAME_ESCR0
+0x000003a6
+
+# MSR_FLAME_ESCR1
+0x000003a7
+
+# MSR_DAC_ESCR0
+0x000003a8
+
+# MSR_DAC_ESCR1
+0x000003a9
+
+# MSR_MOB_ESCR0
+0x000003aa
+
+# MSR_MOB_ESCR1
+0x000003ab
+
+# MSR_PMH_ESCR0
+0x000003ac
+
+# MSR_PMH_ESCR1
+0x000003ad
+
+# MSR_SAAT_ESCR0
+0x000003ae
+
+# MSR_SAAT_ESCR1
+0x000003af
+
+# MSR_U2L_ESCR0
+0x000003b0
+
+# MSR_U2L_ESCR1
+0x000003b1
+
+# MSR_BPU_ESCR0
+0x000003b2
+
+# MSR_BPU_ESCR1
+0x000003b3
+
+# MSR_IS_ESCR0
+0x000003b4
+
+# MSR_BPU_ESCR1
+0x000003b5
+
+# MSR_ITLB_ESCR0
+0x000003b6
+
+# MSR_ITLB_ESCR1
+0x000003b7
+
+# MSR_CRU_ESCR0
+0x000003b8
+
+# MSR_CRU_ESCR1
+0x000003b9
+
+# MSR_IQ_ESCR0
+0x000003ba
+
+# MSR_IQ_ESCR1
+0x000003bb
+
+# MSR_RAT_ESCR0
+0x000003bc
+
+# MSR_RAT_ESCR1
+0x000003bd
+
+# MSR_SSU_ESCR0
+0x000003be
+
+# MSR_MS_ESCR0
+0x000003c0
+
+# MSR_MS_ESCR1
+0x000003c1
+
+# MSR_TBPU_ESCR0
+0x000003c2
+
+# MSR_TBPU_ESCR1
+0x000003c3
+
+# MSR_TC_ESCR0
+0x000003c4
+
+# MSR_TC_ESCR1
+0x000003c5
+
+# MSR_IX_ESCR0
+0x000003c8
+
+# MSR_IX_ESCR1
+0x000003c9
+
+# MSR_ALF_ESCR0
+0x000003ca
+
+# MSR_ALF_ESCR1
+0x000003cb
+
+# MSR_CRU_ESCR2
+0x000003cc
+
+# MSR_CRU_ESCR3
+0x000003cd
+
+# MSR_CRU_ESCR4
+0x000003e0
+
+# MSR_CRU_ESCR5
+0x000003e1
+
+# MSR_TC_PRECISE_EVENT
+0x000003f0
+
+# MSR_PEBS_ENABLE
+0x000003f1
+
+# MSR_PEBS_MATRIX_VERT
+0x000003f2
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC0_MISC
+0x00000403
+
+# IA32_MC1_CTL
+0x00000404
+
+# IA32_MC1_STATUS
+0x00000405
+
+# IA32_MC1_ADDR
+0x00000406
+
+# IA32_MC1_MISC
+0x00000407
+
+# IA32_MC2_CTL
+0x00000408
+
+# IA32_MC2_STATUS
+0x00000409
+
+# IA32_MC2_ADDR
+0x0000040a
+
+# IA32_MC2_MISC
+0x0000040b
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_MC3_MISC
+0x0000040f
+
+# IA32_MC4_CTL
+0x00000410
+
+# IA32_MC4_STATUS
+0x00000411
+
+# IA32_MC4_ADDR
+0x00000412
+
+# IA32_MC4_MISC
+0x00000413
+
+# IA32_TIME_STAMP_COUNTER
+0x00000010
+
+# IA32_APIC_BASE
+0x0000001b
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# IA32_MTRRCAP
+0x000000fe
+
+# IA32_SYSENTER_CS
+0x00000174
+
+# IA32_SYSENTER_ESP
+0x00000175
+
+# IA32_SYSENTER_EIP
+0x00000176
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+0x0000017a
+
+# IA32_MCG_CTL
+0x0000017b
+
+# MSR_MCG_RAX
+0x00000180
+
+# MSR_MCG_RBX
+0x00000181
+
+# MSR_MCG_RCX
+0x00000182
+
+# MSR_MCG_RDX
+0x00000183
+
+# MSR_MCG_RSI
+0x00000184
+
+# MSR_MCG_RDI
+0x00000185
+
+# MSR_MCG_RBP
+0x00000186
+
+# MSR_MCG_RSP
+0x00000187
+
+# MSR_MCG_RFLAGS
+0x00000188
+
+# MSR_MCG_RIP
+0x00000189
+
+# MSR_MCG_MISC
+0x0000018a
+
+# MSR_MCG_R8
+0x00000190
+
+# MSR_MCG_R9
+0x00000191
+
+# MSR_MCG_R10
+0x00000192
+
+# MSR_MCG_R11
+0x00000193
+
+# MSR_MCG_R12
+0x00000194
+
+# MSR_MCG_R13
+0x00000195
+
+# MSR_MCG_R14
+0x00000196
+
+# MSR_MCG_R15
+0x00000197
+
+# IA32_CLOCK_MODULATION
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+0x0000019b
+
+# IA32_MISC_ENABLE
+0x000001a0
+
+# MSR_LER_FROM_LIP
+0x000001d7
+
+# MSR_LER_TO_LIP
+0x000001d8
+
+# MSR_DEBUGCTLA
+0x000001d9
+
+# MSR_LASTBRANCH_TOS
+0x000001da
+
+# MSR_LASTBRANCH_0
+0x000001db
+
+# MSR_LASTBRANCH_2
+0x000001dd
+
+# MSR_LASTBRANCH_3
+0x000001de
+
+# IA32_PAT
+0x00000277
+
+# IA32_DS_AREA
+0x00000600
+
+intel_pentium4_later: Intel Xeon Processor, Intel Xeon Processor MP, Intel Pentium 4, Pentium D processors
+# intel_pentium4_later MSRs:
+# IA32_P5_MC_ADDR
+0x00000000
+
+# IA32_P5_MC_TYPE
+0x00000001
+
+# IA32_MONITOR_FILTER_LINE_SIZE
+0x00000006
+
+# IA32_TIME_STAMP_COUNTER
+0x00000010
+
+# IA32_PLATFORM_ID
+0x00000017
+
+# IA32_APIC_BASE
+0x0000001b
+
+# MSR_EBC_HARD_POWERON
+0x0000002a
+
+# MSR_EBC_SOFT_POWERON
+0x0000002b
+
+# MSR_EBC_FREQUENCY_ID
+0x0000002c
+
+# IA32_FEATURE_CONTROL
+0x0000003a
+
+# IA32_BIOS_UPDT_TRIG
+0x00000079
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# IA32_SMM_MONITOR_CTL
+0x0000009b
+
+# IA32_MTRRCAP
+0x000000fe
+
+# IA32_SYSENTER_CS
+0x00000174
+
+# IA32_SYSENTER_ESP
+0x00000175
+
+# IA32_SYSENTER_EIP
+0x00000176
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+0x0000017a
+
+# IA32_MCG_CTL
+0x0000017b
+
+# MSR_MCG_RAX
+0x00000180
+
+# MSR_MCG_RBX
+0x00000181
+
+# MSR_MCG_RCX
+0x00000182
+
+# MSR_MCG_RDX
+0x00000183
+
+# MSR_MCG_RSI
+0x00000184
+
+# MSR_MCG_RDI
+0x00000185
+
+# MSR_MCG_RBP
+0x00000186
+
+# MSR_MCG_RSP
+0x00000187
+
+# MSR_MCG_RFLAGS
+0x00000188
+
+# MSR_MCG_RIP
+0x00000189
+
+# MSR_MCG_MISC
+0x0000018a
+
+# MSR_MCG_RESERVED1
+0x0000018b
+
+# MSR_MCG_RESERVED2
+0x0000018c
+
+# MSR_MCG_RESERVED3
+0x0000018d
+
+# MSR_MCG_RESERVED4
+0x0000018e
+
+# MSR_MCG_RESERVED5
+0x0000018f
+
+# MSR_MCG_R8
+0x00000190
+
+# MSR_MCG_R9
+0x00000191
+
+# MSR_MCG_R10
+0x00000192
+
+# MSR_MCG_R11
+0x00000193
+
+# MSR_MCG_R12
+0x00000194
+
+# MSR_MCG_R13
+0x00000195
+
+# MSR_MCG_R14
+0x00000196
+
+# MSR_MCG_R15
+0x00000197
+
+# IA32_PERF_STATUS
+0x00000198
+
+# IA32_PERF_CTL
+0x00000199
+
+# IA32_CLOCK_MODULATION
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+0x0000019b
+
+# IA32_THERM_STATUS
+0x0000019c
+
+# MSR_THERM2_CTL
+0x0000019d
+
+# IA32_MISC_ENABLE
+0x000001a0
+
+# MSR_PLATFORM_BRV
+0x000001a1
+
+# MSR_LER_FROM_LIP
+0x000001d7
+
+# MSR_LER_TO_LIP
+0x000001d8
+
+# MSR_DEBUGCTLA
+0x000001d9
+
+# MSR_LASTBRANCH
+0x000001da
+
+# MSR_LASTBRANCH_0
+0x000001db
+
+# MSR_LASTBRANCH_2
+0x000001dd
+
+# MSR_LASTBRANCH_3
+0x000001de
+
+# IA32_MTRR_PHYSBASE0
+0x00000200
+
+# IA32_MTRR_PHYSMASK0
+0x00000201
+
+# IA32_MTRR_PHYSBASE1
+0x00000202
+
+# IA32_MTRR_PHYSMASK1
+0x00000203
+
+# IA32_MTRR_PHYSBASE2
+0x00000204
+
+# IA32_MTRR_PHYSMASK2
+0x00000205
+
+# IA32_MTRR_PHYSBASE3
+0x00000206
+
+# IA32_MTRR_PHYSMASK3
+0x00000207
+
+# IA32_MTRR_PHYSBASE4
+0x00000208
+
+# IA32_MTRR_PHYSMASK4
+0x00000209
+
+# IA32_MTRR_PHYSBASE5
+0x0000020a
+
+# IA32_MTRR_PHYSMASK5
+0x0000020b
+
+# IA32_MTRR_PHYSBASE6
+0x0000020c
+
+# IA32_MTRR_PHYSMASK6
+0x0000020d
+
+# IA32_MTRR_PHYSBASE7
+0x0000020e
+
+# IA32_MTRR_PHYSMASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_PAT
+0x00000277
+
+# IA32_MTRR_DEF_TYPE
+0x000002ff
+
+# MSR_BPU_COUNTER0
+0x00000300
+
+# MSR_BPU_COUNTER1
+0x00000301
+
+# MSR_BPU_COUNTER2
+0x00000302
+
+# MSR_BPU_COUNTER3
+0x00000303
+
+# MSR_MS_COUNTER0
+0x00000304
+
+# MSR_MS_COUNTER1
+0x00000305
+
+# MSR_MS_COUNTER2
+0x00000306
+
+# MSR_MS_COUNTER3
+0x00000307
+
+# MSR_FLAME_COUNTER0
+0x00000308
+
+# MSR_FLAME_COUNTER1
+0x00000309
+
+# MSR_FLAME_COUNTER2
+0x0000030a
+
+# MSR_FLAME_COUNTER3
+0x0000030b
+
+# MSR_IQ_COUNTER0
+0x0000030c
+
+# MSR_IQ_COUNTER1
+0x0000030d
+
+# MSR_IQ_COUNTER2
+0x0000030e
+
+# MSR_IQ_COUNTER3
+0x0000030f
+
+# MSR_IQ_COUNTER4
+0x00000310
+
+# MSR_IQ_COUNTER5
+0x00000311
+
+# MSR_BPU_CCCR0
+0x00000360
+
+# MSR_BPU_CCCR1
+0x00000361
+
+# MSR_BPU_CCCR2
+0x00000362
+
+# MSR_BPU_CCCR3
+0x00000363
+
+# MSR_MS_CCCR0
+0x00000364
+
+# MSR_MS_CCCR1
+0x00000365
+
+# MSR_MS_CCCR2
+0x00000366
+
+# MSR_MS_CCCR3
+0x00000367
+
+# MSR_FLAME_CCCR0
+0x00000368
+
+# MSR_FLAME_CCCR1
+0x00000369
+
+# MSR_FLAME_CCCR2
+0x0000036a
+
+# MSR_FLAME_CCCR3
+0x0000036b
+
+# MSR_IQ_CCCR0
+0x0000036c
+
+# MSR_IQ_CCCR1
+0x0000036d
+
+# MSR_IQ_CCCR2
+0x0000036e
+
+# MSR_IQ_CCCR3
+0x0000036f
+
+# MSR_IQ_CCCR4
+0x00000370
+
+# MSR_IQ_CCCR5
+0x00000371
+
+# MSR_BSU_ESCR0
+0x000003a0
+
+# MSR_BSU_ESCR1
+0x000003a1
+
+# MSR_FSB_ESCR0
+0x000003a2
+
+# MSR_FSB_ESCR1
+0x000003a3
+
+# MSR_FIRM_ESCR0
+0x000003a4
+
+# MSR_FIRM_ESCR1
+0x000003a5
+
+# MSR_FLAME_ESCR0
+0x000003a6
+
+# MSR_FLAME_ESCR1
+0x000003a7
+
+# MSR_DAC_ESCR0
+0x000003a8
+
+# MSR_DAC_ESCR1
+0x000003a9
+
+# MSR_MOB_ESCR0
+0x000003aa
+
+# MSR_MOB_ESCR1
+0x000003ab
+
+# MSR_PMH_ESCR0
+0x000003ac
+
+# MSR_PMH_ESCR1
+0x000003ad
+
+# MSR_SAAT_ESCR0
+0x000003ae
+
+# MSR_SAAT_ESCR1
+0x000003af
+
+# MSR_U2L_ESCR0
+0x000003b0
+
+# MSR_U2L_ESCR1
+0x000003b1
+
+# MSR_BPU_ESCR0
+0x000003b2
+
+# MSR_BPU_ESCR1
+0x000003b3
+
+# MSR_IS_ESCR0
+0x000003b4
+
+# MSR_IS_ESCR1
+0x000003b5
+
+# MSR_ITLB_ESCR0
+0x000003b6
+
+# MSR_ITLB_ESCR1
+0x000003b7
+
+# MSR_CRU_ESCR0
+0x000003b8
+
+# MSR_CRU_ESCR1
+0x000003b9
+
+# MSR_IQ_ESCR0
+0x000003ba
+
+# MSR_RAT_ESCR0
+0x000003bc
+
+# MSR_RAT_ESCR1
+0x000003bd
+
+# MSR_SSU_ESCR0
+0x000003be
+
+# MSR_MS_ESCR0
+0x000003c0
+
+# MSR_MS_ESCR1
+0x000003c1
+
+# MSR_TBPU_ESCR0
+0x000003c2
+
+# MSR_TBPU_ESCR1
+0x000003c3
+
+# MSR_TC_ESCR0
+0x000003c4
+
+# MSR_TC_ESCR1
+0x000003c5
+
+# MSR_IX_ESCR0
+0x000003c8
+
+# MSR_IX_ESCR0
+0x000003c9
+
+# MSR_ALF_ESCR0
+0x000003ca
+
+# MSR_ALF_ESCR1
+0x000003cb
+
+# MSR_CRU_ESCR2
+0x000003cc
+
+# MSR_CRU_ESCR3
+0x000003cd
+
+# MSR_CRU_ESCR4
+0x000003e0
+
+# MSR_CRU_ESCR5
+0x000003e1
+
+# MSR_TC_PRECISE_EVENT
+0x000003f0
+
+# MSR_PEBS_ENABLE
+0x000003f1
+
+# MSR_PEBS_MATRIX_VERT
+0x000003f2
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC1_CTL
+0x00000404
+
+# IA32_MC1_STATUS
+0x00000405
+
+# IA32_MC1_ADDR
+0x00000406
+
+# IA32_MC2_CTL
+0x00000408
+
+# IA32_MC2_STATUS
+0x00000409
+
+# IA32_MC2_ADDR
+0x0000040a
+
+# IA32_MC2_MISC
+0x0000040b
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_MC3_MISC
+0x0000040f
+
+# IA32_MC4_CTL
+0x00000410
+
+# IA32_MC4_STATUS
+0x00000411
+
+# IA32_MC4_ADDR
+0x00000412
+
+# IA32_MC4_MISC
+0x00000413
+
+# IA32_VMX_PINBASED_CTLS
+0x00000481
+
+# IA32_VMX_PROCBASED_CTLS
+0x00000482
+
+# IA32_VMX_EXIT_CTLS
+0x00000483
+
+# IA32_VMX_ENTRY_CTLS
+0x00000484
+
+# IA32_VMX_MISC
+0x00000485
+
+# IA32_VMX_CR0_FIXED1
+0x00000487
+
+# IA32_VMX_CR4_FIXED1
+0x00000489
+
+# IA32_VMX_PROCBASED_CTLS2
+0x0000048b
+
+# IA32_DS_AREA
+0x00000600
+
+# MSR_LASTBRANCH_0_FROM_IP
+0x00000680
+
+# MSR_LASTBRANCH_2_FROM_IP
+0x00000682
+
+# MSR_LASTBRANCH_4_FROM_IP
+0x00000684
+
+# MSR_LASTBRANCH_6_FROM_IP
+0x00000686
+
+# MSR_LASTBRANCH_8_FROM_IP
+0x00000688
+
+# MSR_LASTBRANCH_10_FROM_IP
+0x0000068a
+
+# MSR_LASTBRANCH_12_FROM_IP
+0x0000068c
+
+# MSR_LASTBRANCH_14_FROM_IP
+0x0000068e
+
+# MSR_LASTBRANCH_0_TO_IP
+0x000006c0
+
+# MSR_LASTBRANCH_2_TO_IP
+0x000006c2
+
+# MSR_LASTBRANCH_4_TO_IP
+0x000006c4
+
+# MSR_LASTBRANCH_6_TO_IP
+0x000006c6
+
+# MSR_LASTBRANCH_8_TO_IP
+0x000006c8
+
+# MSR_LASTBRANCH_10_TO_IP
+0x000006ca
+
+# MSR_LASTBRANCH_12_TO_IP
+0x000006cc
+
+# MSR_LASTBRANCH_14_TO_IP
+0x000006ce
+
+intel_pentium_d: Intel Pentium D processors
+# intel_pentium_d MSRs:
+# IA32_P5_MC_ADDR
+0x00000000
+
+# IA32_P5_MC_TYPE
+0x00000001
+
+# IA32_MONITOR_FILTER_LINE_SIZE
+0x00000006
+
+# IA32_TIME_STAMP_COUNTER
+0x00000010
+
+# IA32_PLATFORM_ID
+0x00000017
+
+# IA32_APIC_BASE
+0x0000001b
+
+# MSR_EBC_HARD_POWERON
+0x0000002a
+
+# MSR_EBC_SOFT_POWERON
+0x0000002b
+
+# MSR_EBC_FREQUENCY_ID
+0x0000002c
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# IA32_MTRRCAP
+0x000000fe
+
+# IA32_SYSENTER_CS
+0x00000174
+
+# IA32_SYSENTER_ESP
+0x00000175
+
+# IA32_SYSENTER_EIP
+0x00000176
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+0x0000017a
+
+# MSR_MCG_RAX
+0x00000180
+
+# MSR_MCG_RBX
+0x00000181
+
+# MSR_MCG_RCX
+0x00000182
+
+# MSR_MCG_RDX
+0x00000183
+
+# MSR_MCG_RSI
+0x00000184
+
+# MSR_MCG_RDI
+0x00000185
+
+# IA32_PERF_EVNTSEL0
+0x00000186
+
+# IA32_PERF_EVNTSEL1
+0x00000187
+
+# MSR_MCG_RFLAGS
+0x00000188
+
+# MSR_MCG_RIP
+0x00000189
+
+# MSR_MCG_MISC
+0x0000018a
+
+# MSR_MCG_R8
+0x00000190
+
+# MSR_MCG_R9
+0x00000191
+
+# MSR_MCG_R10
+0x00000192
+
+# MSR_MCG_R11
+0x00000193
+
+# MSR_MCG_R12
+0x00000194
+
+# MSR_MCG_R13
+0x00000195
+
+# MSR_MCG_R14
+0x00000196
+
+# MSR_MCG_R15
+0x00000197
+
+# IA32_PERF_STATUS
+0x00000198
+
+# IA32_PERF_CONTROL
+0x00000199
+
+# IA32_CLOCK_MODULATION
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+0x0000019b
+
+# IA32_THERM_STATUS
+0x0000019c
+
+# GV_THERM
+0x0000019d
+
+# IA32_MISC_ENABLES
+0x000001a0
+
+# MSR_PLATFORM_BRV
+0x000001a1
+
+# MSR_TEMPERATURE_TARGET
+0x000001a2
+
+# MSR_LER_FROM_LIP
+0x000001d7
+
+# MSR_LER_TO_LIP
+0x000001d8
+
+# IA32_DEBUGCTL
+0x000001d9
+
+# MSR_LASTBRANCH_TOS
+0x000001da
+
+# IA32_MTRR_PHYSBASE0
+0x00000200
+
+# IA32_MTRR_PHYSMASK0
+0x00000201
+
+# IA32_MTRR_PHYSBASE1
+0x00000202
+
+# IA32_MTRR_PHYSMASK1
+0x00000203
+
+# IA32_MTRR_PHYSBASE2
+0x00000204
+
+# IA32_MTRR_PHYSMASK2
+0x00000205
+
+# IA32_MTRR_PHYSBASE3
+0x00000206
+
+# IA32_MTRR_PHYSMASK3
+0x00000207
+
+# IA32_MTRR_PHYSBASE4
+0x00000208
+
+# IA32_MTRR_PHYSMASK4
+0x00000209
+
+# IA32_MTRR_PHYSBASE5
+0x0000020a
+
+# IA32_MTRR_PHYSMASK5
+0x0000020b
+
+# IA32_MTRR_PHYSBASE6
+0x0000020c
+
+# IA32_MTRR_PHYSMASK6
+0x0000020d
+
+# IA32_MTRR_PHYSBASE7
+0x0000020e
+
+# IA32_MTRR_PHYSMASK7
+0x0000020f
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_PAT
+0x00000277
+
+# IA32_MTRR_DEF_TYPE
+0x000002ff
+
+# MSR_BPU_COUNTER0
+0x00000300
+
+# MSR_BPU_COUNTER1
+0x00000301
+
+# MSR_BPU_COUNTER2
+0x00000302
+
+# MSR_BPU_COUNTER3
+0x00000303
+
+# MSR_MS_COUNTER0
+0x00000304
+
+# MSR_MS_COUNTER1
+0x00000305
+
+# MSR_MS_COUNTER2
+0x00000306
+
+# MSR_MS_COUNTER3
+0x00000307
+
+# MSR_FLAME_COUNTER0
+0x00000308
+
+# MSR_FLAME_COUNTER1
+0x00000309
+
+# IA32_FIXED_CTR1
+0x0000030a
+
+# MSR_FLAME_COUNTER3
+0x0000030b
+
+# MSR_IQ_COUNTER0
+0x0000030c
+
+# MSR_IQ_COUNTER1
+0x0000030d
+
+# MSR_IQ_COUNTER2
+0x0000030e
+
+# MSR_IQ_COUNTER3
+0x0000030f
+
+# MSR_IQ_COUNTER4
+0x00000310
+
+# MSR_IQ_COUNTER5
+0x00000311
+
+# IA32_PERF_CAPABILITIES
+0x00000345
+
+# MSR_BPU_CCCR0
+0x00000360
+
+# MSR_BPU_CCCR1
+0x00000361
+
+# MSR_BPU_CCCR2
+0x00000362
+
+# MSR_BPU_CCCR3
+0x00000363
+
+# MSR_MS_CCCR0
+0x00000364
+
+# MSR_MS_CCCR1
+0x00000365
+
+# MSR_MS_CCCR2
+0x00000366
+
+# MSR_MS_CCCR3
+0x00000367
+
+# MSR_FLAME_CCCR0
+0x00000368
+
+# MSR_FLAME_CCCR1
+0x00000369
+
+# MSR_FLAME_CCCR2
+0x0000036a
+
+# MSR_FLAME_CCCR3
+0x0000036b
+
+# MSR_IQ_CCCR0
+0x0000036c
+
+# MSR_IQ_CCCR1
+0x0000036d
+
+# MSR_IQ_CCCR2
+0x0000036e
+
+# MSR_IQ_CCCR3
+0x0000036f
+
+# MSR_IQ_CCCR4
+0x00000370
+
+# MSR_IQ_CCCR5
+0x00000371
+
+# MSR_BSU_ESCR0
+0x000003a0
+
+# MSR_BSU_ESCR1
+0x000003a1
+
+# MSR_FSB_ESCR0
+0x000003a2
+
+# MSR_FSB_ESCR1
+0x000003a3
+
+# MSR_FIRM_ESCR0
+0x000003a4
+
+# MSR_FIRM_ESCR1
+0x000003a5
+
+# MSR_FLAME_ESCR0
+0x000003a6
+
+# MSR_FLAME_ESCR1
+0x000003a7
+
+# MSR_DAC_ESCR0
+0x000003a8
+
+# MSR_DAC_ESCR1
+0x000003a9
+
+# MSR_MOB_ESCR0
+0x000003aa
+
+# MSR_MOB_ESCR1
+0x000003ab
+
+# MSR_PMH_ESCR0
+0x000003ac
+
+# MSR_PMH_ESCR1
+0x000003ad
+
+# MSR_SAAT_ESCR0
+0x000003ae
+
+# MSR_SAAT_ESCR1
+0x000003af
+
+# MSR_U2L_ESCR0
+0x000003b0
+
+# MSR_U2L_ESCR1
+0x000003b1
+
+# MSR_BPU_ESCR0
+0x000003b2
+
+# MSR_BPU_ESCR1
+0x000003b3
+
+# MSR_IS_ESCR0
+0x000003b4
+
+# MSR_BPU_ESCR1
+0x000003b5
+
+# MSR_ITLB_ESCR0
+0x000003b6
+
+# MSR_ITLB_ESCR1
+0x000003b7
+
+# MSR_CRU_ESCR0
+0x000003b8
+
+# MSR_CRU_ESCR1
+0x000003b9
+
+# MSR_IQ_ESCR0
+0x000003ba
+
+# MSR_IQ_ESCR1
+0x000003bb
+
+# MSR_RAT_ESCR0
+0x000003bc
+
+# MSR_RAT_ESCR1
+0x000003bd
+
+# MSR_SSU_ESCR0
+0x000003be
+
+# MSR_MS_ESCR0
+0x000003c0
+
+# MSR_MS_ESCR1
+0x000003c1
+
+# MSR_TBPU_ESCR0
+0x000003c2
+
+# MSR_TBPU_ESCR1
+0x000003c3
+
+# MSR_TC_ESCR0
+0x000003c4
+
+# MSR_TC_ESCR1
+0x000003c5
+
+# MSR_IX_ESCR0
+0x000003c8
+
+# MSR_IX_ESCR1
+0x000003c9
+
+# MSR_ALF_ESCR0
+0x000003ca
+
+# MSR_ALF_ESCR1
+0x000003cb
+
+# MSR_CRU_ESCR2
+0x000003cc
+
+# MSR_CRU_ESCR3
+0x000003cd
+
+# MSR_CRU_ESCR4
+0x000003e0
+
+# MSR_CRU_ESCR5
+0x000003e1
+
+# MSR_TC_PRECISE_EVENT
+0x000003f0
+
+# MSR_PEBS_ENABLE
+0x000003f1
+
+# MSR_PEBS_MATRIX_VERT
+0x000003f2
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC0_MISC
+0x00000403
+
+# IA32_MC1_CTL
+0x00000404
+
+# IA32_MC1_STATUS
+0x00000405
+
+# IA32_MC1_ADDR
+0x00000406
+
+# IA32_MC2_CTL
+0x00000408
+
+# IA32_MC2_STATUS
+0x00000409
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_MC3_MISC
+0x0000040f
+
+# IA32_DS_AREA
+0x00000600
+
+intel_nehalem: Intel Core i5, i7 Processors, Intel Xeon Processor 3400, 3500, 5500, based on Nehalem architecture
+# intel_nehalem MSRs:
+# IA32_PLATFORM_ID Register
+#  12:8 Maximum Qualified Ratio: The maximum allowed bus ratio
+0x00000017
+
+# MSR_FSB_FREQ
+0x000000cd
+
+# MSR_PLATFORM_INFO
+# 47:40 Maximum Efficiency Ratio R/O
+#    29 Programmable TDC-TDP Limit for Turbo Mode R/O
+#    28 Programmable Ratio Limit for Turbo Mode R/O
+#  15:8 Maximum Non-Turbo Ratio R/O
+0x000000ce
+
+# MSR_BBL_CR_CTL3
+0x0000011e
+
+# MSR_TURBO_POWER_CURRENT_LIMIT
+#    31 TDC Limit Override Enable R/W
+# 30:16 TDC Limit R/W
+#    15 TDP Limit Override Enable R/W
+#  14:0 TDP Limit R/W
+0x000001ac
+
+# MSR_TURBO_RATIO_LIMIT
+# 31:24 Maximum Ratio Limit for 4C R/O
+# 23:16 Maximum Ratio Limit for 3C R/O
+#  15:8 Maximum Ratio Limit for 2C R/O
+#   7:0 Maximum Ratio Limit for 1C R/O
+0x000001ad
+
+# IA32_MC0_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000280
+
+# IA32_MC1_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000281
+
+# IA32_MC6_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000286
+
+# IA32_MC7_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000287
+
+# IA32_MC8_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000288
+
+# MSR_PKG_C3_RESIDENCY
+#  63:0 Package C3 Residency Counter R/O
+0x000003f8
+
+# MSR_PKG_C6_RESIDENCY
+0x000003f9
+
+# MSR_PKG_C7_RESIDENCY
+0x000003fa
+
+# IA32_MC6_CTL
+0x00000418
+
+# IA32_MC6_STATUS
+0x00000419
+
+# IA32_MC6_ADDR
+0x0000041a
+
+# IA32_MC6_MISC
+0x0000041b
+
+# IA32_MC7_CTL
+0x0000041c
+
+# IA32_MC7_STATUS
+0x0000041d
+
+# IA32_MC7_ADDR
+0x0000041e
+
+# IA32_MC7_MISC
+0x0000041f
+
+# IA32_MC8_CTL
+0x00000420
+
+# IA32_MC8_STATUS
+0x00000421
+
+# IA32_MC8_ADDR
+0x00000422
+
+# IA32_MC8_MISC
+0x00000423
+
+# IA32_P5_MC_ADDR
+0x00000000
+
+# IA32_P5_MC_TYPE
+0x00000001
+
+# IA32_MONITOR_FILTER_SIZE
+0x00000006
+
+# IA32_TIME_STEP_COUNTER
+0x00000010
+
+# IA32_APIC_BASE
+#    11 APIC Global Enable R/W
+#    10 x2APIC mode R/W
+#     8 BSP Flag R/W
+0x0000001b
+
+# MSR_SMI_COUNT
+#  31:0 SMI Count R/O
+0x00000034
+
+# IA32_FEATURE_CONTROL
+#    15 SENTER Global Enable R/WL
+#  14:8 SENTER Local Function Enables R/WL
+#     2 VMX outside of SMX operation R/WL
+#     1 VMX inside of SMX operation R/WL
+#     0 Lock bit R/WO
+0x0000003a
+
+# MSR_LASTBRANCH_0_FROM_IP
+0x00000040
+
+# MSR_LASTBRANCH_1_FROM_IP
+0x00000041
+
+# MSR_LASTBRANCH_2_FROM_IP
+0x00000042
+
+# MSR_LASTBRANCH_3_FROM_IP
+0x00000043
+
+# MSR_LASTBRANCH_0_TO_LIP
+0x00000060
+
+# MSR_LASTBRANCH_1_TO_LIP
+0x00000061
+
+# MSR_LASTBRANCH_2_TO_LIP
+0x00000062
+
+# MSR_LASTBRANCH_3_TO_LIP
+0x00000063
+
+# IA32_BIOS_UPDT_TRIG
+0x00000079
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# MSR_SMRR_PHYS_BASE
+0x000000a0
+
+# MSR_SMRR_PHYS_MASK
+0x000000a1
+
+# IA32_PMC0
+0x000000c1
+
+# IA32_PMC1
+0x000000c2
+
+# IA32_PMC2
+0x000000c3
+
+# IA32_PMC3
+0x000000c4
+
+# MSR_PKG_CST_CONFIG_CONTROL
+#    26 C1 state auto demotion R/W
+#    25 C3 state auto demotion R/W
+#    24 Interrupt filtering enabled/disabled R/W
+#    15 CFG Lock R/WO
+#    10 I/O MWAIT Redirection R/W
+#   2:0 Package C-State limit R/W
+0x000000e2
+
+# MSR_PMG_IO_CAPTURE_BASE
+# 18:16 C-state Range R/W
+#  15:0 LVL_2 Base Address R/W
+0x000000e4
+
+# IA32_MPERF
+0x000000e7
+
+# IA32_APERF
+0x000000e8
+
+# IA32_MTRRCAP
+0x000000fe
+
+# IA32_SYSENTER_CS
+0x00000174
+
+# IA32_SYSENTER_ESP
+0x00000175
+
+# IA32_SYSENTER_EIP
+0x00000176
+
+# IA32_MCG_CAP
+0x00000179
+
+# IA32_MCG_STATUS
+#     2 MCIP R/W
+#     1 EPIV R/W
+#     0 RIPV R/W
+0x0000017a
+
+# IA32_PERFEVTSEL0
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000186
+
+# IA32_PERFEVTSEL1
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000187
+
+# IA32_PERFEVTSEL2
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000188
+
+# IA32_PERFEVTSEL3
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000189
+
+# IA32_PERF_STATUS
+#  15:0 Current Performance State Value R/O
+0x00000198
+
+# IA32_PERF_CTL
+0x00000199
+
+# IA32_CLOCK_MODULATION
+#     4 On demand Clock Modulation R/W
+#   3:1 On demand Clock Modulation Duty Cycle R/W
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+0x0000019b
+
+# IA32_THERM_STATUS
+0x0000019c
+
+# MSR_THERM2_CTL
+0x0000019d
+
+# IA32_MISC_ENABLE
+#    38 Turbo Mode R/W
+#    34 XD Bit Disable R/W
+#    23 xTPR Message Disable R/W
+#    22 Limit CPUID Maxval R/W
+#    18 Enable Monitor FSM R/W
+#    17 UNDOCUMENTED R/W
+#    16 Enhanced Intel SpeedStep Technology Enable R/W
+#    12 Precise Event Based Sampling Unavailable R/O
+#    11 Branch Trace Storage Unavailable R/O
+#     7 Performance Monitoring Available R
+#     3 Automatic Thermal Control Circuit Enable R/W
+#     0 Fast-Strings Enable R/W
+0x000001a0
+
+# MSR_TEMPERATURE_TARGET
+# 23:16 Temperature Target R
+0x000001a2
+
+# MSR_OFFCORE_RSP_O
+0x000001a6
+
+# MSR_MISC_PWR_MGMT
+#     1 Energy/Performance Bias Enable R/W
+#     0 EIST Hardware Coordination Disable R/W
+0x000001aa
+
+# MSR_LBR_SELECT
+0x000001c8
+
+# MSR_LASTBRANCH_TOS
+0x000001c9
+
+# IA32_DEBUGCTL
+#    14 FREEZE_WHILE_SMM R/O
+#    13 ENABLE_UNCORE_PMI R/O
+#    12 FREEZE_PERFMON_ON_PMI R/O
+#    11 FREEZE_LBRS_ON_PMI R/O
+#    10 BTS_OFF_USR R/O
+#     9 BTS_OFF_OS R/O
+#     8 BTINT R/O
+#     7 BTS R/O
+#     6 TR R/O
+#     1 BTF R/O
+#     0 LBR R/O
+0x000001d9
+
+# MSR_LER_FROM_LIP
+0x000001dd
+
+# MSR_LER_TO_LIP
+0x000001de
+
+# IA32_SMRR_PHYS_BASE
+# 31:12 SMRR physical Base Address R/O
+#   7:0 Memory type of the range R/O
+0x000001f2
+
+# IA32_SMRR_PHYS_MASK
+# 31:12 SMRR address range mask R/O
+#    11 Is Valid SMRR range mask R/O
+0x000001f3
+
+# IA32_PLATFORM_DCA_CAP
+0x000001f8
+
+# IA32_CPU_DCA_CAP
+0x000001f9
+
+# IA32_DCA_0_CAP
+#    26 HW_BLOCK R/O
+#    24 SW_BLOCK R/W
+# 16:13 DCA_RELAY R/W
+#  10:7 DCA_QUEUE_SIZE R/O
+#   6:3 DCA_TYPE R/O
+#   2:1 TRANSACTION R/O
+#     0 DCA_ACTIVE R/O
+0x000001fa
+
+# MSR_POWER_CTL
+#     1 C1E Enable R/W
+0x000001fc
+
+# IA32_MTRR_PHYS_BASE0
+0x00000200
+
+# IA32_MTRR_PHYS_MASK0
+0x00000201
+
+# IA32_MTRR_PHYS_BASE1
+0x00000202
+
+# IA32_MTRR_PHYS_MASK1
+0x00000203
+
+# IA32_MTRR_PHYS_BASE2
+0x00000204
+
+# IA32_MTRR_PHYS_MASK2
+0x00000205
+
+# IA32_MTRR_PHYS_BASE3
+0x00000206
+
+# IA32_MTRR_PHYS_MASK3
+0x00000207
+
+# IA32_MTRR_PHYS_BASE4
+0x00000208
+
+# IA32_MTRR_PHYS_MASK4
+0x00000209
+
+# IA32_MTRR_PHYS_BASE5
+0x0000020a
+
+# IA32_MTRR_PHYS_MASK5
+0x0000020b
+
+# IA32_MTRR_PHYS_BASE6
+0x0000020c
+
+# IA32_MTRR_PHYS_MASK6
+0x0000020d
+
+# IA32_MTRR_PHYS_BASE7
+0x0000020e
+
+# IA32_MTRR_PHYS_MASK7
+0x0000020f
+
+# IA32_MTRR_PHYS_BASE8
+0x00000210
+
+# IA32_MTRR_PHYS_MASK8
+0x00000211
+
+# IA32_MTRR_PHYS_BASE9
+0x00000212
+
+# IA32_MTRR_PHYS_MASK9
+0x00000213
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_PAT
+# 58:56 PA7 R/W
+# 40:38 PA6 R/W
+# 42:40 PA5 R/W
+# 34:32 PA4 R/W
+# 26:24 PA3 R/W
+# 18:16 PA2 R/W
+#  10:8 PA1 R/W
+#   2:0 PA0 R/W
+0x00000277
+
+# IA32_MC3_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000282
+
+# IA32_MC3_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000283
+
+# IA32_MC4_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000284
+
+# IA32_MC5_CTL2
+#    30 CMCI_EN R/W
+#  14:0 Corrected error count threshold R/W
+0x00000285
+
+# IA32_MTRR_DEF_TYPE
+#    11 MTRR Enable R/W
+#    10 Fixed Range MTRR Enable R/W
+#   2:0 Default Memory Type R/W
+0x000002ff
+
+# IA32_FIXED_CTR0
+0x00000309
+
+# IA32_FIXED_CTR1
+0x0000030a
+
+# IA32_FIXED_CTR2
+0x0000030b
+
+# IA32_PERF_CAPABILITIES
+#    13 Counter width R/O
+#    12 SMM_FREEZE R/O
+#  11:8 PEBS_REC_FORMAT R/O
+#     7 PEBSSaveArchRegs R/O
+#     6 PEBS Record Format R/O
+#   5:0 LBR Format R/O
+0x00000345
+
+# IA32_FIXED_CTR_CTRL
+#    11 EN2_PMI R/W
+#    10 AnyThread 2 R/W
+#     9 EN2_Usr R/W
+#     8 EN2_OS R/W
+#     7 EN1_PMI R/W
+#     6 AnyThread 1 R/W
+#     5 EN1_Usr R/W
+#     4 EN1_OS R/W
+#     3 EN0_PMI R/W
+#     2 AnyThread 0 R/W
+#     1 EN0_Usr R/W
+#     0 EN0_OS R/W
+0x0000038d
+
+# IA32_PERF_GLOBAL_STATUS
+#    63 CondChg: Status bits of this register has changed R/O
+#    62 OvfBuf: DS SAVE area Buffer overflow status R/O
+#    61 Ovf_Uncore: Uncore counter overflow status R/O
+#    34 Ovf_FixedCtr2: Overflow status of IA32_FIXED_CTR2 R/O
+#    33 Ovf_FixedCtr1: Overflow status of IA32_FIXED_CTR1 R/O
+#    32 Ovf_FixedCtr0: Overflow status of IA32_FIXED_CTR0 R/O
+#     3 Ovf_PMC3: Overflow status of IA32_PMC3 R/O
+#     2 Ovf_PMC2: Overflow status of IA32_PMC2 R/O
+#     1 Ovf_PMC1: Overflow status of IA32_PMC1 R/O
+#     0 Ovf_PMC0: Overflow status of IA32_PMC0 R/O
+0x0000038e
+
+# IA32_PERF_GLOBAL_CTL
+#    34 EN_FIXED_CTR2 R/W
+#    33 EN_FIXED_CTR1 R/W
+#    32 EN_FIXED_CTR0 R/W
+#     1 EN_PMC1 R/W
+#     0 EN_PMC0 R/W
+0x0000038f
+
+# IA32_PERF_GLOBAL_OVF_CTL
+#    63 Clear CondChg bit R/W
+#    62 Clear OvfBuf bit R/W
+#    61 Clear Ovf_Uncore bit R/W
+#    34 Clear Ovf_FIXED_CTR2 bit R/W
+#    33 Clear Ovf_FIXED_CTR1 bit R/W
+#    32 Clear Ovf_FIXED_CTR0 bit R/W
+#     1 Clear Ovf_PMC1 bit R/W
+#     0 Clear Ovf_PMC0 bit R/W
+0x00000390
+
+# IA32_PEBS_ENABLE
+#    35 Load Latency on IA32_PMC3 R/W
+#    34 Load Latency on IA32_PMC2 R/W
+#    33 Load Latency on IA32_PMC1 R/W
+#    32 Load Latency on IA32_PMC0 R/W
+#     3 PEBS on IA32_PMC3 R/W
+#     2 PEBS on IA32_PMC2 R/W
+#     1 PEBS on IA32_PMC1 R/W
+#     0 PEBS on IA32_PMC0 R/W
+0x000003f1
+
+# MSR_PEBS_LD_LAT
+#  15:0 Minimum threshold latency value of tagged 				load operation that will be counted R/W
+0x000003f6
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC0_MISC
+0x00000403
+
+# IA32_MC1_CTL
+0x00000404
+
+# IA32_MC1_STATUS
+0x00000405
+
+# IA32_MC1_ADDR
+0x00000406
+
+# IA32_MC1_MISC
+0x00000407
+
+# IA32_MC2_CTL
+0x00000408
+
+# IA32_MC2_STATUS
+0x00000409
+
+# IA32_MC2_ADDR
+0x0000040a
+
+# IA32_MC2_MISC
+0x0000040b
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_MC3_MISC
+0x0000040f
+
+# IA32_MC4_CTL
+0x00000410
+
+# IA32_MC4_STATUS
+0x00000411
+
+# IA32_MC4_ADDR
+0x00000412
+
+# IA32_MC4_MISC
+0x00000413
+
+# IA32_MC5_CTL
+0x00000414
+
+# IA32_MC5_STATUS
+0x00000415
+
+# IA32_MC5_ADDR
+0x00000416
+
+# IA32_MC5_MISC
+0x00000417
+
+# IA32_VMX_BASIC
+# 53:50 Memory type for VMREAD and VMWRITE R/O
+#    49 Support of dual-treatment of system-management functions R/O
+#    48 Enable full linear address access R/O
+# 44:32 VMXON region allocation size R/O
+#  31:0 VMCS Revision Identifier R/O
+0x00000480
+
+# IA32_PINBASED_CTLS
+0x00000481
+
+# IA32_PROCBASED_CTLS
+0x00000482
+
+# IA32_VMX_EXIT_CTLS
+0x00000483
+
+# IA32_VMX_ENTRY_CTLS
+0x00000484
+
+# IA32_VMX_MISC
+0x00000485
+
+# IA32_VMX_CR0_FIXED0
+0x00000486
+
+# IA32_VMX_CR0_FIXED1
+0x00000487
+
+# IA32_VMX_CR4_FIXED0
+0x00000488
+
+# IA32_VMX_CR4_FIXED1
+0x00000489
+
+# IA32_VMX_VMCS_ENUM
+0x0000048a
+
+# IA32_VMX_PROCBASED_CTLS2
+0x0000048b
+
+# IA32_PECI_CTL
+0x000005a0
+
+# IA32_DS_AREA
+#  31:0 Linear address of DS buffer management area R/W
+0x00000600
+
+# MSR_LASTBRANCH_0_FROM_IP
+0x00000680
+
+# MSR_LASTBRANCH_1_FROM_IP
+0x00000681
+
+# MSR_LASTBRANCH_2_FROM_IP
+0x00000682
+
+# MSR_LASTBRANCH_3_FROM_IP
+0x00000683
+
+# MSR_LASTBRANCH_4_FROM_IP
+0x00000684
+
+# MSR_LASTBRANCH_5_FROM_IP
+0x00000685
+
+# MSR_LASTBRANCH_6_FROM_IP
+0x00000686
+
+# MSR_LASTBRANCH_7_FROM_IP
+0x00000687
+
+# MSR_LASTBRANCH_8_FROM_IP
+0x00000688
+
+# MSR_LASTBRANCH_9_FROM_IP
+0x00000689
+
+# MSR_LASTBRANCH_10_FROM_IP
+0x0000068a
+
+# MSR_LASTBRANCH_11_FROM_IP
+0x0000068b
+
+# MSR_LASTBRANCH_12_FROM_IP
+0x0000068c
+
+# MSR_LASTBRANCH_13_FROM_IP
+0x0000068d
+
+# MSR_LASTBRANCH_14_FROM_IP
+0x0000068e
+
+# MSR_LASTBRANCH_15_FROM_IP
+0x0000068f
+
+# MSR_LASTBRANCH_0_TO_LIP
+0x000006c0
+
+# MSR_LASTBRANCH_1_TO_LIP
+0x000006c1
+
+# MSR_LASTBRANCH_2_TO_LIP
+0x000006c2
+
+# MSR_LASTBRANCH_3_TO_LIP
+0x000006c3
+
+# MSR_LASTBRANCH_4_TO_LIP
+0x000006c4
+
+# MSR_LASTBRANCH_5_TO_LIP
+0x000006c5
+
+# MSR_LASTBRANCH_6_TO_LIP
+0x000006c6
+
+# MSR_LASTBRANCH_7_TO_LIP
+0x000006c7
+
+# MSR_LASTBRANCH_8_TO_LIP
+0x000006c8
+
+# MSR_LASTBRANCH_9_TO_LIP
+0x000006c9
+
+# MSR_LASTBRANCH_10_TO_LIP
+0x000006ca
+
+# MSR_LASTBRANCH_11_TO_LIP
+0x000006cb
+
+# MSR_LASTBRANCH_12_TO_LIP
+0x000006cc
+
+# MSR_LASTBRANCH_13_TO_LIP
+0x000006cd
+
+# MSR_LASTBRANCH_14_TO_LIP
+0x000006ce
+
+# MSR_LASTBRANCH_15_TO_LIP
+0x000006cf
+
+# IA32_X2APIC_APICID
+0x00000802
+
+# IA32_X2APIC_VERSION
+#    24 Directed EOI Support R/W
+# 23:16 Max LVT Entry R/W
+#   7:0 Vector R/W
+0x00000803
+
+# IA32_X2APIC_TPR
+#   7:0 TPR R/W
+0x00000808
+
+# IA32_X2APIC_PPR
+0x0000080a
+
+# IA32_X2APIC_EOI
+0x0000080b
+
+# IA32_X2APIC_LDR
+0x0000080d
+
+# IA32_X2APIC_SIVR
+#    12 EOI Broadcast Disable R/W
+#     8 APIC Software Enable/Disable R/W
+#   7:0 Spurious Vector R/W
+0x0000080f
+
+# IA32_X2APIC_ISR_0
+0x00000810
+
+# IA32_X2APIC_ISR_1
+0x00000811
+
+# IA32_X2APIC_ISR_2
+0x00000812
+
+# IA32_X2APIC_ISR_3
+0x00000813
+
+# IA32_X2APIC_ISR_4
+0x00000814
+
+# IA32_X2APIC_ISR_5
+0x00000815
+
+# IA32_X2APIC_ISR_6
+0x00000816
+
+# IA32_X2APIC_ISR_7
+0x00000817
+
+# IA32_X2APIC_TMR0
+0x00000818
+
+# IA32_X2APIC_TMR1
+0x00000819
+
+# IA32_X2APIC_TMR2
+0x0000081a
+
+# IA32_X2APIC_TMR3
+0x0000081b
+
+# IA32_X2APIC_TMR4
+0x0000081c
+
+# IA32_X2APIC_TMR5
+0x0000081d
+
+# IA32_X2APIC_TMR6
+0x0000081e
+
+# IA32_X2APIC_TMR7
+0x0000081f
+
+# IA32_X2APIC_IRR0
+0x00000820
+
+# IA32_X2APIC_IRR1
+0x00000821
+
+# IA32_X2APIC_IRR2
+0x00000822
+
+# IA32_X2APIC_IRR3
+0x00000823
+
+# IA32_X2APIC_IRR4
+0x00000824
+
+# IA32_X2APIC_IRR5
+0x00000825
+
+# IA32_X2APIC_IRR6
+0x00000826
+
+# IA32_X2APIC_IRR7
+0x00000827
+
+# IA32_X2APIC_ESR
+#     7 Illegal Register Address R/O
+#     6 Received Illegal Vector R/O
+#     5 Send Illegal Vector R/O
+#     4 Redirectible IPI R/O
+0x00000828
+
+# IA32_X2APIC_LVT_CMCI
+0x0000082f
+
+# IA32_X2APIC_ICR
+# 63:32 Destination field R/W
+# 19:18 Destination Shorthand R/W
+#    15 Trigger Mode R/W
+#    14 Level R/W
+#    11 Destination Mode R/W
+#  10:8 Delivery Mode R/W
+#   7:0 Vector R/W
+0x00000830
+
+# IA32_X2APIC_LVT_TIMER
+0x00000832
+
+# IA32_X2APIC_LVT_THERMAL
+0x00000833
+
+# IA32_X2APIC_LVT_PMI
+0x00000834
+
+# IA32_X2APIC_LVT_LINT0
+0x00000835
+
+# IA32_X2APIC_LVT_LINT1
+0x00000836
+
+# IA32_X2APIC_LVT_ERROR
+0x00000837
+
+# IA32_X2APIC_INIT_COUNT
+0x00000838
+
+# IA32_X2APIC_CUR_COUNT
+0x00000839
+
+# IA32_X2APIC_DIV_CONF
+0x0000083e
+
+# IA32_X2APIC_SELF_IPI
+#   7:0 Vector R/W
+0x0000083f
+
+# MSR_EMON_L3_CTR_CTL0
+0x000107cc
+
+# MSR_EMON_L3_CTR_CTL1
+0x000107cd
+
+# MSR_EMON_L3_CTR_CTL2
+0x000107ce
+
+# MSR_EMON_L3_CTR_CTL3
+0x000107cf
+
+# MSR_EMON_L3_CTR_CTL4
+0x000107d0
+
+# MSR_EMON_L3_CTR_CTL5
+0x000107d1
+
+# MSR_EMON_L3_CTR_CTL6
+0x000107d2
+
+# MSR_EMON_L3_CTR_CTL7
+0x000107d3
+
+# MSR_EMON_L3_GL_CTL
+0x000107d8
+
+# IA32_EFER
+#    11 Execute Disable Bit R/O
+#    10 IA-32e Mode R/O
+#     8 IA-32e Mode Control R/W
+#     0 SYSCALL Control R/W
+0xc0000080
+
+# IA32_STAR
+0xc0000081
+
+# IA32_LSTAR
+0xc0000082
+
+# IA32_FMASK
+0xc0000084
+
+# IA32_FS_BASE
+0xc0000100
+
+# IA32_GS_BASE
+0xc0000101
+
+# IA32_KERNEL_GS_BASE
+0xc0000102
+
+# IA32_TSC_AUX
+0xc0000103
+
+intel_atom: Intel Atom Processors, N450
+# intel_atom MSRs:
+# IA32_P5_MC_ADDR
+0x00000000
+
+# IA32_P5_MC_TYPE
+0x00000001
+
+# IA32_TIME_STEP_COUNTER
+0x00000010
+
+# IA32_PLATFORM_ID
+0x00000017
+
+# MSR_EBL_CR_POWERON
+0x0000002a
+
+# MSR_FSB_FREQ
+0x000000cd
+
+# IA32_MTRRCAP
+0x000000fe
+
+# MSR_BBL_CR_CTL3
+0x0000011e
+
+# IA32_PERF_STATUS
+# 44:40 Maximum Bus Ratio R/O
+#  15:0 Current Performance State Value R/O
+0x00000198
+
+# MSR_THERM2_CTL
+0x0000019d
+
+# IA32_MTRR_PHYS_BASE0
+0x00000200
+
+# IA32_MTRR_PHYS_MASK0
+0x00000201
+
+# IA32_MTRR_PHYS_BASE1
+0x00000202
+
+# IA32_MTRR_PHYS_MASK1
+0x00000203
+
+# IA32_MTRR_PHYS_BASE2
+0x00000204
+
+# IA32_MTRR_PHYS_MASK2
+0x00000205
+
+# IA32_MTRR_PHYS_BASE3
+0x00000206
+
+# IA32_MTRR_PHYS_MASK3
+0x00000207
+
+# IA32_MTRR_PHYS_BASE4
+0x00000208
+
+# IA32_MTRR_PHYS_MASK4
+0x00000209
+
+# IA32_MTRR_PHYS_BASE5
+0x0000020a
+
+# IA32_MTRR_PHYS_MASK5
+0x0000020b
+
+# IA32_MTRR_PHYS_BASE6
+0x0000020c
+
+# IA32_MTRR_PHYS_MASK6
+0x0000020d
+
+# IA32_MTRR_FIX64K_00000
+0x00000250
+
+# IA32_MTRR_FIX16K_80000
+0x00000258
+
+# IA32_MTRR_FIX16K_A0000
+0x00000259
+
+# IA32_MTRR_FIX4K_C0000
+0x00000268
+
+# IA32_MTRR_FIX4K_C8000
+0x00000269
+
+# IA32_MTRR_FIX4K_D0000
+0x0000026a
+
+# IA32_MTRR_FIX4K_D8000
+0x0000026b
+
+# IA32_MTRR_FIX4K_E0000
+0x0000026c
+
+# IA32_MTRR_FIX4K_E8000
+0x0000026d
+
+# IA32_MTRR_FIX4K_F0000
+0x0000026e
+
+# IA32_MTRR_FIX4K_F8000
+0x0000026f
+
+# IA32_PERF_CAPABILITIES
+#    13 Counter width R/O
+#    12 SMM_FREEZE R/O
+#  11:8 PEBS_REC_FORMAT R/O
+#     7 PEBSSaveArchRegs R/O
+#     6 PEBS Record Format R/O
+#   5:0 LBR Format R/O
+0x00000345
+
+# IA32_MC0_CTL
+0x00000400
+
+# IA32_MC0_STATUS
+0x00000401
+
+# IA32_MC0_ADDR
+0x00000402
+
+# IA32_MC1_CTL
+0x00000404
+
+# IA32_MC1_STATUS
+0x00000405
+
+# IA32_MC2_CTL
+0x00000408
+
+# IA32_MC2_STATUS
+0x00000409
+
+# IA32_MC2_ADDR
+0x0000040a
+
+# IA32_MC3_CTL
+0x0000040c
+
+# IA32_MC3_STATUS
+0x0000040d
+
+# IA32_MC3_ADDR
+0x0000040e
+
+# IA32_MC4_CTL
+0x00000410
+
+# IA32_MC4_STATUS
+0x00000411
+
+# IA32_MC4_ADDR
+0x00000412
+
+# IA32_MONITOR_FILTER_SIZE
+0x00000006
+
+# IA32_TIME_STEP_COUNTER
+0x00000010
+
+# IA32_APIC_BASE
+#    11 APIC Global Enable R/W
+#    10 x2APIC mode R/W
+#     8 BSP Flag R/W
+0x0000001b
+
+# IA32_FEATURE_CONTROL
+#    15 SENTER Global Enable R/WL
+#  14:8 SENTER Local Function Enables R/WL
+#     2 VMX outside of SMX operation R/WL
+#     1 VMX inside of SMX operation R/WL
+#     0 Lock bit R/WO
+0x0000003a
+
+# MSR_LASTBRANCH_0_FROM_IP
+0x00000040
+
+# MSR_LASTBRANCH_1_FROM_IP
+0x00000041
+
+# MSR_LASTBRANCH_2_FROM_IP
+0x00000042
+
+# MSR_LASTBRANCH_3_FROM_IP
+0x00000043
+
+# MSR_LASTBRANCH_4_FROM_IP
+0x00000044
+
+# MSR_LASTBRANCH_5_FROM_IP
+0x00000045
+
+# MSR_LASTBRANCH_6_FROM_IP
+0x00000046
+
+# MSR_LASTBRANCH_7_FROM_IP
+0x00000047
+
+# MSR_LASTBRANCH_0_TO_LIP
+0x00000060
+
+# MSR_LASTBRANCH_1_TO_LIP
+0x00000061
+
+# MSR_LASTBRANCH_2_TO_LIP
+0x00000062
+
+# MSR_LASTBRANCH_3_TO_LIP
+0x00000063
+
+# MSR_LASTBRANCH_4_TO_LIP
+0x00000064
+
+# MSR_LASTBRANCH_5_TO_LIP
+0x00000065
+
+# MSR_LASTBRANCH_6_TO_LIP
+0x00000066
+
+# MSR_LASTBRANCH_7_TO_LIP
+0x00000067
+
+# IA32_BIOS_SIGN_ID
+0x0000008b
+
+# IA32_PMC0
+0x000000c1
+
+# IA32_PMC1
+0x000000c2
+
+# IA32_MPERF
+0x000000e7
+
+# IA32_APERF
+0x000000e8
+
+# IA32_SYSENTER_CS
+0x00000174
+
+# IA32_SYSENTER_ESP
+0x00000175
+
+# IA32_SYSENTER_EIP
+0x00000176
+
+# IA32_MCG_STATUS
+#     2 MCIP R/W
+#     1 EPIV R/W
+#     0 RIPV R/W
+0x0000017a
+
+# IA32_PERFEVTSEL0
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000186
+
+# IA32_PERFEVTSEL1
+# 31:24 CMASK R/W
+#    23 INV R/W
+#    22 EN R/W
+#    21 AnyThread R/W
+#    20 INT R/W
+#    19 PC R/W
+#    18 Edge R/W
+#    17 OS R/W
+#    16 USR R/W
+#  15:8 UMask R/W
+#   7:0 Event Select R/W
+0x00000187
+
+# IA32_PERF_CTL
+0x00000199
+
+# IA32_CLOCK_MODULATION
+#     4 On demand Clock Modulation R/W
+#   3:1 On demand Clock Modulation Duty Cycle R/W
+0x0000019a
+
+# IA32_THERM_INTERRUPT
+0x0000019b
+
+# IA32_THERM_STATUS
+0x0000019c
+
+# IA32_MISC_ENABLE
+#    38 Turbo Mode R/W
+#    34 XD Bit Disable R/W
+#    23 xTPR Message Disable R/W
+#    22 Limit CPUID Maxval R/W
+#    18 Enable Monitor FSM R/W
+#    17 UNDOCUMENTED R/W
+#    16 Enhanced Intel SpeedStep Technology Enable R/W
+#    12 Precise Event Based Sampling Unavailable R/O
+#    11 Branch Trace Storage Unavailable R/O
+#     7 Performance Monitoring Available R
+#     3 Automatic Thermal Control Circuit Enable R/W
+#     0 Fast-Strings Enable R/W
+0x000001a0
+
+# MSR_LASTBRANCH_TOS
+0x000001c9
+
+# IA32_DEBUGCTL
+#    14 FREEZE_WHILE_SMM R/O
+#    13 ENABLE_UNCORE_PMI R/O
+#    12 FREEZE_PERFMON_ON_PMI R/O
+#    11 FREEZE_LBRS_ON_PMI R/O
+#    10 BTS_OFF_USR R/O
+#     9 BTS_OFF_OS R/O
+#     8 BTINT R/O
+#     7 BTS R/O
+#     6 TR R/O
+#     1 BTF R/O
+#     0 LBR R/O
+0x000001d9
+
+# MSR_LER_FROM_LIP
+0x000001dd
+
+# MSR_LER_TO_LIP
+0x000001de
+
+# IA32_PAT
+# 58:56 PA7 R/W
+# 40:38 PA6 R/W
+# 42:40 PA5 R/W
+# 34:32 PA4 R/W
+# 26:24 PA3 R/W
+# 18:16 PA2 R/W
+#  10:8 PA1 R/W
+#   2:0 PA0 R/W
+0x00000277
+
+# IA32_FIXED_CTR0
+0x00000309
+
+# IA32_FIXED_CTR1
+0x0000030a
+
+# IA32_FIXED_CTR2
+0x0000030b
+
+# IA32_FIXED_CTR_CTRL
+#    11 EN2_PMI R/W
+#    10 AnyThread 2 R/W
+#     9 EN2_Usr R/W
+#     8 EN2_OS R/W
+#     7 EN1_PMI R/W
+#     6 AnyThread 1 R/W
+#     5 EN1_Usr R/W
+#     4 EN1_OS R/W
+#     3 EN0_PMI R/W
+#     2 AnyThread 0 R/W
+#     1 EN0_Usr R/W
+#     0 EN0_OS R/W
+0x0000038d
+
+# IA32_PERF_GLOBAL_STATUS
+#    63 CondChg: Status bits of this register has changed R/O
+#    62 OvfBuf: DS SAVE area Buffer overflow status R/O
+#    61 Ovf_Uncore: Uncore counter overflow status R/O
+#    34 Ovf_FixedCtr2: Overflow status of IA32_FIXED_CTR2 R/O
+#    33 Ovf_FixedCtr1: Overflow status of IA32_FIXED_CTR1 R/O
+#    32 Ovf_FixedCtr0: Overflow status of IA32_FIXED_CTR0 R/O
+#     3 Ovf_PMC3: Overflow status of IA32_PMC3 R/O
+#     2 Ovf_PMC2: Overflow status of IA32_PMC2 R/O
+#     1 Ovf_PMC1: Overflow status of IA32_PMC1 R/O
+#     0 Ovf_PMC0: Overflow status of IA32_PMC0 R/O
+0x0000038e
+
+# IA32_PERF_GLOBAL_CTL
+#    34 EN_FIXED_CTR2 R/W
+#    33 EN_FIXED_CTR1 R/W
+#    32 EN_FIXED_CTR0 R/W
+#     1 EN_PMC1 R/W
+#     0 EN_PMC0 R/W
+0x0000038f
+
+# IA32_PERF_GLOBAL_OVF_CTL
+#    63 Clear CondChg bit R/W
+#    62 Clear OvfBuf bit R/W
+#    61 Clear Ovf_Uncore bit R/W
+#    34 Clear Ovf_FIXED_CTR2 bit R/W
+#    33 Clear Ovf_FIXED_CTR1 bit R/W
+#    32 Clear Ovf_FIXED_CTR0 bit R/W
+#     1 Clear Ovf_PMC1 bit R/W
+#     0 Clear Ovf_PMC0 bit R/W
+0x00000390
+
+# IA32_PEBS_ENABLE
+#    35 Load Latency on IA32_PMC3 R/W
+#    34 Load Latency on IA32_PMC2 R/W
+#    33 Load Latency on IA32_PMC1 R/W
+#    32 Load Latency on IA32_PMC0 R/W
+#     3 PEBS on IA32_PMC3 R/W
+#     2 PEBS on IA32_PMC2 R/W
+#     1 PEBS on IA32_PMC1 R/W
+#     0 PEBS on IA32_PMC0 R/W
+0x000003f1
+
+# IA32_DS_AREA
+#  31:0 Linear address of DS buffer management area R/W
+0x00000600
+

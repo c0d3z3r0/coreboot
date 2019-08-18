@@ -1,0 +1,9 @@
+CPU: ID 0x906e9, Processor Type 0x0, Family 0x6, Model 0x9e, Stepping 0x9
+Northbridge: 8086:5918 (7th generation (Kaby Lake family) Core Processor Xeon E3-1200)
+Southbridge: 8086:a149 (C236)
+Trying to reveal Primary to Sideband Bridge (P2SB),
+let's hope the OS doesn't mind... done.
+SBREG_BAR = 0xfd000000 (MEM)
+
+Error mapping physical memory 0xfd000000[0x1000000]
+Hiding Primary to Sideband Bridge (P2SB).

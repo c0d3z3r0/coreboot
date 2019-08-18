@@ -1,0 +1,50 @@
+if BOARD_LENOVO_THINKSTATION_P320
+
+config BOARD_SPECIFIC_OPTIONS
+	def_bool y
+	select BOARD_ROMSIZE_KB_16384
+	select HAVE_ACPI_RESUME
+	select HAVE_ACPI_TABLES
+	select HAVE_OPTION_TABLE
+	select SOC_INTEL_KABYLAKE
+	select SKYLAKE_SOC_PCH_H
+	select MAINBOARD_USES_FSP2_0
+	select MAINBOARD_HAS_LPC_TPM
+	select GENERATE_SMBIOS_TABLES
+	select SUPERIO_NUVOTON_NCT6683D
+	select SUPERIO_NUVOTON_NCT6683D_COM_A
+
+
+config SOC_INTEL_COMMON_BLOCK_SGX
+	bool
+	default y
+
+config MAINBOARD_DIR
+	string
+	default "lenovo/thinkstation_p320"
+
+config MAINBOARD_PART_NUMBER
+	string
+	default "ThinkStation P320"
+
+config MAX_CPUS
+	int
+	default 8
+
+config IRQ_SLOT_COUNT
+	int
+	default 18
+
+config SUBSYSTEM_VENDOR_ID
+	hex
+	default 0x8086
+
+config CONSOLE_POST
+	bool
+	default y
+
+config DIMM_SPD_SIZE
+	int
+	default 512 #DDR4
+
+endif # BOARD_LENOVO_THINKSTATION_P320

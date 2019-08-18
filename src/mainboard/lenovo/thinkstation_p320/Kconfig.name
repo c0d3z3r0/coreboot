@@ -1,0 +1,2 @@
+config BOARD_LENOVO_THINKSTATION_P320
+	bool "ThinkStation P320 (IQ1X0MS)"
