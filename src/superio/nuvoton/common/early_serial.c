@@ -77,6 +77,28 @@ void nuvoton_enable_serial(pnp_devfn_t dev, u16 iobase)
 		/* Route COM A to GPIO8 pin group */
 		pnp_write_config(dev, 0x2a, 0x00);
 
+	if (CONFIG(SUPERIO_NUVOTON_NCT668XD_COM_A)) {
+		/* Route UART/COM A to Pin33+Pin34 */
+		u8 tmp = pnp_read_config(dev, 0x1b) & ~(1<<3);
+		pnp_write_config(dev, 0x1b, tmp);
+		tmp = pnp_read_config(dev, 0x24) & ~((1<<2) | (1<<1));
+		pnp_write_config(dev, 0x24, tmp);
+
+		/* Power up UART/COM A */
+		tmp = pnp_read_config(dev, 0x22) | (1<<4);
+		pnp_write_config(dev, 0x22, tmp);
+	}
+
+	if (CONFIG(SUPERIO_NUVOTON_NCT668XD_COM_B)) {
+		/* Route UART/COM B to Pin11+Pin12 */
+		u8 tmp = pnp_read_config(dev, 0x2a) | (1<<6);
+		pnp_write_config(dev, 0x2a, tmp);
+
+		/* Power up UART/COM B */
+		tmp = pnp_read_config(dev, 0x22) | (1<<5);
+		pnp_write_config(dev, 0x22, tmp);
+	}
+
 	pnp_set_logical_device(dev);
 	pnp_set_enable(dev, 0);
 	pnp_set_iobase(dev, PNP_IDX_IO0, iobase);
