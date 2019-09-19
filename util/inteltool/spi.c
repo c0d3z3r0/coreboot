@@ -62,6 +62,52 @@ static const io_register_t spi_bar_registers[] = {
 	{ 0xd0, 4, "FPB - Flash Partition Boundary" },
 };
 
+static const io_register_t sunrise_spi_cfg_registers[] = {
+	{ 0x00, 4, "BIOS_SPI_DID_VID - Device ID and Vendor ID" },
+	{ 0x04, 4, "BIOS_SPI_STS_CMD - Status and Command" },
+	{ 0x08, 4, "BIOS_SPI_CC_RID - Revision ID" },
+	{ 0x0c, 4, "BIOS_SPI_BIST_HTYPE_LT_CLS - BIST, Header Type, Latency Timer, Cache Line Size" },
+	{ 0x10, 4, "BIOS_SPI_BAR0 - SPI BAR0 MMIO" },
+	{ 0xd0, 4, "BIOS_SPI_UR_STS_CTL - SPI Unsupported Request Status" },
+	{ 0xd8, 4, "BIOS_SPI_BDE - BIOS Decode Enable" },
+	{ 0xdc, 4, "BIOS_SPI_BC - BIOS Control" },
+};
+
+static const io_register_t sunrise_spi_bar_registers[] = {
+	{ 0x00, 4, "BIOS_BFPR - BIOS Flash primary region" },
+	{ 0x04, 2, "BIOS_HSFSTS - Hardware Sequencing Flash Status" },
+	{ 0x06, 2, "BIOS_HSFCTL - Hardware Sequencing Flash Control" },
+	{ 0x08, 4, "BIOS_FADDR - Flash Address" },
+	{ 0x0c, 4, "BIOS_DLOCK - Discrete Lock Bits" },
+	{ 0x10, 4, "BIOS_FDATA0" },
+	/* 0x10 .. 0x4f are filled with data */
+	{ 0x50, 4, "BIOS_FRACC - Flash Region Access Permissions" },
+	{ 0x54, 4, "BIOS_FREG0 - Flash Region 0" },
+	{ 0x58, 4, "BIOS_FREG1 - Flash Region 1" },
+	{ 0x5c, 4, "BIOS_FREG2 - Flash Region 2" },
+	{ 0x60, 4, "BIOS_FREG3 - Flash Region 3" },
+	{ 0x64, 4, "BIOS_FREG4 - Flash Region 4" },
+	{ 0x68, 4, "BIOS_FREG5 - Flash Region 5" },
+	{ 0x84, 4, "BIOS_FPR0 - Flash Protected Range 0" },
+	{ 0x88, 4, "BIOS_FPR1 - Flash Protected Range 1" },
+	{ 0x8c, 4, "BIOS_FPR2 - Flash Protected Range 2" },
+	{ 0x90, 4, "BIOS_FPR3 - Flash Protected Range 3" },
+	{ 0x94, 4, "BIOS_FPR4 - Flash Protected Range 4" },
+	{ 0x98, 4, "BIOS_GPR0 - Global Protected Range 0" },
+	{ 0xb0, 1, "BIOS_SFRACC - Secondary Flash Region Access Permissions" },
+	{ 0xb4, 4, "BIOS_FDOC - Flash Descriptor Observability Control" },
+	{ 0xb8, 4, "BIOS_FDOD - Flash Descriptor Observability Data" },
+	{ 0xc0, 4, "BIOS_AFC - Additional Flash Control" },
+	{ 0xc4, 4, "BIOS_SFDP0_VSCC0 - Vendor Specific Component Capabilities for Component 0" },
+	{ 0xc8, 4, "BIOS_SFDP1_VSCC1 - Vendor Specific Component Capabilities for Component 1" },
+	{ 0xcc, 4, "BIOS_PTINX - Parameter Table Index" },
+	{ 0xd0, 4, "BIOS_PTDATA - Parameter Table Data" },
+	{ 0xd4, 4, "BIOS_SBRS - SPI Bus Requester Status" },
+	{ 0xf0, 4, "SSML - Set Strap Msg Lock" },
+	{ 0xf4, 4, "SSMC - Set Strap Msg Control" },
+	{ 0xf8, 4, "SSMD - Set Strap Msg Data" },
+};
+
 static const io_register_t ich7_spi_bar_registers[] = {
 	{ 0x00, 2, "SPIS - SPI Status" },
 	{ 0x02, 2, "SPIC - SPI Control" },
@@ -175,6 +221,20 @@ static int print_bioscntl(struct pci_dev *sb)
 	case PCI_DEVICE_ID_INTEL_C224:
 	case PCI_DEVICE_ID_INTEL_C226:
 	case PCI_DEVICE_ID_INTEL_H81:
+	case PCI_DEVICE_ID_INTEL_H110:
+	case PCI_DEVICE_ID_INTEL_H170:
+	case PCI_DEVICE_ID_INTEL_Z170:
+	case PCI_DEVICE_ID_INTEL_Q170:
+	case PCI_DEVICE_ID_INTEL_Q150:
+	case PCI_DEVICE_ID_INTEL_B150:
+	case PCI_DEVICE_ID_INTEL_C236:
+	case PCI_DEVICE_ID_INTEL_C232:
+	case PCI_DEVICE_ID_INTEL_QM170:
+	case PCI_DEVICE_ID_INTEL_HM170:
+	case PCI_DEVICE_ID_INTEL_CM236:
+	case PCI_DEVICE_ID_INTEL_HM175:
+	case PCI_DEVICE_ID_INTEL_QM175:
+	case PCI_DEVICE_ID_INTEL_CM238:
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_PRE:
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_BASE_SKL:
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_PREM_SKL:
@@ -207,14 +267,14 @@ static int print_bioscntl(struct pci_dev *sb)
 	return 0;
 }
 
-static int print_spibar(struct pci_dev *sb) {
-	int i, size = 0, rcba_size = 0x4000;
+static int print_spibar(struct pci_dev *sb, struct pci_access *pacc) {
+	int i, size = 0, cfg_size = 0, rcba_size = 0x4000;
 	volatile uint8_t *rcba;
 	uint32_t rcba_phys;
 	const io_register_t *spi_register = NULL;
+	const io_register_t *spi_cfg_registers = NULL;
 	uint32_t spibaroffset;
-
-	printf("\n============= SPI Bar ==============\n\n");
+	struct pci_dev *spi = NULL;
 
 	switch (sb->device_id) {
 	case PCI_DEVICE_ID_INTEL_ICH6:
@@ -313,16 +373,6 @@ static int print_spibar(struct pci_dev *sb) {
 	case PCI_DEVICE_ID_INTEL_C224:
 	case PCI_DEVICE_ID_INTEL_C226:
 	case PCI_DEVICE_ID_INTEL_H81:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_PRE:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_BASE_SKL:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_PREM_SKL:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_PREM_SKL:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_BASE_KBL:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_PREM_KBL:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_PREM_KBL:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_IHDCP_BASE:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_IHDCP_PREM:
-	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_IHDCP_PREM:
 		spibaroffset = ICH9_SPIBAR;
 		rcba_phys = pci_read_long(sb, 0xf0) & 0xfffffffe;
 		size = ARRAY_SIZE(spi_bar_registers);
@@ -336,31 +386,89 @@ static int print_spibar(struct pci_dev *sb) {
 	case PCI_DEVICE_ID_INTEL_ICH5:
 		printf("This southbridge does not have RCBA.\n");
 		return 1;
+	case PCI_DEVICE_ID_INTEL_H110:
+	case PCI_DEVICE_ID_INTEL_H170:
+	case PCI_DEVICE_ID_INTEL_Z170:
+	case PCI_DEVICE_ID_INTEL_Q170:
+	case PCI_DEVICE_ID_INTEL_Q150:
+	case PCI_DEVICE_ID_INTEL_B150:
+	case PCI_DEVICE_ID_INTEL_C236:
+	case PCI_DEVICE_ID_INTEL_C232:
+	case PCI_DEVICE_ID_INTEL_QM170:
+	case PCI_DEVICE_ID_INTEL_HM170:
+	case PCI_DEVICE_ID_INTEL_CM236:
+	case PCI_DEVICE_ID_INTEL_HM175:
+	case PCI_DEVICE_ID_INTEL_QM175:
+	case PCI_DEVICE_ID_INTEL_CM238:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_PRE:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_BASE_SKL:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_PREM_SKL:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_PREM_SKL:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_BASE_KBL:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_PREM_KBL:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_PREM_KBL:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_IHDCP_BASE:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_IHDCP_PREM:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_IHDCP_PREM:
+		spi = pci_get_dev(pacc, sb->domain, sb->bus, 0x1f, 5);
+		if (!spi) {
+			printf("SPI device not found.\n");
+			return 1;
+		}
+		rcba_phys = pci_read_long(spi, 0x10) & 0xffffe000;;
+
+		spibaroffset = 0;
+		spi_register = sunrise_spi_bar_registers;
+		size = ARRAY_SIZE(sunrise_spi_bar_registers);
+		spi_cfg_registers = sunrise_spi_cfg_registers;
+		cfg_size = ARRAY_SIZE(sunrise_spi_cfg_registers);
+		break;
+
 	default:
 		printf("Error: Dumping RCBA on this southbridge is not (yet) supported.\n");
 		return 1;
 	}
 
+	printf("\n============= SPI CFG ==============\n\n");
+	for (i = 0; i < cfg_size; i++) {
+		switch (spi_cfg_registers[i].size) {
+		case 4:
+			printf("0x%04x: 0x%08x (%s)\n",
+				spi_cfg_registers[i].addr,
+				pci_read_long(spi, spi_cfg_registers[i].addr),
+				spi_cfg_registers[i].name);
+			break;
+		default:
+			printf("Error: register size %d not implemented.\n",
+				spi_cfg_registers[i].size);
+			break;
+		}
+	}
+
+	if (spi)
+		pci_free_dev(spi);
+
+	printf("\n============= SPI Bar ==============\n\n");
 	rcba = map_physical(rcba_phys, rcba_size);
 	if (rcba == NULL) {
 		perror("Error mapping RCBA");
-		exit(1);
+		return 1;
 	}
 
 	for (i = 0; i < size; i++) {
 		switch(spi_register[i].size) {
 			case 1:
-				printf("0x%08x = %s\n", *(uint8_t *)(rcba + spibaroffset + spi_register[i].addr), spi_register[i].name);
+				printf("0x%08x = %s\n", read8(rcba + spibaroffset + spi_register[i].addr), spi_register[i].name);
 				break;
 			case 2:
-				printf("0x%08x = %s\n", *(uint16_t *)(rcba + spibaroffset + spi_register[i].addr), spi_register[i].name);
+				printf("0x%08x = %s\n", read16(rcba + spibaroffset + spi_register[i].addr), spi_register[i].name);
 				break;
 			case 4:
-				printf("0x%08x = %s\n", *(uint32_t *)(rcba + spibaroffset + spi_register[i].addr), spi_register[i].name);
+				printf("0x%08x = %s\n", read32(rcba + spibaroffset + spi_register[i].addr), spi_register[i].name);
 				break;
 			case 8:
-				printf("0x%08x%08x = %s\n",  *(uint32_t *)(rcba + spibaroffset + spi_register[i].addr + 4),
-					*(uint32_t *)(rcba + spibaroffset + spi_register[i].addr), spi_register[i].name);
+				printf("0x%08x%08x = %s\n",  read32(rcba + spibaroffset + spi_register[i].addr + 4),
+					read32(rcba + spibaroffset + spi_register[i].addr), spi_register[i].name);
 				break;
 		}
 	}
@@ -369,6 +477,6 @@ static int print_spibar(struct pci_dev *sb) {
 	return 0;
 }
 
-int print_spi(struct pci_dev *sb) {
-	return (print_bioscntl(sb) || print_spibar(sb));
+int print_spi(struct pci_dev *sb, struct pci_access *pacc) {
+	return (print_bioscntl(sb) || print_spibar(sb, pacc));
 }

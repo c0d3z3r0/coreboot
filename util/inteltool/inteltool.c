@@ -476,10 +476,11 @@ static void print_version(void)
 
 static void print_usage(const char *name)
 {
-	printf("usage: %s [-vh?gGrpmedPMaAsfSRx]\n", name);
+	printf("usage: %s [-vh?igGrpl2ItbucmedPMaAsfSRx]\n", name);
 	printf("\n"
 	     "   -v | --version:                   print the version\n"
 	     "   -h | --help:                      print this help\n\n"
+	     "   -i | --io:                        dump southbridge io registers\n"
 	     "   -s | --spi:                       dump southbridge spi and bios_cntrl registers\n"
 	     "   -f | --gfx:                       dump graphics registers (UNSAFE: may hang system!)\n"
 	     "   -R | --ahci:                      dump AHCI registers\n"
@@ -487,6 +488,13 @@ static void print_usage(const char *name)
 	     "   -G | --gpio-diffs:                show GPIO differences from defaults\n"
 	     "   -r | --rcba:                      dump southbridge RCBA registers\n"
 	     "   -p | --pmbase:                    dump southbridge Power Management registers\n\n"
+	     "   -l | --lpc:                       dump southbridge LPC/eSPI Interface registers\n\n"
+	     "   -2 | --i2c:                       dump southbridge I2C Interfaces registers\n\n"
+	     "   -I | --gspi:                      dump southbridge GSPI Interfaces registers\n\n"
+	     "   -t | --thermal:                   dump southbridge Thermal registers\n\n"
+	     "   -b | --usb:                       dump southbridge USB registers\n\n"
+	     "   -c | --apic:                      dump southbridge APIC registers\n\n"
+	     "   -u | --smbus:                     dump southbridge SMBus Interface registers\n\n"
 	     "   -m | --mchbar:                    dump northbridge Memory Controller registers\n"
 	     "   -S FILE | --spd=FILE:             create a file storing current timings (implies -m)\n"
 	     "   -e | --epbar:                     dump northbridge EPBAR registers\n"
@@ -556,6 +564,8 @@ int main(int argc, char *argv[])
 	int dump_pmbase = 0, dump_epbar = 0, dump_dmibar = 0;
 	int dump_pciexbar = 0, dump_coremsrs = 0, dump_ambs = 0;
 	int dump_spi = 0, dump_gfx = 0, dump_ahci = 0, dump_sgx = 0;
+	int dump_lpc = 0, dump_i2c = 0, dump_gspi = 0, dump_thermal = 0, dump_smbus = 0;
+	int dump_usb = 0, dump_apic = 0, dump_io = 0;
 	int show_gpio_diffs = 0;
 	size_t pcr_count = 0;
 	uint8_t dump_pcr[MAX_PCR_PORTS];
@@ -563,11 +573,19 @@ int main(int argc, char *argv[])
 	static struct option long_options[] = {
 		{"version", 0, 0, 'v'},
 		{"help", 0, 0, 'h'},
+		{"io", 0, 0, 'i'},
 		{"gpios", 0, 0, 'g'},
 		{"gpio-diffs", 0, 0, 'G'},
 		{"mchbar", 0, 0, 'm'},
 		{"rcba", 0, 0, 'r'},
 		{"pmbase", 0, 0, 'p'},
+		{"lpc", 0, 0, 'l'},
+		{"i2c", 0, 0, '2'},
+		{"gspi", 0, 0, 'I'},
+		{"thermal", 0, 0, 't'},
+		{"usb", 0, 0, 'b'},
+		{"apic", 0, 0, 'c'},
+		{"smbus", 0, 0, 'u'},
 		{"epbar", 0, 0, 'e'},
 		{"dmibar", 0, 0, 'd'},
 		{"pciexpress", 0, 0, 'P'},
@@ -583,7 +601,7 @@ int main(int argc, char *argv[])
 		{0, 0, 0, 0}
 	};
 
-	while ((opt = getopt_long(argc, argv, "vh?gGrpmedPMaAsfRS:x",
+	while ((opt = getopt_long(argc, argv, "vh?igGrpl2ItbucmedPMaAsfRS:x",
                                   long_options, &option_index)) != EOF) {
 		switch (opt) {
 		case 'v':
@@ -593,6 +611,9 @@ int main(int argc, char *argv[])
 		case 'S':
 			dump_spd_file = optarg;
 			dump_mchbar = 1;
+			break;
+		case 'i':
+			dump_io = 1;
 			break;
 		case 'g':
 			dump_gpios = 1;
@@ -615,6 +636,28 @@ int main(int argc, char *argv[])
 		case 'p':
 			dump_pmbase = 1;
 			break;
+		case 'l':
+			dump_lpc = 1;
+			break;
+		case '2':
+			dump_i2c = 1;
+			break;
+		case 'I':
+			dump_gspi = 1;
+			break;
+
+		case 't':
+			dump_thermal = 1;
+			break;
+		case 'b':
+			dump_usb = 1;
+			break;
+		case 'c':
+			dump_apic = 1;
+			break;
+		case 'u':
+			dump_smbus = 1;
+			break;
 		case 'e':
 			dump_epbar = 1;
 			break;
@@ -633,6 +676,13 @@ int main(int argc, char *argv[])
 			dump_mchbar = 1;
 			dump_rcba = 1;
 			dump_pmbase = 1;
+			dump_lpc = 1;
+			dump_i2c = 1;
+			dump_gspi = 1;
+			dump_thermal = 1;
+			dump_usb = 1;
+			dump_apic = 1;
+			dump_smbus = 1;
 			dump_epbar = 1;
 			dump_dmibar = 1;
 			dump_pciexbar = 1;
@@ -780,6 +830,12 @@ int main(int argc, char *argv[])
 	print_system_info(nb, sb, gfx);
 
 	/* Now do the deed */
+
+	if (dump_io) {
+		print_io(sb);
+		printf("\n\n");
+	}
+
 	if (dump_gpios) {
 		print_gpios(sb, 1, show_gpio_diffs);
 		printf("\n\n");
@@ -795,6 +851,41 @@ int main(int argc, char *argv[])
 
 	if (dump_pmbase) {
 		print_pmbase(sb, pacc);
+		printf("\n\n");
+	}
+
+	if (dump_lpc) {
+		print_lpc(sb, pacc);
+		printf("\n\n");
+	}
+
+	if (dump_smbus) {
+		print_smbus(sb, pacc);
+		printf("\n\n");
+	}
+
+	if (dump_i2c) {
+		print_i2c(sb, pacc);
+		printf("\n\n");
+	}
+
+	if (dump_gspi) {
+		print_gspi(sb, pacc);
+		printf("\n\n");
+	}
+
+	if (dump_thermal) {
+		print_thermal(sb, pacc);
+		printf("\n\n");
+	}
+
+	if (dump_usb) {
+		print_usb(sb, pacc);
+		printf("\n\n");
+	}
+
+	if (dump_apic) {
+		print_apic(sb);
 		printf("\n\n");
 	}
 
@@ -827,7 +918,7 @@ int main(int argc, char *argv[])
 		print_ambs(nb, pacc);
 
 	if (dump_spi)
-		print_spi(sb);
+		print_spi(sb, pacc);
 
 	if (dump_gfx)
 		print_gfx(gfx);

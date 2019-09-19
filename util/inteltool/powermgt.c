@@ -21,6 +21,22 @@
 #include <commonlib/helpers.h>
 #include "inteltool.h"
 
+static const io_register_t sunrise_pm_cfg_registers[] = {
+	{ 0x00, 4, "PCIID" },
+	{ 0x04, 4, "PCISTS_PCICMD" },
+	{ 0x08, 4, "PCICC_PCIRID" },
+	{ 0x0c, 4, "PCIHTYPE_PCILMT" },
+	{ 0x10, 4, "PM_DATA_BAR" },
+	{ 0x2c, 4, "PCISID" },
+	{ 0x40, 4, "ABASE" },
+	{ 0x44, 4, "ACTL" },
+	{ 0x48, 4, "PWRMBASE" },
+	{ 0xa0, 4, "GEN_PMCON_A" },
+	{ 0xa4, 4, "GEN_PMCON_B" },
+	{ 0xa8, 4, "BM_CX_CNF" },
+	{ 0xac, 4, "ETR3" },
+};
+
 static const io_register_t sunrise_pm_registers[] = {
 	{ 0x00, 2, "PM1_STS" }, /* PM1 Status;  ACPI pointer: PM1a_EVT_BLK   */
 	{ 0x02, 2, "PM1_EN" },  /* PM1 Enables; ACPI pointer: PM1a_EVT_BLK+2 */
@@ -669,13 +685,14 @@ static const io_register_t i63xx_pm_registers[] = {
 
 int print_pmbase(struct pci_dev *sb, struct pci_access *pacc)
 {
-	size_t i, size;
+	size_t i, pm_cfg_registers_size, pm_registers_size;
 	uint16_t pmbase;
+	const io_register_t *pm_cfg_registers;
 	const io_register_t *pm_registers;
 	uint64_t pwrmbase_phys = 0;
-	struct pci_dev *acpi;
+	struct pci_dev *acpi = NULL;
 
-	printf("\n========== PMBASE/ABASE =========\n\n");
+	printf("\n========== ACPI/PMC =========\n\n");
 
 	switch (sb->device_id) {
 	case PCI_DEVICE_ID_INTEL_3400:
@@ -745,6 +762,97 @@ int print_pmbase(struct pci_dev *sb, struct pci_access *pacc)
 	case PCI_DEVICE_ID_INTEL_C224:
 	case PCI_DEVICE_ID_INTEL_C226:
 	case PCI_DEVICE_ID_INTEL_H81:
+		pmbase = pci_read_word(sb, 0x40) & 0xff80;
+		pm_registers = pch_pm_registers;
+		pm_registers_size = ARRAY_SIZE(pch_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH10:
+	case PCI_DEVICE_ID_INTEL_ICH10R:
+		pmbase = pci_read_word(sb, 0x40) & 0xff80;
+		pm_registers = ich10_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich10_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH7:
+	case PCI_DEVICE_ID_INTEL_ICH7M:
+	case PCI_DEVICE_ID_INTEL_ICH7DH:
+	case PCI_DEVICE_ID_INTEL_ICH7MDH:
+	case PCI_DEVICE_ID_INTEL_NM10:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = ich7_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich7_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH9DH:
+	case PCI_DEVICE_ID_INTEL_ICH9DO:
+	case PCI_DEVICE_ID_INTEL_ICH9R:
+	case PCI_DEVICE_ID_INTEL_ICH9:
+	case PCI_DEVICE_ID_INTEL_ICH9M:
+	case PCI_DEVICE_ID_INTEL_ICH9ME:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = ich9_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich9_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH8:
+	case PCI_DEVICE_ID_INTEL_ICH8M:
+	case PCI_DEVICE_ID_INTEL_ICH8ME:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = ich8_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich8_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH6:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = ich6_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich6_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH5:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = ich5_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich5_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH4:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = ich4_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich4_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH2:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = ich2_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich2_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_ICH0:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = ich0_pm_registers;
+		pm_registers_size = ARRAY_SIZE(ich0_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_82371XX:
+		acpi = pci_get_dev(pacc, sb->domain, sb->bus, sb->dev, 3);
+		if (!acpi) {
+			printf("Southbridge function 3 not found.\n");
+			return 1;
+		}
+		pmbase = pci_read_word(acpi, 0x40) & 0xfffc;
+
+		pm_registers = i82371xx_pm_registers;
+		pm_registers_size = ARRAY_SIZE(i82371xx_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_I63XX:
+		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
+		pm_registers = i63xx_pm_registers;
+		pm_registers_size = ARRAY_SIZE(i63xx_pm_registers);
+		break;
+	case PCI_DEVICE_ID_INTEL_H110:
+	case PCI_DEVICE_ID_INTEL_H170:
+	case PCI_DEVICE_ID_INTEL_Z170:
+	case PCI_DEVICE_ID_INTEL_Q170:
+	case PCI_DEVICE_ID_INTEL_Q150:
+	case PCI_DEVICE_ID_INTEL_B150:
+	case PCI_DEVICE_ID_INTEL_C236:
+	case PCI_DEVICE_ID_INTEL_C232:
+	case PCI_DEVICE_ID_INTEL_QM170:
+	case PCI_DEVICE_ID_INTEL_HM170:
+	case PCI_DEVICE_ID_INTEL_CM236:
+	case PCI_DEVICE_ID_INTEL_HM175:
+	case PCI_DEVICE_ID_INTEL_QM175:
+	case PCI_DEVICE_ID_INTEL_CM238:
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_PRE:
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_BASE_SKL:
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_PREM_SKL:
@@ -755,88 +863,6 @@ int print_pmbase(struct pci_dev *sb, struct pci_access *pacc)
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_IHDCP_BASE:
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_U_IHDCP_PREM:
 	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_Y_IHDCP_PREM:
-		pmbase = pci_read_word(sb, 0x40) & 0xff80;
-		pm_registers = pch_pm_registers;
-		size = ARRAY_SIZE(pch_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH10:
-	case PCI_DEVICE_ID_INTEL_ICH10R:
-		pmbase = pci_read_word(sb, 0x40) & 0xff80;
-		pm_registers = ich10_pm_registers;
-		size = ARRAY_SIZE(ich10_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH7:
-	case PCI_DEVICE_ID_INTEL_ICH7M:
-	case PCI_DEVICE_ID_INTEL_ICH7DH:
-	case PCI_DEVICE_ID_INTEL_ICH7MDH:
-	case PCI_DEVICE_ID_INTEL_NM10:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = ich7_pm_registers;
-		size = ARRAY_SIZE(ich7_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH9DH:
-	case PCI_DEVICE_ID_INTEL_ICH9DO:
-	case PCI_DEVICE_ID_INTEL_ICH9R:
-	case PCI_DEVICE_ID_INTEL_ICH9:
-	case PCI_DEVICE_ID_INTEL_ICH9M:
-	case PCI_DEVICE_ID_INTEL_ICH9ME:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = ich9_pm_registers;
-		size = ARRAY_SIZE(ich9_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH8:
-	case PCI_DEVICE_ID_INTEL_ICH8M:
-	case PCI_DEVICE_ID_INTEL_ICH8ME:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = ich8_pm_registers;
-		size = ARRAY_SIZE(ich8_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH6:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = ich6_pm_registers;
-		size = ARRAY_SIZE(ich6_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH5:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = ich5_pm_registers;
-		size = ARRAY_SIZE(ich5_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH4:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = ich4_pm_registers;
-		size = ARRAY_SIZE(ich4_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH2:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = ich2_pm_registers;
-		size = ARRAY_SIZE(ich2_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_ICH0:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = ich0_pm_registers;
-		size = ARRAY_SIZE(ich0_pm_registers);
-		break;
-	case PCI_DEVICE_ID_INTEL_82371XX:
-		acpi = pci_get_dev(pacc, sb->domain, sb->bus, sb->dev, 3);
-		if (!acpi) {
-			printf("Southbridge function 3 not found.\n");
-			return 1;
-		}
-		pmbase = pci_read_word(acpi, 0x40) & 0xfffc;
-		pci_free_dev(acpi);
-
-		pm_registers = i82371xx_pm_registers;
-		size = ARRAY_SIZE(i82371xx_pm_registers);
-		break;
-
-	case PCI_DEVICE_ID_INTEL_I63XX:
-		pmbase = pci_read_word(sb, 0x40) & 0xfffc;
-		pm_registers = i63xx_pm_registers;
-		size = ARRAY_SIZE(i63xx_pm_registers);
-		break;
-
-	case PCI_DEVICE_ID_INTEL_CM236:
-	case PCI_DEVICE_ID_INTEL_C236:
 		acpi = pci_get_dev(pacc, sb->domain, sb->bus, sb->dev, 2);
 		if (!acpi) {
 			printf("PMC device not found.\n");
@@ -844,10 +870,11 @@ int print_pmbase(struct pci_dev *sb, struct pci_access *pacc)
 		}
 		pmbase = pci_read_word(acpi, 0x40) & ~0xff;
 		pwrmbase_phys = pci_read_long(acpi, 0x48) & ~0xfff;
-		pci_free_dev(acpi);
 
+		pm_cfg_registers = sunrise_pm_cfg_registers;
 		pm_registers = sunrise_pm_registers;
-		size = ARRAY_SIZE(sunrise_pm_registers);
+		pm_cfg_registers_size = ARRAY_SIZE(sunrise_pm_cfg_registers);
+		pm_registers_size = ARRAY_SIZE(sunrise_pm_registers);
 		break;
 
 	case 0x1234: // Dummy for non-existent functionality
@@ -858,9 +885,44 @@ int print_pmbase(struct pci_dev *sb, struct pci_access *pacc)
 		return 1;
 	}
 
+		for (i = 0; i < pm_cfg_registers_size; i++) {
+			switch (pm_cfg_registers[i].size) {
+			case 8:
+				printf("0x%04x: 0x%08x (%s)\n"
+				       "        0x%08x\n",
+					pm_cfg_registers[i].addr,
+					pci_read_long(acpi, pm_cfg_registers[i].addr),
+					pm_cfg_registers[i].name,
+					pci_read_long(acpi, pm_cfg_registers[i].addr+4));
+				break;
+			case 4:
+				printf("0x%04x: 0x%08x (%s)\n",
+					pm_cfg_registers[i].addr,
+					pci_read_long(acpi, pm_cfg_registers[i].addr),
+					pm_cfg_registers[i].name);
+				break;
+			case 2:
+				printf("0x%04x: 0x%04x     (%s)\n",
+					pm_cfg_registers[i].addr,
+					pci_read_word(acpi, pm_cfg_registers[i].addr),
+					pm_cfg_registers[i].name);
+				break;
+			case 1:
+				printf("0x%04x: 0x%02x       (%s)\n",
+					pm_cfg_registers[i].addr,
+					pci_read_byte(acpi, pm_cfg_registers[i].addr),
+					pm_cfg_registers[i].name);
+				break;
+			}
+		}
+
+	if (acpi)
+		pci_free_dev(acpi);
+
+	printf("\n========== ABASE/PMBASE =========\n\n");
 	printf("PMBASE = 0x%04x (IO)\n\n", pmbase);
 
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < pm_registers_size; i++) {
 		switch (pm_registers[i].size) {
 		case 8:
 			printf("pmbase+0x%04x: 0x%08x (%s)\n"

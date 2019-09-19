@@ -28,7 +28,8 @@ LDFLAGS += -lpci -lz
 CPPFLAGS += -I$(top)/src/commonlib/include
 
 OBJS = inteltool.o pcr.o cpu.o gpio.o gpio_groups.o rootcmplx.o powermgt.o \
-       memory.o pcie.o amb.o ivy_memory.o spi.o gfx.o ahci.o \
+       memory.o pcie.o amb.o ivy_memory.o spi.o gfx.o ahci.o lpc.o \
+       i2c.o smbus.o gspi.o thermal.o usb.o apic.o io.o
 
 OS_ARCH	= $(shell uname)
 ifeq ($(OS_ARCH), Darwin)
@@ -43,6 +44,9 @@ ifeq ($(OS_ARCH), NetBSD)
 CPPFLAGS += -I/usr/pkg/include
 LDFLAGS += -L/usr/pkg/lib -Wl,-rpath-link,/usr/pkg/lib -lz -lpciutils -lpci -l$(shell uname -p)
 endif
+
+ARCH = $(subst _64,,$(shell uname -m))
+CPPFLAGS += -I$(top)/src/arch/$(ARCH)/include
 
 all: pciutils dep $(PROGRAM)
 

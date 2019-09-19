@@ -36,6 +36,8 @@ struct gpio_group {
 struct gpio_community {
 	const char *name;
 	uint8_t pcr_port_id;
+	const gpiocom_register_t *community_registers;
+	size_t community_registers_size;
 	size_t group_count;
 	const struct gpio_group *const *groups;
 };
@@ -516,6 +518,36 @@ static const struct gpio_group sunrise_lp_group_b = {
 	.pad_names	= sunrise_lp_group_b_names,
 };
 
+static const gpiocom_register_t sunrise_community_ab_registers[] = {
+	{0x008, "FAMBAR"},
+	{0x00C, "PADBAR"},
+	{0x010, "MISCCFG"},
+	{0x020, "PAD_OWN_GPP_A_0"},
+	{0x024, "PAD_OWN_GPP_A_1"},
+	{0x028, "PAD_OWN_GPP_A_2"},
+	{0x030, "PAD_OWN_GPP_B_0"},
+	{0x034, "PAD_OWN_GPP_B_1"},
+	{0x038, "PAD_OWN_GPP_B_2"},
+	{0x0A0, "PADCFGLOCK_GPP_A"},
+	{0x0A4, "PADCFGLOCKTX_GPP_A"},
+	{0x0A8, "PADCFGLOCK_GPP_B"},
+	{0x0AC, "PADCFGLOCKTX_GPP_B"},
+	{0x0D0, "HOSTSW_OWN_GPP_A"},
+	{0x0D4, "HOSTSW_OWN_GPP_B"},
+	{0x100, "GPI_IS_GPP_A"},
+	{0x104, "GPI_IS_GPP_B"},
+	{0x120, "GPI_IE_GPP_A"},
+	{0x124, "GPI_IE_GPP_B"},
+	{0x140, "GPI_GPE_STS_GPP_A"},
+	{0x144, "GPI_GPE_STS_GPP_B"},
+	{0x160, "GPI_GPE_EN_GPP_A"},
+	{0x164, "GPI_GPE_EN_GPP_B"},
+	{0x184, "GPI_SMI_STS_GPP_B"},
+	{0x1A4, "GPI_SMI_EN_GPP_B"},
+	{0x1C4, "GPI_NMI_STS_GPP_B"},
+	{0x1E4, "GPI_NMI_EN_GPP_B"},
+};
+
 static const struct gpio_group *const sunrise_community_ab_groups[] = {
 	&sunrise_group_a, &sunrise_group_b,
 };
@@ -527,6 +559,8 @@ static const struct gpio_group *const sunrise_lp_community_ab_groups[] = {
 static const struct gpio_community sunrise_community_ab = {
 	.name		= "------- GPIO Community 0 -------",
 	.pcr_port_id	= 0xaf,
+	.community_registers = sunrise_community_ab_registers,
+	.community_registers_size = ARRAY_SIZE(sunrise_community_ab_registers),
 	.group_count	= ARRAY_SIZE(sunrise_community_ab_groups),
 	.groups		= sunrise_community_ab_groups,
 };
@@ -860,9 +894,101 @@ static const struct gpio_group *const sunrise_lp_community_cde_groups[] = {
 	&sunrise_group_c, &sunrise_lp_group_d, &sunrise_lp_group_e,
 };
 
+static const gpiocom_register_t sunrise_community_cdefgh_registers[] = {
+	{0x008, "FAMBAR"},
+	{0x00C, "PADBAR"},
+	{0x010, "MISCCFG"},
+	{0x020, "PAD_OWN_GPP_C_0"},
+	{0x024, "PAD_OWN_GPP_C_1"},
+	{0x028, "PAD_OWN_GPP_C_2"},
+	{0x02C, "PAD_OWN_GPP_D_0"},
+	{0x030, "PAD_OWN_GPP_D_1"},
+	{0x034, "PAD_OWN_GPP_D_2"},
+	{0x038, "PAD_OWN_GPP_E_0"},
+	{0x03C, "PAD_OWN_GPP_E_1"},
+	{0x040, "PAD_OWN_GPP_F_0"},
+	{0x044, "PAD_OWN_GPP_F_1"},
+	{0x048, "PAD_OWN_GPP_F_2"},
+	{0x04C, "PAD_OWN_GPP_G_0"},
+	{0x050, "PAD_OWN_GPP_G_1"},
+	{0x054, "PAD_OWN_GPP_G_2"},
+	{0x058, "PAD_OWN_GPP_H_0"},
+	{0x05C, "PAD_OWN_GPP_H_1"},
+	{0x060, "PAD_OWN_GPP_H_2"},
+	{0x090, "PADCFGLOCK_GPP_C_0"},
+	{0x094, "PADCFGLOCKTX_GPP_C_0"},
+	{0x098, "PADCFGLOCK_GPP_D_0"},
+	{0x09C, "PADCFGLOCKTX_GPP_D_0"},
+	{0x0A0, "PADCFGLOCK_GPP_E_0"},
+	{0x0A4, "PADCFGLOCKTX_GPP_E_0"},
+	{0x0A8, "PADCFGLOCK_GPP_F_0"},
+	{0x0AC, "PADCFGLOCKTX_GPP_F_0"},
+	{0x0B0, "PADCFGLOCK_GPP_G_0"},
+	{0x0B4, "PADCFGLOCKTX_GPP_G_0"},
+	{0x0B8, "PADCFGLOCK_GPP_H_0"},
+	{0x0BC, "PADCFGLOCKTX_GPP_H_0"},
+	{0x0D0, "HOSTSW_OWN_GPP_C_0"},
+	{0x0D4, "HOSTSW_OWN_GPP_D_0"},
+	{0x0D8, "HOSTSW_OWN_GPP_E_0"},
+	{0x0DC, "HOSTSW_OWN_GPP_F_0"},
+	{0x0E0, "HOSTSW_OWN_GPP_G_0"},
+	{0x0E4, "HOSTSW_OWN_GPP_H_0"},
+	{0x100, "GPI_IS_GPP_C_0"},
+	{0x104, "GPI_IS_GPP_D_0"},
+	{0x108, "GPI_IS_GPP_E_0"},
+	{0x10C, "GPI_IS_GPP_F_0"},
+	{0x110, "GPI_IS_GPP_G_0"},
+	{0x114, "GPI_IS_GPP_H_0"},
+	{0x120, "GPI_IE_GPP_C_0"},
+	{0x124, "GPI_IE_GPP_D_0"},
+	{0x128, "GPI_IE_GPP_E_0"},
+	{0x12C, "GPI_IE_GPP_F_0"},
+	{0x130, "GPI_IE_GPP_G_0"},
+	{0x134, "GPI_IE_GPP_H_0"},
+	{0x140, "GPI_GPE_STS_GPP_C_0"},
+	{0x144, "GPI_GPE_STS_GPP_D_0"},
+	{0x148, "GPI_GPE_STS_GPP_E_0"},
+	{0x14C, "GPI_GPE_STS_GPP_F_0"},
+	{0x150, "GPI_GPE_STS_GPP_G_0"},
+	{0x154, "GPI_GPE_STS_GPP_H_0"},
+	{0x160, "GPI_GPE_EN_GPP_C_0"},
+	{0x164, "GPI_GPE_EN_GPP_D_0"},
+	{0x168, "GPI_GPE_EN_GPP_E_0"},
+	{0x16C, "GPI_GPE_EN_GPP_F_0"},
+	{0x170, "GPI_GPE_EN_GPP_G_0"},
+	{0x174, "GPI_GPE_EN_GPP_H_0"},
+	{0x180, "GPI_SMI_STS_GPP_C_0"},
+	{0x184, "GPI_SMI_STS_GPP_D_0"},
+	{0x188, "GPI_SMI_STS_GPP_E_0"},
+	{0x1A0, "GPI_SMI_EN_GPP_C_0"},
+	{0x1A4, "GPI_SMI_EN_GPP_D_0"},
+	{0x1A8, "GPI_SMI_EN_GPP_E_0"},
+	{0x1C0, "GPI_NMI_STS_GPP_C_0"},
+	{0x1C4, "GPI_NMI_STS_GPP_D_0"},
+	{0x1C8, "GPI_NMI_STS_GPP_E_0"},
+	{0x1E0, "GPI_NMI_EN_GPP_C_0"},
+	{0x1E4, "GPI_NMI_EN_GPP_D_0"},
+	{0x1E8, "GPI_NMI_EN_GPP_E_0"},
+	{0x204, "PWMC"},
+	{0x20C, "GP_SER_BLINK"},
+	{0x210, "GP_SER_CMDSTS"},
+	{0x214, "GP_SER_DATA"},
+	{0x21C, "GSX_CAP"},
+	{0x220, "GSX_C0CAP_DW0"},
+	{0x224, "GSX_C0CAP_DW1"},
+	{0x228, "GSX_C0GPILVL_DW0"},
+	{0x22C, "GSX_C0GPILVL_DW1"},
+	{0x230, "GSX_C0GPOLVL_DW0"},
+	{0x234, "GSX_C0GPOLVL_DW1"},
+	{0x238, "GSX_C0CMD"},
+	{0x23C, "GSX_C0TM"},
+};
+
 static const struct gpio_community sunrise_community_cdefgh = {
 	.name		= "------- GPIO Community 1 -------",
 	.pcr_port_id	= 0xae,
+	.community_registers = sunrise_community_cdefgh_registers,
+	.community_registers_size = ARRAY_SIZE(sunrise_community_cdefgh_registers),
 	.group_count	= ARRAY_SIZE(sunrise_community_cdefgh_groups),
 	.groups		= sunrise_community_cdefgh_groups,
 };
@@ -900,9 +1026,26 @@ static const struct gpio_group *const sunrise_community_gpd_groups[] = {
 	&sunrise_group_gpd,
 };
 
+static const gpiocom_register_t sunrise_community_gpd_registers[] = {
+	{0x008, "FAMBAR"},
+	{0x00C, "PADBAR"},
+	{0x010, "MISCCFG"},
+	{0x020, "PAD_OWN_GPD_0"},
+	{0x024, "PAD_OWN_GPD_1"},
+	{0x090, "PADCFGLOCK_GPD_0"},
+	{0x094, "PADCFGLOCKTX_GPD_0"},
+	{0x0D0, "HOSTSW_OWN_GPD_0"},
+	{0x100, "GPI_IS_GPD_0"},
+	{0x120, "GPI_IE_GPD_0"},
+	{0x140, "GPI_GPE_STS_GPD_0"},
+	{0x160, "GPI_GPE_EN_GPD_0"},
+};
+
 static const struct gpio_community sunrise_community_gpd = {
 	.name		= "------- GPIO Community 2 -------",
 	.pcr_port_id	= 0xad,
+	.community_registers = sunrise_community_gpd_registers,
+	.community_registers_size = ARRAY_SIZE(sunrise_community_gpd_registers),
 	.group_count	= ARRAY_SIZE(sunrise_community_gpd_groups),
 	.groups		= sunrise_community_gpd_groups,
 };
@@ -936,9 +1079,31 @@ static const struct gpio_group *const sunrise_lp_community_fg_groups[] = {
 	&sunrise_lp_group_f, &sunrise_lp_group_g,
 };
 
+static const gpiocom_register_t sunrise_community_i_registers[] = {
+	{0x004, "CAP_LIST_0"},
+	{0x008, "FAMBAR"},
+	{0x00C, "PADBAR"},
+	{0x010, "MISCCFG"},
+	{0x020, "PAD_OWN_GPP_I_0"},
+	{0x024, "PAD_OWN_GPP_I_1"},
+	{0x090, "PADCFGLOCK_GPP_I_0"},
+	{0x094, "PADCFGLOCKTX_GPP_I_0"},
+	{0x0D0, "HOSTSW_OWN_GPP_I_0"},
+	{0x100, "GPI_IS_GPP_I_0"},
+	{0x120, "GPI_IE_GPP_I_0"},
+	{0x140, "GPI_GPE_STS_GPP_I_0"},
+	{0x160, "GPI_GPE_EN_GPP_I_0"},
+	{0x180, "GPI_SMI_STS_GPP_I_0"},
+	{0x1A0, "GPI_SMI_EN_GPP_I_0"},
+	{0x1C0, "GPI_NMI_STS_GPP_I_0"},
+	{0x1E0, "GPI_NMI_EN_GPP_I_0"},
+};
+
 static const struct gpio_community sunrise_community_i = {
 	.name		= "------- GPIO Community 3 -------",
 	.pcr_port_id	= 0xac,
+	.community_registers = sunrise_community_i_registers,
+	.community_registers_size = ARRAY_SIZE(sunrise_community_i_registers),
 	.group_count	= ARRAY_SIZE(sunrise_community_i_groups),
 	.groups		= sunrise_community_i_groups,
 };
@@ -2202,6 +2367,16 @@ static void print_gpio_community(const struct gpio_community *const community,
 
 	printf("%s\n\nPCR Port ID: 0x%06zx\n\n",
 	       community->name, (size_t)community->pcr_port_id << 16);
+
+	if (community->community_registers) {
+		for (size_t i = 0; i < community->community_registers_size; i++) {
+			printf("0x%04x: 0x%08x (%s)\n",
+				community->community_registers[i].addr,
+				read_pcr32(community->pcr_port_id,
+					community->community_registers[i].addr),
+				community->community_registers[i].name);
+		}
+	}
 
 	for (group = 0, pad_count = 0; group < community->group_count; ++group)
 		pad_count += community->groups[group]->pad_count;

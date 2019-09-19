@@ -17,6 +17,7 @@
 #ifndef INTELTOOL_H
 #define INTELTOOL_H 1
 
+#include <arch/mmio.h>
 #include <commonlib/helpers.h>
 
 #include <stdint.h>
@@ -374,6 +375,7 @@ msr_t freebsd_rdmsr(int addr);
 int freebsd_wrmsr(int addr, msr_t msr);
 #endif
 typedef struct { uint16_t addr; int size; char *name; } io_register_t;
+typedef struct { uint16_t addr; char *name; } gpiocom_register_t;
 typedef struct {
 	uint32_t eax;
 	uint32_t ebx;
@@ -386,8 +388,16 @@ void unmap_physical(void *virt_addr, size_t len);
 
 unsigned int cpuid(unsigned int op);
 int print_intel_core_msrs(void);
+int print_io(struct pci_dev *sb);
 int print_mchbar(struct pci_dev *nb, struct pci_access *pacc, const char *dump_spd_file);
 int print_pmbase(struct pci_dev *sb, struct pci_access *pacc);
+int print_lpc(struct pci_dev *sb, struct pci_access *pacc);
+int print_i2c(struct pci_dev *sb, struct pci_access *pacc);
+int print_gspi(struct pci_dev *sb, struct pci_access *pacc);
+int print_smbus(struct pci_dev *sb, struct pci_access *pacc);
+int print_thermal(struct pci_dev *sb, struct pci_access *pacc);
+int print_usb(struct pci_dev *sb, struct pci_access *pacc);
+int print_apic(struct pci_dev *const sb);
 int print_rcba(struct pci_dev *sb);
 int print_gpios(struct pci_dev *sb, int show_all, int show_diffs);
 void print_gpio_groups(struct pci_dev *sb);
@@ -395,7 +405,7 @@ int print_epbar(struct pci_dev *nb);
 int print_dmibar(struct pci_dev *nb);
 int print_pciexbar(struct pci_dev *nb);
 int print_ambs(struct pci_dev *nb, struct pci_access *pacc);
-int print_spi(struct pci_dev *sb);
+int print_spi(struct pci_dev *sb, struct pci_access *pacc);
 int print_gfx(struct pci_dev *gfx);
 int print_ahci(struct pci_dev *ahci);
 int print_sgx(void);
