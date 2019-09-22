@@ -18,8 +18,10 @@
 #include <bootstate.h>
 #include <console/console.h>
 #include <console/post_codes.h>
+#include <cpu/x86/mp.h>
 #include <cpu/x86/smm.h>
 #include <device/pci.h>
+#include <intelblocks/cpulib.h>
 #include <intelblocks/lpc_lib.h>
 #include <intelblocks/pcr.h>
 #include <intelblocks/tco.h>
@@ -108,6 +110,9 @@ static void soc_finalize(void *unused)
 	printk(BIOS_DEBUG, "Finalizing chipset.\n");
 
 	pch_finalize();
+
+	/* Lock chipset memory registers to protect SMM */
+	mp_run_on_all_cpus(cpu_lt_lock_memory, NULL);
 
 	printk(BIOS_DEBUG, "Finalizing SMM.\n");
 	outb(APM_CNT_FINALIZE, APM_CNT);
