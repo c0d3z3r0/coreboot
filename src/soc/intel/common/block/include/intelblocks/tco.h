@@ -25,6 +25,8 @@
 void tco_configure(void);
 /* Lockdown TCO registers before booting to OS */
 void tco_lockdown(void);
+/* Lockdown TCO BAR before booting to OS */
+void tco_lockdown_bar(void);
 /*
  * Resets the tco status registers. This function clears the tco_sts register
  * and returns the status bits set.

@@ -60,10 +60,9 @@ void tco_write_reg(uint16_t tco_reg, uint16_t value)
 	outw(value, tcobase + tco_reg);
 }
 
-void tco_lockdown(void)
+void tco_lockdown_bar(void)
 {
 	uint32_t reg32;
-	uint16_t tcocnt;
 #if defined(__SIMPLE_DEVICE__)
 	int devfn = PCH_DEVFN_SMBUS;
 	pci_devfn_t dev = PCI_DEV(0, PCI_SLOT(devfn), PCI_FUNC(devfn));
@@ -75,6 +74,10 @@ void tco_lockdown(void)
 	/* TCO base address lockdown */
 	reg32 = pci_read_config32(dev, TCOCTL);
 	pci_write_config32(dev, TCOCTL, reg32 | TCO_BASE_LOCK);
+}
+
+void tco_lockdown(void)
+	uint16_t tcocnt;
 
 	/* TCO Lock down */
 	tcocnt = tco_read_reg(TCO1_CNT);
