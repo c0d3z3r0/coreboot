@@ -21,7 +21,6 @@
 #define FSP_HDR_OFFSET			0x94
 #define FSP_HDR_LEN			0x48
 #define FSP_HDR_SIGNATURE		"FSPH"
-#define FSP_HDR_ATTRIB_FSPT		1
 #define FSP_HDR_ATTRIB_FSPM		2
 #define FSP_HDR_ATTRIB_FSPS		3
 

@@ -106,7 +106,6 @@ config CPU_SPECIFIC_OPTIONS
 	select UDELAY_TSC
 	select UDK_2017_BINDING
 	select DISPLAY_FSP_VERSION_INFO
-	select FSP_T_XIP if FSP_CAR
 	select HECI_DISABLE_USING_SMM if !SOC_INTEL_COFFEELAKE && !SOC_INTEL_WHISKEYLAKE && !SOC_INTEL_COMETLAKE
 
 config MAX_CPUS
@@ -130,15 +129,6 @@ config DCACHE_BSP_STACK_SIZE
 	  The amount of anticipated stack usage in CAR by bootblock and
 	  other stages. In the case of FSP_USES_CB_STACK default value will be
 	  sum of FSP-M stack requirement (128KiB) and CB romstage stack requirement (~1KiB).
-
-config FSP_TEMP_RAM_SIZE
-	hex
-	depends on FSP_USES_CB_STACK
-	default 0x10000
-	help
-	  The amount of anticipated heap usage in CAR by FSP.
-	  Refer to Platform FSP integration guide document to know
-	  the exact FSP requirement for Heap setup.
 
 config IFD_CHIPSET
 	string
@@ -298,12 +288,6 @@ config USE_CANNONLAKE_CAR_NEM_ENHANCED
 	  cached area, the modified data will be lost and NEM results will be
 	  inconsistent. ENHANCED NEM guarantees that modified data is always
 	  kept in cache while clean data is replaced.
-
-config USE_CANNONLAKE_FSP_CAR
-	bool "Use FSP CAR"
-	select FSP_CAR
-	help
-	  Use FSP APIs to initialize and tear down the Cache-As-Ram.
 
 endchoice
 

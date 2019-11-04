@@ -37,26 +37,16 @@ ramstage-$(CONFIG_DISPLAY_UPD_DATA) += upd_display.c
 ramstage-y += util.c
 ramstage-$(CONFIG_MMA) += mma_core.c
 
-postcar-$(CONFIG_FSP_CAR) += temp_ram_exit.c
-postcar-$(CONFIG_FSP_CAR) += util.c
 postcar-$(CONFIG_DISPLAY_FSP_HEADER) += header_display.c
 postcar-y += hand_off_block.c
 
 CPPFLAGS_common += -I$(src)/drivers/intel/fsp2_0/include
 
-FSP_T_CBFS = $(call strip_quotes,$(CONFIG_FSP_T_CBFS))
 FSP_M_CBFS = $(call strip_quotes,$(CONFIG_FSP_M_CBFS))
 FSP_S_CBFS = $(call strip_quotes,$(CONFIG_FSP_S_CBFS))
 
 # Add FSP blobs into cbfs. SoC code may supply  additional options with
 # -options, e.g --xip or -b
-cbfs-files-$(CONFIG_FSP_CAR) += $(FSP_T_CBFS)
-$(FSP_T_CBFS)-file := $(call strip_quotes,$(CONFIG_FSP_T_FILE))
-$(FSP_T_CBFS)-type := fsp
-ifeq ($(CONFIG_FSP_T_XIP),y)
-$(FSP_T_CBFS)-options := --xip $(TXTIBB)
-endif
-
 cbfs-files-$(CONFIG_ADD_FSP_BINARIES) += $(FSP_M_CBFS)
 $(FSP_M_CBFS)-file := $(call strip_quotes,$(CONFIG_FSP_M_FILE))
 $(FSP_M_CBFS)-type := fsp
@@ -73,9 +63,6 @@ $(obj)/Fsp_M.fd: $(call strip_quotes,$(CONFIG_FSP_FD_PATH))
 	python2 3rdparty/fsp/Tools/SplitFspBin.py split -f $(CONFIG_FSP_FD_PATH) -o "$(obj)" -n "Fsp.fd"
 
 $(obj)/Fsp_S.fd: $(call strip_quotes,$(CONFIG_FSP_FD_PATH)) $(obj)/Fsp_M.fd
-	true
-
-$(obj)/Fsp_T.fd: $(call strip_quotes,$(CONFIG_FSP_FD_PATH)) $(obj)/Fsp_M.fd
 	true
 endif
 

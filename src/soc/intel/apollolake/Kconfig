@@ -319,12 +319,6 @@ config CAR_CQOS
 	  usage. As result, it is possible to set up portion of L2 cache for
 	  CAR and use remainder for actual caching.
 
-config USE_APOLLOLAKE_FSP_CAR
-	bool "Use FSP CAR"
-	select FSP_CAR
-	help
-	  Use FSP APIs to initialize & tear down the Cache-As-Ram.
-
 endchoice
 
 #

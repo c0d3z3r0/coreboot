@@ -35,8 +35,6 @@
 #include <fsp/memory_init.h>
 #include <types.h>
 
-static uint8_t temp_ram[CONFIG_FSP_TEMP_RAM_SIZE] __aligned(sizeof(uint64_t));
-
 /* TPM MRC hash functionality depends on vboot starting before memory init. */
 _Static_assert(!CONFIG(FSP2_0_USES_TPM_MRC_HASH) ||
 	       CONFIG(VBOOT_STARTS_IN_BOOTBLOCK),
@@ -192,16 +190,10 @@ static enum cb_err fsp_fill_common_arch_params(FSPM_ARCH_UPD *arch_upd,
 	/*
 	 * FSP 2.1 version would use same stack as coreboot instead of
 	 * setting up separate stack frame. FSP 2.1 would not relocate stack
-	 * top and does not reinitialize stack pointer. The parameters passed
-	 * as StackBase and StackSize are actually for temporary RAM and HOBs
-	 * and are not related to FSP stack at all.
+	 * top and does not reinitialize stack pointer.
 	 */
-	if (CONFIG(FSP_USES_CB_STACK)) {
-		arch_upd->StackBase = temp_ram;
-		arch_upd->StackSize = sizeof(temp_ram);
-	} else if (setup_fsp_stack_frame(arch_upd, memmap)) {
+	if (!CONFIG(FSP_USES_CB_STACK) && setup_fsp_stack_frame(arch_upd, memmap))
 		return CB_ERR;
-	}
 
 	fsp_fill_mrc_cache(arch_upd, fsp_version);
 

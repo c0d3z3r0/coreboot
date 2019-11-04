@@ -138,8 +138,6 @@ static void early_tco_init(void)
 
 void mainboard_romstage_entry(void)
 {
-	printk(BIOS_DEBUG, "FSP TempRamInit was successful...\n");
-
 	mainboard_config_gpios();
 	early_tco_init();
 	early_pmc_init();

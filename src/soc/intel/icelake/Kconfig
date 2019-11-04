@@ -78,14 +78,6 @@ config DCACHE_BSP_STACK_SIZE
 	  other stages. In the case of FSP_USES_CB_STACK default value will be
 	  sum of FSP-M stack requirement (128KiB) and CB romstage stack requirement (~1KiB).
 
-config FSP_TEMP_RAM_SIZE
-	hex
-	default 0x10000
-	help
-	  The amount of anticipated heap usage in CAR by FSP.
-	  Refer to Platform FSP integration guide document to know
-	  the exact FSP requirement for Heap setup.
-
 config IFD_CHIPSET
 	string
 	default "icl"

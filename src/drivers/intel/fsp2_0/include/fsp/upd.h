@@ -20,7 +20,6 @@
 struct FSP_UPD_HEADER {
 	///
 	/// UPD Region Signature. This signature will be
-	/// "XXXXXX_T" for FSP-T
 	/// "XXXXXX_M" for FSP-M
 	/// "XXXXXX_S" for FSP-S
 	/// Where XXXXXX is an unique signature

@@ -116,8 +116,6 @@ enum timestamp_id {
 	/* 950+ reserved for vendorcode extensions (950-999: intel/fsp) */
 	TS_FSP_MEMORY_INIT_START = 950,
 	TS_FSP_MEMORY_INIT_END = 951,
-	TS_FSP_TEMP_RAM_EXIT_START = 952,
-	TS_FSP_TEMP_RAM_EXIT_END = 953,
 	TS_FSP_SILICON_INIT_START = 954,
 	TS_FSP_SILICON_INIT_END = 955,
 	TS_FSP_BEFORE_ENUMERATE = 956,
@@ -254,8 +252,6 @@ static const struct timestamp_id_to_name {
 	/* FSP related timestamps */
 	{ TS_FSP_MEMORY_INIT_START, "calling FspMemoryInit" },
 	{ TS_FSP_MEMORY_INIT_END, "returning from FspMemoryInit" },
-	{ TS_FSP_TEMP_RAM_EXIT_START, "calling FspTempRamExit" },
-	{ TS_FSP_TEMP_RAM_EXIT_END, "returning from FspTempRamExit" },
 	{ TS_FSP_SILICON_INIT_START, "calling FspSiliconInit" },
 	{ TS_FSP_SILICON_INIT_END, "returning from FspSiliconInit" },
 	{ TS_FSP_BEFORE_ENUMERATE, "calling FspNotify(AfterPciEnumeration)" },

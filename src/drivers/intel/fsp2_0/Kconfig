@@ -34,13 +34,7 @@ if PLATFORM_USES_FSP2_0
 config ADD_FSP_BINARIES
 	bool "Add Intel FSP 2.0 binaries to CBFS"
 	help
-	  Add the FSP-M and FSP-S binaries to CBFS. Currently coreboot does not
-	  use the FSP-T binary and it is not added.
-
-config FSP_T_CBFS
-	string "Name of FSP-T in CBFS"
-	depends on FSP_CAR
-	default "fspt.bin"
+	  Add the FSP-M and FSP-S binaries to CBFS.
 
 config FSP_S_CBFS
 	string "Name of FSP-S in CBFS"
@@ -60,13 +54,6 @@ config FSP_USE_REPO
 	  When selecting this option, the SoC must set FSP_HEADER_PATH
 	  and FSP_FD_PATH correctly so FSP splitting works.
 
-config FSP_T_FILE
-	string "Intel FSP-T (temp ram init) binary path and filename"
-	depends on FSP_CAR
-	default "$(obj)/Fsp_T.fd" if FSP_USE_REPO
-	help
-	  The path and filename of the Intel FSP-M binary for this platform.
-
 config FSP_M_FILE
 	string "Intel FSP-M (memory init) binary path and filename"
 	depends on ADD_FSP_BINARIES
@@ -81,23 +68,11 @@ config FSP_S_FILE
 	help
 	  The path and filename of the Intel FSP-S binary for this platform.
 
-config FSP_CAR
-	bool
-	default n
-	help
-	  Use FSP APIs to initialize & Tear Down the Cache-As-Ram
-
 config FSP_M_XIP
 	bool
 	default n
 	help
 	  Select this value when FSP-M is execute-in-place.
-
-config FSP_T_XIP
-	bool
-	default n
-	help
-	  Select this value when FSP-T is execute-in-place.
 
 config FSP_USES_CB_STACK
 	bool
@@ -107,15 +82,6 @@ config FSP_USES_CB_STACK
 	  This option allows fsp to continue using coreboot stack
 	  without reinitializing stack pointer. This feature is
 	  supported Icelake onwards.
-
-config FSP_TEMP_RAM_SIZE
-	hex
-	depends on FSP_USES_CB_STACK
-	help
-	  The amount of anticipated heap usage in CAR by FSP to setup HOB.
-	  This configuration is applicable for FSP specification using shared
-	  stack with coreboot/bootloader.
-	  Sync this value with Platform FSP integration guide recommendation.
 
 config FSP2_0_USES_TPM_MRC_HASH
 	bool

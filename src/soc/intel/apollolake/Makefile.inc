@@ -10,7 +10,6 @@ subdirs-y += ../../../cpu/x86/tsc
 subdirs-y += ../../../cpu/x86/cache
 
 bootblock-y += bootblock/bootblock.c
-bootblock-$(CONFIG_FSP_CAR) += fspcar.c
 bootblock-y += car.c
 bootblock-y += heci.c
 bootblock-y += gspi.c

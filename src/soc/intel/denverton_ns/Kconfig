@@ -55,13 +55,6 @@ config CPU_SPECIFIC_OPTIONS
 	select UDK_2015_BINDING
 	select CPU_INTEL_FIRMWARE_INTERFACE_TABLE
 
-config FSP_T_ADDR
-	hex "Intel FSP-T (temp ram init) binary location"
-	depends on ADD_FSP_BINARIES && FSP_CAR
-	default 0xfff30000
-	help
-	  The memory location of the Intel FSP-T binary for this platform.
-
 config FSP_M_ADDR
 	hex "Intel FSP-M (memory init) binary location"
 	depends on ADD_FSP_BINARIES
@@ -101,8 +94,7 @@ config DCACHE_RAM_BASE
 
 config DCACHE_RAM_SIZE
 	hex
-	default 0xb0000 if FSP_CAR
-	default 0x100000 if !FSP_CAR
+	default 0x100000
 
 config DCACHE_BSP_STACK_SIZE
 	hex
@@ -169,7 +161,6 @@ config C_ENV_BOOTBLOCK_SIZE
 
 config DENVERTON_NS_CAR_NEM_ENHANCED
 	bool "Enhanced Non-evict mode"
-	depends on !FSP_CAR
 	default y
 	select SOC_INTEL_COMMON_BLOCK_CAR
 	select INTEL_CAR_NEM_ENHANCED
