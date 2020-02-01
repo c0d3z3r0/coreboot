@@ -1,0 +1,38 @@
+            CPU0       CPU1       CPU2       CPU3       CPU4       CPU5       CPU6       CPU7       
+   0:         45          0          0          0          0          0          0          0  IR-IO-APIC    2-edge      timer
+   4:          0          0          0          0          0        691          0          0  IR-IO-APIC    4-edge      ttyS0
+   8:          0          0          0          1          0          0          0          0  IR-IO-APIC    8-edge      rtc0
+   9:          0          0          0          0          0          0          0          0  IR-IO-APIC    9-fasteoi   acpi
+  16:          0          0          0          0          8          0          0          0  IR-IO-APIC   16-fasteoi   i801_smbus
+ 120:          0          0          0          0          0          0          0          0  DMAR-MSI    0-edge      dmar0
+ 121:          0          0          0          0          0          0          0          0  IR-PCI-MSI 16384-edge      PCIe PME, aerdrv
+ 122:          0          0          0          0          0          0          0          0  IR-PCI-MSI 18432-edge      PCIe PME, aerdrv
+ 123:          0          0          0          0          0          0          0          0  IR-PCI-MSI 475136-edge      PCIe PME, aerdrv
+ 124:          0          0          0          0          0          0          0          0  IR-PCI-MSI 477184-edge      PCIe PME, aerdrv
+ 125:          0          0          0          0          0          0          0          0  IR-PCI-MSI 479232-edge      PCIe PME, aerdrv
+ 126:          0          0          0          0          0          0          0       2773  IR-PCI-MSI 376832-edge      ahci[0000:00:17.0]
+ 127:          0          0          0          0          0          0          1          0  IR-PCI-MSI 1572864-edge      eno0
+ 128:          0          0          0          0          0          0          0         36  IR-PCI-MSI 1572865-edge      eno0-TxRx-0
+ 129:        250          0          0          0          0          0          0          0  IR-PCI-MSI 1572866-edge      eno0-TxRx-1
+ 130:          0         22          0          0          0          0          0          0  IR-PCI-MSI 1572867-edge      eno0-TxRx-2
+ 131:          0          0         24          0          0          0          0          0  IR-PCI-MSI 1572868-edge      eno0-TxRx-3
+ 137:          0          0          0          0          0          0          0          0  IR-PCI-MSI 1048576-edge      rtl_pci
+ 138:          0          0         58          0          0          0          0          0  IR-PCI-MSI 327680-edge      xhci_hcd
+ NMI:          1          1          1          1          1          1          1          1   Non-maskable interrupts
+ LOC:      27050       2937       3570       2927       3594      79214       4769       3721   Local timer interrupts
+ SPU:          0          0          0          0          0          0          0          0   Spurious interrupts
+ PMI:          0          0          0          0          0          0          0          0   Performance monitoring interrupts
+ IWI:          0          0          0          0          0          0          0          0   IRQ work interrupts
+ RTR:          1          0          0          0          0          0          0          0   APIC ICR read retries
+ RES:        559        210        110         79         40         31         50         39   Rescheduling interrupts
+ CAL:        944       1304       1230       1244       1000       1341       1224        988   Function call interrupts
+ TLB:          1          8          4          0         12          3          1       1056   TLB shootdowns
+ TRM:          0          0          0          0          0          0          0          0   Thermal event interrupts
+ THR:          0          0          0          0          0          0          0          0   Threshold APIC interrupts
+ MCE:          0          0          0          0          0          0          0          0   Machine check exceptions
+ MCP:          1          2          2          2          2          2          2          2   Machine check polls
+ ERR:          0
+ MIS:          0
+ PIN:          0          0          0          0          0          0          0          0   Posted-interrupt notification event
+ NPI:          0          0          0          0          0          0          0          0   Nested posted-interrupt event
+ PIW:          0          0          0          0          0          0          0          0   Posted-interrupt wakeup event

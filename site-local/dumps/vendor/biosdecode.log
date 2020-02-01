@@ -1,0 +1,66 @@
+# biosdecode 3.2
+BIOS32 Service Directory present.
+	Revision: 0
+	Calling Interface Address: 0x000E88C0
+SMBIOS 3.0 present.
+	Structure Table Length: 3585 bytes
+	Structure Table Address: 0x7FB76000
+	Number Of Structures: 65
+	Maximum Structure Size: 287 bytes
+PNP BIOS 1.0 present.
+	Event Notification: Not Supported
+	Real Mode 16-bit Code Address: F000:BCC6
+	Real Mode 16-bit Data Address: F000:0000
+	16-bit Protected Mode Code Address: 0x000FBCEE
+	16-bit Protected Mode Data Address: 0x000F0000
+PCI Interrupt Routing 1.0 present.
+	Router Device: 00:1f.0
+	Exclusive IRQs: None
+	Compatible Router: 8086:27b8
+	Device: 00:01, on-board
+		INTA#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+		INTB#: Link 0x02, IRQ Bitmap 5 6 10 11 12
+		INTC#: Link 0x03, IRQ Bitmap 5 6 10 11 12
+		INTD#: Link 0x04, IRQ Bitmap 5 6 10 11 12
+	Device: 02:00, slot 7
+		INTA#: Link 0x02, IRQ Bitmap 5 6 10 11 12
+		INTB#: Link 0x03, IRQ Bitmap 5 6 10 11 12
+		INTC#: Link 0x04, IRQ Bitmap 5 6 10 11 12
+		INTD#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+	Device: 00:14, on-board
+		INTA#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+		INTC#: Link 0x03, IRQ Bitmap 5 6 10 11 12
+		INTD#: Link 0x04, IRQ Bitmap 5 6 10 11 12
+	Device: 00:16, on-board
+		INTA#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+		INTB#: Link 0x02, IRQ Bitmap 5 6 10 11 12
+	Device: 00:17, on-board
+		INTA#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+	Device: 00:1c, on-board
+		INTA#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+		INTB#: Link 0x02, IRQ Bitmap 5 6 10 11 12
+		INTC#: Link 0x03, IRQ Bitmap 5 6 10 11 12
+		INTD#: Link 0x04, IRQ Bitmap 5 6 10 11 12
+	Device: 04:00, on-board
+		INTA#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+		INTB#: Link 0x02, IRQ Bitmap 5 6 10 11 12
+		INTC#: Link 0x03, IRQ Bitmap 5 6 10 11 12
+		INTD#: Link 0x04, IRQ Bitmap 5 6 10 11 12
+	Device: 00:1d, on-board
+		INTA#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+		INTB#: Link 0x02, IRQ Bitmap 5 6 10 11 12
+		INTC#: Link 0x03, IRQ Bitmap 5 6 10 11 12
+		INTD#: Link 0x04, IRQ Bitmap 5 6 10 11 12
+	Device: 05:00, on-board
+		INTA#: Link 0x02, IRQ Bitmap 5 6 10 11 12
+		INTB#: Link 0x03, IRQ Bitmap 5 6 10 11 12
+		INTC#: Link 0x04, IRQ Bitmap 5 6 10 11 12
+		INTD#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+	Device: 07:00, on-board
+		INTA#: Link 0x03, IRQ Bitmap 5 6 10 11 12
+	Device: 00:1f, on-board
+		INTA#: Link 0x01, IRQ Bitmap 5 6 10 11 12
+Intel Multiprocessor present.
+	Specification Revision: 1.4
+	Configuration Table Address: 0x000FCA10
+	Mode: Virtual Wire

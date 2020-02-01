@@ -1,0 +1,29 @@
+[31mBad news, you have a `C236 Chipset LPC/eSPI Controller` so you have ME hardware on board and you can't control or disable it, continuing...
+
+[0mMEI found: [8086:a13a] 100 Series/C230 Series Chipset Family MEI Controller #1
+
+ME Status   : 0xf0345
+ME Status 2 : 0x6000c006
+
+ME: FW Partition Table      : OK
+ME: Bringup Loader Failure  : NO
+ME: Firmware Init Complete  : YES
+ME: Manufacturing Mode      : NO
+ME: Boot Options Present    : NO
+ME: Update In Progress      : NO
+ME: Current Working State   : Normal
+ME: Current Operation State : M0 without UMA
+ME: Current Operation Mode  : (null)
+ME: Error Code              : No Error
+ME: Progress Phase          : Host Communication
+ME: Power Management Event  : Clean Moff->Mx wake
+ME: Progress Phase State    : Host communication established
+
+PCI READ [bc] : 0x000000bc
+ME: Extend Register not valid
+
+WRITE    [00] : CB: 0x80040007
+WRITE    [00] : CB: 0x000002ff
+expected u32 = 8
+ME: timeout waiting for data: expected 8, available 6
+ME: GET FW VERSION message failed

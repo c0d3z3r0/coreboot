@@ -1,0 +1,1 @@
+BOOT_IMAGE=/boot/vmlinuz-5.2.0+ console=ttyS0,115200 root=/dev/sda2 debug apic=debug pnp.debug=1 acpi.debug_layer=0xffffffff acpi.debug_level=0xffffffff

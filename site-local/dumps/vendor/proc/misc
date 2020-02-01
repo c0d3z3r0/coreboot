@@ -1,0 +1,21 @@
+ 54 memory_bandwidth
+ 55 network_throughput
+ 56 network_latency
+ 57 cpu_dma_latency
+241 vhost-vsock
+ 58 vsock
+238 vhost-net
+236 device-mapper
+130 watchdog
+200 tun
+237 loop-control
+183 hw_random
+144 nvram
+228 hpet
+235 autofs
+ 59 dlm_plock
+ 60 dlm-monitor
+ 61 dlm-control
+232 kvm
+ 62 cachefiles
+ 63 rfkill

@@ -1,0 +1,5 @@
+reg00: base=0x078800000 ( 1928MB), size=    8MB, count=1: uncachable
+reg01: base=0x079000000 ( 1936MB), size=   16MB, count=1: uncachable
+reg02: base=0x07a000000 ( 1952MB), size=   32MB, count=1: uncachable
+reg03: base=0x07c000000 ( 1984MB), size=   64MB, count=1: uncachable
+reg04: base=0x080000000 ( 2048MB), size= 2048MB, count=1: uncachable
